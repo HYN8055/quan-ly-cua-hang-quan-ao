@@ -77,7 +77,6 @@ public class ChuyenManHinhController {
                 case "NhaCungCap" -> node=new NhaCungCap();
                 case "BanHang" -> node=new BanHang();
                 case "NhapHang" -> node=new NhapHang();
-                case "DoiTraHang" -> node=new DoiTraHang();
                 case "HoaDonBH" -> node=new HoaDonBH();
                 case "HoaDonNH" -> node=new HoaDonNH();
                 case "HoaDonDT" -> node=new HoaDonDT();
