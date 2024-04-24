@@ -541,7 +541,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                           <Component id="jlbHoaDonDT" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="77" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -561,7 +561,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="H&#xd3;A &#x110;&#x1a0;N &#x110;&#x1ed4;I/TR&#x1ea2; H&#xc0;NG"/>
+                    <Property name="text" type="java.lang.String" value="NH&#xc2;N VI&#xca;N"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -687,7 +687,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="405" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="480" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">

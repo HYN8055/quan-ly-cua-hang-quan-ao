@@ -13,7 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
-import model.NhaCungCapModel;
 import view.employees.SuaNCC;
 
 /**
@@ -23,7 +22,7 @@ import view.employees.SuaNCC;
 public class NhaCungCap extends javax.swing.JPanel implements ActionListener {
 
     private DefaultTableModel tblModel;
-    private static ArrayList<NhaCungCapModel> armt;
+    private static ArrayList<model.NhaCungCapModel> armt;
     /**
      * Creates new form NhaCungCapJPanel
      */
@@ -34,10 +33,10 @@ public class NhaCungCap extends javax.swing.JPanel implements ActionListener {
         armt = NhaCungCapDAO.getInstance().selectAll();
         loadDataToTable(armt);
 }   
-        public void loadDataToTable(ArrayList<NhaCungCapModel> ncc) {
+        public void loadDataToTable(ArrayList<model.NhaCungCapModel> ncc) {
         try {
             tblModel.setRowCount(0);
-            for (NhaCungCapModel i : ncc) {
+            for (model.NhaCungCapModel i : ncc) {
                 tblModel.addRow(new Object[]{
                     i.getMaNCC(), i.getTenNCC(),i.getDiaChi(), i.getSdtNCC(), i.getEmailNCC()
                 });
@@ -46,9 +45,9 @@ public class NhaCungCap extends javax.swing.JPanel implements ActionListener {
         } 
     }
         
-    public NhaCungCapModel getNhaCungCapSelect() {
+    public model.NhaCungCapModel getNhaCungCapSelect() {
         int i_row = jTable_NCC.getSelectedRow();
-        NhaCungCapModel ncc = NhaCungCapDAO.getInstance().selectAll().get(i_row);
+        model.NhaCungCapModel ncc = NhaCungCapDAO.getInstance().selectAll().get(i_row);
         return ncc;
     }
     
@@ -313,7 +312,7 @@ public class NhaCungCap extends javax.swing.JPanel implements ActionListener {
      // TODO add your handling code here:
         String luachon = (String) cbxlLuaChon.getSelectedItem();
         String searchContent = txtSearchForm.getText();
-        ArrayList<NhaCungCapModel> result = new ArrayList<>();
+        ArrayList<model.NhaCungCapModel> result = new ArrayList<>();
         switch (luachon) {
             case "Tất cả":
                 result = TimNhaCungCap.getInstance().searchTatCa(searchContent);

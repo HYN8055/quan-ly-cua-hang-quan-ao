@@ -314,7 +314,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jpnHoaDonDT.setBackground(new java.awt.Color(255, 255, 255));
 
         jlbHoaDonDT.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jlbHoaDonDT.setText("HÓA ĐƠN ĐỔI/TRẢ HÀNG");
+        jlbHoaDonDT.setText("NHÂN VIÊN");
 
         javax.swing.GroupLayout jpnHoaDonDTLayout = new javax.swing.GroupLayout(jpnHoaDonDT);
         jpnHoaDonDT.setLayout(jpnHoaDonDTLayout);
@@ -323,7 +323,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(jpnHoaDonDTLayout.createSequentialGroup()
                 .addGap(76, 76, 76)
                 .addComponent(jlbHoaDonDT)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpnHoaDonDTLayout.setVerticalGroup(
             jpnHoaDonDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -462,7 +462,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 405, Short.MAX_VALUE)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
