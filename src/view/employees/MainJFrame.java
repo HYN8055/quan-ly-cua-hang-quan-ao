@@ -23,7 +23,7 @@ public class MainJFrame extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("NhaCungCap", jpnNhaCungCap, jlbNhaCungCap));
         listItem.add(new DanhMucBean("BanHang", jpnBanHang, jlbBanHang));
         listItem.add(new DanhMucBean("NhapHang", jpnNhapHang, jlbNhapHang));
-        listItem.add(new DanhMucBean("DoiTraHang", jpnDoiTra, jlbDoiTra));
+        
         listItem.add(new DanhMucBean("HoaDonBH", jpnHoaDonBH, jlbHoaDonBH));
         listItem.add(new DanhMucBean("HoaDonNH", jpnHoaDonNH, jlbHoaDonNH));
         listItem.add(new DanhMucBean("HoaDonDT", jpnHoaDonDT, jlbHoaDonDT));
@@ -58,8 +58,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jlbNhaCungCap = new javax.swing.JLabel();
         jpnThongKe = new javax.swing.JPanel();
         jlbThongKe = new javax.swing.JLabel();
-        jpnDoiTra = new javax.swing.JPanel();
-        jlbDoiTra = new javax.swing.JLabel();
         jpnHoaDonNH = new javax.swing.JPanel();
         jlbHoaDonNH = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -213,28 +211,6 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jlbThongKe)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jpnDoiTra.setBackground(new java.awt.Color(255, 255, 255));
-
-        jlbDoiTra.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jlbDoiTra.setText("ĐỔI/TRẢ HÀNG");
-
-        javax.swing.GroupLayout jpnDoiTraLayout = new javax.swing.GroupLayout(jpnDoiTra);
-        jpnDoiTra.setLayout(jpnDoiTraLayout);
-        jpnDoiTraLayout.setHorizontalGroup(
-            jpnDoiTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnDoiTraLayout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jlbDoiTra)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jpnDoiTraLayout.setVerticalGroup(
-            jpnDoiTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnDoiTraLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jlbDoiTra)
-                .addContainerGap())
         );
 
         jpnHoaDonNH.setBackground(new java.awt.Color(255, 255, 255));
@@ -410,7 +386,6 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jpnTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnDoiTra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnNhaCungCap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnHoaDonNH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnHoaDonBH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -439,9 +414,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jpnBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpnNhapHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnDoiTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(47, 47, 47)
                 .addComponent(jpnHoaDonBH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpnHoaDonNH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -455,7 +428,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jpnThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
@@ -509,7 +482,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel jlbBanHang;
-    private javax.swing.JLabel jlbDoiTra;
     private javax.swing.JLabel jlbHoaDonBH;
     private javax.swing.JLabel jlbHoaDonDT;
     private javax.swing.JLabel jlbHoaDonNH;
@@ -521,7 +493,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jlbThongTin;
     private javax.swing.JLabel jlbTrangChu;
     private javax.swing.JPanel jpnBanHang;
-    private javax.swing.JPanel jpnDoiTra;
     private javax.swing.JPanel jpnHoaDonBH;
     private javax.swing.JPanel jpnHoaDonDT;
     private javax.swing.JPanel jpnHoaDonNH;
