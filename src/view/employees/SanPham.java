@@ -13,7 +13,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.TableColumn;
-import model.SanPhamModel;
 
 
 
@@ -32,7 +31,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
     
     public SanPham() {
         initComponents();
-        jTable1_SP.setDefaultEditor(Object.class, null);
+        jTable_SP.setDefaultEditor(Object.class, null);
         initTable();
         loadDataToTable();
         changeTextFind();
@@ -46,20 +45,20 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
         tblModel = new DefaultTableModel();
         String[] headerTbl = new String[]{"Mã sản phẩm", "Tên sản phẩm", "Giá bán", "Số lượng", "Kích thước", "Chất liệu", "Mã NCC", "Xuất xứ"};
         tblModel.setColumnIdentifiers(headerTbl);
-        jTable1_SP.setModel(tblModel);
-        jTable1_SP.getColumnModel().getColumn(0).setPreferredWidth(100);
-        jTable1_SP.getColumnModel().getColumn(1).setPreferredWidth(200);
-        jTable1_SP.getColumnModel().getColumn(2).setPreferredWidth(50);
-        jTable1_SP.getColumnModel().getColumn(3).setPreferredWidth(20);
-        jTable1_SP.getColumnModel().getColumn(4).setPreferredWidth(20);        
+        jTable_SP.setModel(tblModel);
+        jTable_SP.getColumnModel().getColumn(0).setPreferredWidth(100);
+        jTable_SP.getColumnModel().getColumn(1).setPreferredWidth(200);
+        jTable_SP.getColumnModel().getColumn(2).setPreferredWidth(50);
+        jTable_SP.getColumnModel().getColumn(3).setPreferredWidth(20);
+        jTable_SP.getColumnModel().getColumn(4).setPreferredWidth(20);        
     }
 
     public void loadDataToTable() {
     try {
         SanPhamDAO spdao = new SanPhamDAO();
-        ArrayList<SanPhamModel> arms = spdao.selectAll();
+        ArrayList<model.SanPhamModel> arms = spdao.selectAll();
         tblModel.setRowCount(0);
-        for (SanPhamModel i : arms) {
+        for (model.SanPhamModel i : arms) {
             tblModel.addRow(new Object[]{
                     i.getMaSP(), i.getTenSP(), formatter.format(i.getGiabanSP()) + "đ", i.getSoLuongSP(),
                     i.getKichThuoc(), i.getChatLieu(), i.getMaNCC(), i.getXuatXu()
@@ -91,7 +90,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
         btnRefresh = new javax.swing.JButton();
         btnCTSP = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1_SP = new javax.swing.JTable();
+        jTable_SP = new javax.swing.JTable();
 
         popupMenu1.setLabel("popupMenu1");
 
@@ -213,7 +212,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
                 .addGap(20, 20, 20))
         );
 
-        jTable1_SP.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_SP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -224,10 +223,10 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1_SP.setRowHeight(30);
-        jTable1_SP.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        jTable1_SP.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1_SP);
+        jTable_SP.setRowHeight(30);
+        jTable_SP.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        jTable_SP.setShowGrid(true);
+        jScrollPane1.setViewportView(jTable_SP);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -252,7 +251,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
         // TODO add your handling code here:
         String luaChon = jComboBoxLuaChon.getSelectedItem().toString();
         String content = jTextFieldSearch.getText();
-        ArrayList<SanPhamModel> result = searchFn(luaChon, content);
+        ArrayList<model.SanPhamModel> result = searchFn(luaChon, content);
         loadDataToTableSearch(result);
     }//GEN-LAST:event_jComboBoxLuaChonActionPerformed
 
@@ -267,13 +266,13 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
         // TODO add your handling code here:
         String luaChon = jComboBoxLuaChon.getSelectedItem().toString();
         String content = jTextFieldSearch.getText();
-        ArrayList<SanPhamModel> result = searchFn(luaChon, content);
+        ArrayList<model.SanPhamModel> result = searchFn(luaChon, content);
         loadDataToTableSearch(result);
     }//GEN-LAST:event_jTextFieldSearchActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
         // TODO add your handling code here:
-        if (jTable1_SP.getSelectedRow() == -1) {
+        if (jTable_SP.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm muốn xoá");
         } else {
             int output = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xoá sản phẩm", "Xác nhận xoá sản phẩm", JOptionPane.YES_NO_OPTION);
@@ -287,7 +286,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-       if (jTable1_SP.getSelectedRow() == -1) {
+       if (jTable_SP.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm cần sửa");
         } else {
             JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(SanPham.this);
@@ -300,7 +299,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
         // TODO add your handling code here:
         String luaChon = jComboBoxLuaChon.getSelectedItem().toString();
         String content = jTextFieldSearch.getText();
-        ArrayList<SanPhamModel> result = searchFn(luaChon, content);
+        ArrayList<model.SanPhamModel> result = searchFn(luaChon, content);
         loadDataToTableSearch(result);
     }//GEN-LAST:event_jTextFieldSearchKeyReleased
 
@@ -312,7 +311,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
 
     private void btnCTSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCTSPActionPerformed
         // TODO add your handling code here:
-        if (jTable1_SP.getSelectedRow() == -1) {
+        if (jTable_SP.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm !");
         } else {
             JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(SanPham.this);
@@ -325,12 +324,12 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
         // TODO add your handling code here:
         String luaChon = jComboBoxLuaChon.getSelectedItem().toString();
         String content = jTextFieldSearch.getText();
-        ArrayList<SanPhamModel> result = searchFn(luaChon, content);
+        ArrayList<model.SanPhamModel> result = searchFn(luaChon, content);
         loadDataToTableSearch(result);
     }//GEN-LAST:event_jComboBoxLuaChonPropertyChange
 
-    public ArrayList<SanPhamModel> searchFn(String luaChon, String content) {
-        ArrayList<SanPhamModel> result = new ArrayList<>();
+    public ArrayList<model.SanPhamModel> searchFn(String luaChon, String content) {
+        ArrayList<model.SanPhamModel> result = new ArrayList<>();
         TimSanPham timSP = new TimSanPham();
         switch (luaChon) {
             case "Tất cả":
@@ -364,21 +363,21 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
         return result;
     }
    
-    public SanPhamModel getDetail() {
-        SanPhamModel a = SanPhamDAO.getInstance().selectById(getSanPhamSelect().getMaSP());
+    public model.SanPhamModel getDetail() {
+        model.SanPhamModel a = SanPhamDAO.getInstance().selectById(getSanPhamSelect().getMaSP());
         return a;
     }
 
-    public SanPhamModel getSanPhamSelect() {
-        int i_row = jTable1_SP.getSelectedRow();
-        SanPhamModel sp = SanPhamDAO.getInstance().selectAll().get(i_row);
+    public model.SanPhamModel getSanPhamSelect() {
+        int i_row = jTable_SP.getSelectedRow();
+        model.SanPhamModel sp = SanPhamDAO.getInstance().selectAll().get(i_row);
         return sp;
     }
 
-    public void loadDataToTableSearch(ArrayList<SanPhamModel> result) {
+    public void loadDataToTableSearch(ArrayList<model.SanPhamModel> result) {
         try {
             tblModel.setRowCount(0);
-            for (SanPhamModel i : result) {
+            for (model.SanPhamModel i : result) {
                 tblModel.addRow(new Object[]{
                     i.getMaSP(), i.getTenSP(),formatter.format(i.getGiabanSP()) + "đ", i.getSoLuongSP(), i.getKichThuoc(), i.getChatLieu(), i.getMaNCC() ,i.getXuatXu()
                 });
@@ -420,7 +419,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
     private javax.swing.JComboBox<String> jComboBoxLuaChon;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1_SP;
+    private javax.swing.JTable jTable_SP;
     private javax.swing.JTextField jTextFieldSearch;
     private java.awt.PopupMenu popupMenu1;
     // End of variables declaration//GEN-END:variables

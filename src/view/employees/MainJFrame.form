@@ -151,7 +151,11 @@
                       <Component id="jpnBanHang" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jpnNhapHang" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                       <EmptySpace max="-2" attributes="0"/>
+=======
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+>>>>>>> 501315c7fa2d872a093d01e432567a46d4afd67e
                       <Component id="jpnHoaDonBH" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jpnHoaDonNH" min="-2" max="-2" attributes="0"/>
@@ -484,6 +488,47 @@
                 </Component>
               </SubComponents>
             </Container>
+<<<<<<< HEAD
+=======
+            <Container class="javax.swing.JPanel" name="jpnHoaDonDT">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                          <Component id="jlbHoaDonDT" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="15" max="32767" attributes="0"/>
+                          <Component id="jlbHoaDonDT" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jlbHoaDonDT">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="NH&#xc2;N VI&#xca;N"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+>>>>>>> 501315c7fa2d872a093d01e432567a46d4afd67e
             <Container class="javax.swing.JPanel" name="jpnTaiKhoan">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -605,7 +650,11 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                   <EmptySpace min="0" pref="417" max="32767" attributes="0"/>
+=======
+                  <EmptySpace min="0" pref="480" max="32767" attributes="0"/>
+>>>>>>> 501315c7fa2d872a093d01e432567a46d4afd67e
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">

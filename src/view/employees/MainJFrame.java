@@ -23,6 +23,10 @@ public class MainJFrame extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("NhaCungCap", jpnNhaCungCap, jlbNhaCungCap));
         listItem.add(new DanhMucBean("BanHang", jpnBanHang, jlbBanHang));
         listItem.add(new DanhMucBean("NhapHang", jpnNhapHang, jlbNhapHang));
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 501315c7fa2d872a093d01e432567a46d4afd67e
         listItem.add(new DanhMucBean("HoaDonBH", jpnHoaDonBH, jlbHoaDonBH));
         listItem.add(new DanhMucBean("HoaDonNH", jpnHoaDonNH, jlbHoaDonNH));
         listItem.add(new DanhMucBean("TaiKhoan", jpnTaiKhoan, jlbTaiKhoan));
@@ -283,6 +287,31 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+<<<<<<< HEAD
+=======
+        jpnHoaDonDT.setBackground(new java.awt.Color(255, 255, 255));
+
+        jlbHoaDonDT.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jlbHoaDonDT.setText("NHÂN VIÊN");
+
+        javax.swing.GroupLayout jpnHoaDonDTLayout = new javax.swing.GroupLayout(jpnHoaDonDT);
+        jpnHoaDonDT.setLayout(jpnHoaDonDTLayout);
+        jpnHoaDonDTLayout.setHorizontalGroup(
+            jpnHoaDonDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnHoaDonDTLayout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(jlbHoaDonDT)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jpnHoaDonDTLayout.setVerticalGroup(
+            jpnHoaDonDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnHoaDonDTLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jlbHoaDonDT)
+                .addContainerGap())
+        );
+
+>>>>>>> 501315c7fa2d872a093d01e432567a46d4afd67e
         jpnTaiKhoan.setBackground(new java.awt.Color(255, 255, 255));
 
         jlbTaiKhoan.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -387,7 +416,11 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jpnBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpnNhapHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+=======
+                .addGap(47, 47, 47)
+>>>>>>> 501315c7fa2d872a093d01e432567a46d4afd67e
                 .addComponent(jpnHoaDonBH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpnHoaDonNH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -406,7 +439,11 @@ public class MainJFrame extends javax.swing.JFrame {
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGap(0, 417, Short.MAX_VALUE)
+=======
+            .addGap(0, 480, Short.MAX_VALUE)
+>>>>>>> 501315c7fa2d872a093d01e432567a46d4afd67e
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
