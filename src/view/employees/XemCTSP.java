@@ -122,22 +122,27 @@ public class XemCTSP extends javax.swing.JDialog {
         jLabel17.setText("Số lượng ");
 
         txtTenSP.setEditable(false);
+        txtTenSP.setBackground(new java.awt.Color(255, 255, 255));
         txtTenSP.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtTenSP.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
 
         txtGiaBan.setEditable(false);
+        txtGiaBan.setBackground(new java.awt.Color(255, 255, 255));
         txtGiaBan.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtGiaBan.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
 
         txtGiaNhap.setEditable(false);
+        txtGiaNhap.setBackground(new java.awt.Color(255, 255, 255));
         txtGiaNhap.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtGiaNhap.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
 
         txtChatLieu.setEditable(false);
+        txtChatLieu.setBackground(new java.awt.Color(255, 255, 255));
         txtChatLieu.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtChatLieu.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
 
         txtSoLuong.setEditable(false);
+        txtSoLuong.setBackground(new java.awt.Color(255, 255, 255));
         txtSoLuong.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtSoLuong.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
 
@@ -151,6 +156,7 @@ public class XemCTSP extends javax.swing.JDialog {
         jLabel20.setText("Mã nhà cung cấp");
 
         txtKichThuoc.setEditable(false);
+        txtKichThuoc.setBackground(new java.awt.Color(255, 255, 255));
         txtKichThuoc.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtKichThuoc.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
         txtKichThuoc.addActionListener(new java.awt.event.ActionListener() {
@@ -160,6 +166,7 @@ public class XemCTSP extends javax.swing.JDialog {
         });
 
         txtMaNCC.setEditable(false);
+        txtMaNCC.setBackground(new java.awt.Color(255, 255, 255));
         txtMaNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtMaNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
         txtMaNCC.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +176,7 @@ public class XemCTSP extends javax.swing.JDialog {
         });
 
         txtXuatXu.setEditable(false);
+        txtXuatXu.setBackground(new java.awt.Color(255, 255, 255));
         txtXuatXu.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtXuatXu.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
         txtXuatXu.addActionListener(new java.awt.event.ActionListener() {
@@ -178,6 +186,7 @@ public class XemCTSP extends javax.swing.JDialog {
         });
 
         txtMaSP.setEditable(false);
+        txtMaSP.setBackground(new java.awt.Color(255, 255, 255));
         txtMaSP.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtMaSP.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
         txtMaSP.addActionListener(new java.awt.event.ActionListener() {

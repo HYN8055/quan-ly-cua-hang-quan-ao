@@ -114,6 +114,7 @@ public class ThemSP extends javax.swing.JDialog {
         jLabel8.setText("Số lượng ");
 
         txtMaSP.setEditable(false);
+        txtMaSP.setBackground(new java.awt.Color(255, 255, 255));
         txtMaSP.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtMaSP.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
         txtMaSP.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -206,9 +207,8 @@ public class ThemSP extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
                                 .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
+                                .addGap(47, 47, 47)
                                 .addComponent(jLabel9)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()

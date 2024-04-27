@@ -1,4 +1,4 @@
-package controller.emplyees;
+/*package controller.emplyees;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -39,4 +39,4 @@ public class SendEmailSMTP {
             e.printStackTrace();
         }
     }
-}
+}*/

@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -17,13 +18,13 @@ import javax.swing.SwingUtilities;
  * @author hyn09
  */
 public class TaiKhoan extends javax.swing.JPanel implements ActionListener{
-
+    private DefaultTableModel tblModel;
     /**
      * Creates new form TaiKhoan
      */
     public TaiKhoan() {
         initComponents();
-        
+        initTable();
         btnSua.addActionListener((ActionEvent e) -> {
         JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(TaiKhoan.this);
                 SuaTT dialog = new SuaTT(parentFrame, true);
@@ -41,6 +42,12 @@ public class TaiKhoan extends javax.swing.JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    public final void initTable() {
+        tblModel = new DefaultTableModel();
+        String[] headerTbl = new String[]{"Mã nhân viên", "Tên đăng nhập", "Mật khẩu", "Email","Vai trò"};
+        tblModel.setColumnIdentifiers(headerTbl);
+        jTableTK.setModel(tblModel);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,18 +67,20 @@ public class TaiKhoan extends javax.swing.JPanel implements ActionListener{
         btnThem = new javax.swing.JButton();
         btnXemCTHD1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableTK = new javax.swing.JTable();
 
         jPanel2.setBackground(new java.awt.Color(230, 255, 243));
 
         btnSua.setBackground(new java.awt.Color(32, 178, 170));
         btnSua.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconsua1.png"))); // NOI18N
         btnSua.setText("Sửa");
 
         jButton2.setBackground(new java.awt.Color(32, 178, 170));
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconxoa1.png"))); // NOI18N
         jButton2.setText("Xóa");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +101,7 @@ public class TaiKhoan extends javax.swing.JPanel implements ActionListener{
         btnXemCTTT.setBackground(new java.awt.Color(32, 178, 170));
         btnXemCTTT.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnXemCTTT.setForeground(new java.awt.Color(255, 255, 255));
+        btnXemCTTT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconxem.png"))); // NOI18N
         btnXemCTTT.setText("Xem chi tiết");
         btnXemCTTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,11 +112,13 @@ public class TaiKhoan extends javax.swing.JPanel implements ActionListener{
         btnThem.setBackground(new java.awt.Color(32, 178, 170));
         btnThem.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icondaucong.png"))); // NOI18N
         btnThem.setText("Thêm");
 
         btnXemCTHD1.setBackground(new java.awt.Color(32, 178, 170));
         btnXemCTHD1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnXemCTHD1.setForeground(new java.awt.Color(255, 255, 255));
+        btnXemCTHD1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconlammoi2.png"))); // NOI18N
         btnXemCTHD1.setText("Làm mới");
         btnXemCTHD1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,20 +132,20 @@ public class TaiKhoan extends javax.swing.JPanel implements ActionListener{
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(btnThem)
+                .addGap(5, 5, 5)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSua)
+                .addGap(4, 4, 4)
                 .addComponent(btnXemCTTT)
-                .addGap(92, 92, 92)
+                .addGap(77, 77, 77)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnXemCTHD1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnXemCTHD1)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +162,7 @@ public class TaiKhoan extends javax.swing.JPanel implements ActionListener{
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableTK.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -161,7 +173,7 @@ public class TaiKhoan extends javax.swing.JPanel implements ActionListener{
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableTK);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -205,7 +217,7 @@ public class TaiKhoan extends javax.swing.JPanel implements ActionListener{
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableTK;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

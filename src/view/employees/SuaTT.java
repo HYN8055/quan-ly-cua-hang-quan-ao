@@ -49,7 +49,7 @@ public class SuaTT extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("CHỈNH SỬA THÔNG TIN NHÂN VIÊN");
+        jLabel2.setText("CHỈNH SỬA THÔNG TIN TÀI KHOẢN");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -77,19 +77,19 @@ public class SuaTT extends javax.swing.JDialog {
         jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel4.setText("Họ tên");
+        jLabel4.setText("Tên đăng nhập");
 
         jTextField2.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel5.setText("Địa chỉ");
+        jLabel5.setText("Mật khẩu");
 
         jTextField3.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jTextField3.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel6.setText("Số điện thoại");
+        jLabel6.setText("Email");
 
         jTextField4.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jTextField4.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
@@ -110,7 +110,7 @@ public class SuaTT extends javax.swing.JDialog {
         jButton2.setText("Hủy");
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel7.setText("Email");
+        jLabel7.setText("Vai trò");
 
         jTextField6.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jTextField6.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));

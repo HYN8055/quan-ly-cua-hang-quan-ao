@@ -91,6 +91,7 @@ public class XemCTNCC extends javax.swing.JDialog {
         jLabel2.setText("Mã nhà cung cấp");
 
         txtMaNCC.setEditable(false);
+        txtMaNCC.setBackground(new java.awt.Color(255, 255, 255));
         txtMaNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtMaNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
 
@@ -98,6 +99,7 @@ public class XemCTNCC extends javax.swing.JDialog {
         jLabel3.setText("Tên nhà cung cấp");
 
         txtTenNCC.setEditable(false);
+        txtTenNCC.setBackground(new java.awt.Color(255, 255, 255));
         txtTenNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtTenNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
         txtTenNCC.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +112,7 @@ public class XemCTNCC extends javax.swing.JDialog {
         jLabel4.setText("Số điện thoại");
 
         txtDiaChiNCC.setEditable(false);
+        txtDiaChiNCC.setBackground(new java.awt.Color(255, 255, 255));
         txtDiaChiNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtDiaChiNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
         txtDiaChiNCC.addActionListener(new java.awt.event.ActionListener() {
@@ -122,6 +125,7 @@ public class XemCTNCC extends javax.swing.JDialog {
         jLabel5.setText("Email");
 
         txtEmailNCC.setEditable(false);
+        txtEmailNCC.setBackground(new java.awt.Color(255, 255, 255));
         txtEmailNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtEmailNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
 
@@ -129,6 +133,7 @@ public class XemCTNCC extends javax.swing.JDialog {
         jLabel6.setText("Địa chỉ");
 
         txtSdtNCC.setEditable(false);
+        txtSdtNCC.setBackground(new java.awt.Color(255, 255, 255));
         txtSdtNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtSdtNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
 

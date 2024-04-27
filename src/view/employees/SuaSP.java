@@ -126,6 +126,7 @@ public class SuaSP extends javax.swing.JDialog {
         jLabel8.setText("Số lượng ");
 
         txtMaSP.setEditable(false);
+        txtMaSP.setBackground(new java.awt.Color(255, 255, 255));
         txtMaSP.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtMaSP.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
         txtMaSP.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));

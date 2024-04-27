@@ -16,8 +16,8 @@ import view.employees.HoaDonNH;
 import view.employees.NhapHang;
 import view.employees.TaiKhoan;
 import view.employees.ThongKe;
-import view.employees.ThongTin;
-import view.employees.XuatHang;
+import view.employees.NhanVien;
+
 
 /**
  *
@@ -79,7 +79,7 @@ public class ChuyenManHinhController {
                 case "HoaDonNH" -> node=new HoaDonNH();
                 case "TaiKhoan" -> node=new TaiKhoan();
                 case "ThongKe" -> node=new ThongKe();
-                case "ThongTin" -> node=new ThongTin();
+                case "NhanVien" -> node=new NhanVien();
                 default -> {
                     node = new TrangChu();
                 }

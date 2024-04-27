@@ -96,6 +96,7 @@ public class ThemNCC extends javax.swing.JDialog {
         jLabel2.setText("Mã nhà cung cấp");
 
         txtMaNhaCungCap.setEditable(false);
+        txtMaNhaCungCap.setBackground(new java.awt.Color(255, 255, 255));
         txtMaNhaCungCap.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtMaNhaCungCap.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
 

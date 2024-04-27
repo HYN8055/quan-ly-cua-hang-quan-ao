@@ -26,9 +26,9 @@ public class DangNhap extends javax.swing.JDialog implements ActionListener{
         // Thiết lập sự kiện lắng nghe cho nút đăng nhập
         btnDangNhap.addActionListener(e -> {
             // Hiển thị MainJFrame khi đăng nhập thành công
-            JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(DangNhap.this);
-            MainJFrame mainFrame = new MainJFrame();
-            mainFrame.setVisible(true);
+            //JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(DangNhap.this);
+            //MainJFrame mainFrame = new MainJFrame();
+            //mainFrame.setVisible(true);
             // Đóng cửa sổ đăng nhập sau khi đăng nhập thành công
             dispose();
         });
@@ -122,9 +122,12 @@ public JButton getBtnDangNhap() {
                     .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                     .addComponent(jLabel5)
                     .addComponent(jTextField4)
-                    .addComponent(btnDangNhap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDangNhap1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDangNhap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(43, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDangNhap1)
+                .addGap(106, 106, 106))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,8 +143,8 @@ public JButton getBtnDangNhap() {
                 .addGap(51, 51, 51)
                 .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDangNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addComponent(btnDangNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -176,7 +179,7 @@ public JButton getBtnDangNhap() {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
