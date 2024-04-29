@@ -4,35 +4,71 @@
  */
 package view.employees;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import dao.ChiTietHoaDonNhapHangDAO;
+import dao.NhaCungCapDAO;
+import dao.SanPhamDAO;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
+import model.ChiTietHoaDonModel;
+import model.HoaDonNhapHangModel;
+import model.NhaCungCapModel;
+import model.SanPhamModel;
 
 /**
  *
  * @author hyn09
  */
 public class SuaPN extends javax.swing.JDialog {
-    private DefaultTableModel tblModel1;
-    private DefaultTableModel tblModel2;
+    private DefaultTableModel tblModel;
+    DecimalFormat formatter = new DecimalFormat("###,###,###");
+    private ArrayList<SanPhamModel> allProduct;
+    private HoaDonNhapHangModel phieunhap;
+    private ArrayList<ChiTietHoaDonModel> CTPhieu;
+    private ArrayList<ChiTietHoaDonModel> CTPhieuOld;
+    private HoaDonNH parent;
+    private static final ArrayList<NhaCungCapModel> arrNcc = NhaCungCapDAO.getInstance().selectAll();
     /**
      * Creates new form SuaPN
      */
+    
+    public SuaPN(javax.swing.JPanel parent, javax.swing.JFrame owner, boolean modal) throws UnsupportedLookAndFeelException {
+        super(owner, modal);
+        UIManager.setLookAndFeel(new FlatLightLaf());
+        initComponents();
+        setLocationRelativeTo(null);
+        allProduct = SanPhamDAO.getInstance().selectAll();
+        this.parent = (HoaDonNH) parent;
+        this.phieunhap = this.parent.getHDNhapSelect();
+        CTPhieu = ChiTietHoaDonNhapHangDAO.getInstance().selectAll(phieunhap.getMaHD());
+        CTPhieuOld = ChiTietHoaDonNhapHangDAO.getInstance().selectAll(phieunhap.getMaHD());
+        // Hien thi thong tin
+        initTable();
+//        loadDataToTableProduct(allProduct);
+//        loadDataToTableNhapHang();
+//        displayInfo();
+    }
+    
     public SuaPN(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        initTable();
+        setLocationRelativeTo(null);
     }
     public final void initTable() {
-        tblModel1 = new DefaultTableModel();
-        String[] headerTbl1 = new String[]{"Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá"};
-        tblModel1.setColumnIdentifiers(headerTbl1);
-        jTableSP.setModel(tblModel1);
-        
-        
-        tblModel2 = new DefaultTableModel();
-        String[] headerTbl2 = new String[]{"STT","Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá"};
-        tblModel2.setColumnIdentifiers(headerTbl2);
-        jTable_HD.setModel(tblModel2);
-    
+        tblModel = new DefaultTableModel();
+        String[] headerTbl = new String[]{"Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá"};
+        tblModel.setColumnIdentifiers(headerTbl);
+        tblSanPham.setModel(tblModel);
+        tblSanPham.getColumnModel().getColumn(0).setPreferredWidth(5);
+        tblSanPham.getColumnModel().getColumn(1).setPreferredWidth(200);
+        tblSanPham.getColumnModel().getColumn(2).setPreferredWidth(5);
+        tblNhapHang.getColumnModel().getColumn(0).setPreferredWidth(5);
+        tblNhapHang.getColumnModel().getColumn(1).setPreferredWidth(10);
+        tblNhapHang.getColumnModel().getColumn(2).setPreferredWidth(250);
+        tblSanPham.setDefaultEditor(Object.class, null);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +85,7 @@ public class SuaPN extends javax.swing.JDialog {
         jTextField1 = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableSP = new javax.swing.JTable();
+        tblSanPham = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
@@ -65,7 +101,7 @@ public class SuaPN extends javax.swing.JDialog {
         jTextField6 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_HD = new javax.swing.JTable();
+        tblNhapHang = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         btnThem2 = new javax.swing.JButton();
         btnThem3 = new javax.swing.JButton();
@@ -113,7 +149,7 @@ public class SuaPN extends javax.swing.JDialog {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jTableSP.setModel(new javax.swing.table.DefaultTableModel(
+        tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -124,7 +160,7 @@ public class SuaPN extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTableSP);
+        jScrollPane1.setViewportView(tblSanPham);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -247,7 +283,7 @@ public class SuaPN extends javax.swing.JDialog {
                 .addGap(15, 15, 15))
         );
 
-        jTable_HD.setModel(new javax.swing.table.DefaultTableModel(
+        tblNhapHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -258,7 +294,7 @@ public class SuaPN extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable_HD);
+        jScrollPane2.setViewportView(tblNhapHang);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -440,8 +476,6 @@ public class SuaPN extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTableSP;
-    private javax.swing.JTable jTable_HD;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -449,5 +483,7 @@ public class SuaPN extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTable tblNhapHang;
+    private javax.swing.JTable tblSanPham;
     // End of variables declaration//GEN-END:variables
 }

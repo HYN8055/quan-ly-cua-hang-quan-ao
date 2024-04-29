@@ -14,7 +14,7 @@ import java.awt.event.*;
 import view.employees.BanHang;
 import view.employees.HoaDonNH;
 import view.employees.NhapHang;
-import view.employees.TaiKhoan;
+import view.employees.TTDangNhap;
 import view.employees.ThongKe;
 import view.employees.NhanVien;
 
@@ -77,7 +77,7 @@ public class ChuyenManHinhController {
                 case "NhapHang" -> node=new NhapHang();
                 case "HoaDonBH" -> node=new HoaDonBH();
                 case "HoaDonNH" -> node=new HoaDonNH();
-                case "TaiKhoan" -> node=new TaiKhoan();
+                case "TaiKhoan" -> node=new TTDangNhap();
                 case "ThongKe" -> node=new ThongKe();
                 case "NhanVien" -> node=new NhanVien();
                 default -> {

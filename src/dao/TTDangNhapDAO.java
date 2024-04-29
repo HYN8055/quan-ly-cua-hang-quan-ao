@@ -13,10 +13,10 @@ import database.OracleJDBCConnection;
 import javax.swing.JOptionPane;
 import model.TTDangNhapModel;
 
-public class TaiKhoanDAO implements DAOInterface<TTDangNhapModel> {
+public class TTDangNhapDAO implements DAOInterface<TTDangNhapModel> {
 
-    public static TaiKhoanDAO getInstance() {
-        return new TaiKhoanDAO();
+    public static TTDangNhapDAO getInstance() {
+        return new TTDangNhapDAO();
     }
 
     @Override
@@ -24,13 +24,13 @@ public class TaiKhoanDAO implements DAOInterface<TTDangNhapModel> {
         int ketQua = 0;
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();
-            String sql = "INSERT INTO Account (MANV, TENDN, MATKHAU, ROLE, TRANGTHAI) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO TTDANGNHAP (manv, tendn, matkhau, email, vaitro) VALUES (?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, t.getMaNV());
             pst.setString(2, t.getUser());
             pst.setString(3, t.getPassword());
-            pst.setString(4, t.getRole());
-            pst.setInt(5, t.getStatus());
+            pst.setString(4, t.getEmail());
+            pst.setString(5, t.getRole());
             ketQua = pst.executeUpdate();
             OracleJDBCConnection.closeConnection(con);
         } catch (Exception e) {
@@ -45,9 +45,9 @@ public class TaiKhoanDAO implements DAOInterface<TTDangNhapModel> {
         int ketQua = 0;
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();
-            String sql = "UPDATE Account SET MANV='" + t.getMaNV() + "',TENDN='" + t.getUser() + 
-                    ",MATKHAU='" + t.getPassword() + ", ROLE='" + t.getRole() 
-                    + ", TINHTRANG='" + t.getStatus();
+            String sql = "UPDATE TTDANGNHAP SET tendn='" + t.getUser() + 
+                    ",matkhau='" + t.getPassword() + ", email='" + t.getEmail() 
+                    + ", vaitro'" + t.getRole();
             PreparedStatement pst = con.prepareStatement(sql);
             OracleJDBCConnection.closeConnection(con);
 
@@ -63,9 +63,9 @@ public class TaiKhoanDAO implements DAOInterface<TTDangNhapModel> {
         int ketQua = 0;
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();
-            String sql = "DELETE FROM Account WHERE MANV=?";
+            String sql = "DELETE FROM TTDangNhap WHERE manv=?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, t.getUser());
+            pst.setString(1, t.getMaNV());
             ketQua = pst.executeUpdate();
             OracleJDBCConnection.closeConnection(con);
 
@@ -81,17 +81,17 @@ public class TaiKhoanDAO implements DAOInterface<TTDangNhapModel> {
         ArrayList<TTDangNhapModel> ketQua = new ArrayList<TTDangNhapModel>();
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();
-            String sql = "SELECT * FROM TAIKHOAN";
+            String sql = "SELECT * FROM TTDANGNHAP";
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                String fullName = rs.getString("MANV");
-                String userName = rs.getString("TENDN");
-                String password = rs.getString("MATKHAU");
-                String role = rs.getString("ROLE");
-                int status = rs.getInt("TRANGTHAI");
+                String idName = rs.getString("manv");
+                String userName = rs.getString("tendn");
+                String password = rs.getString("matkhau");
+                String email = rs.getString("email");
+                String role = rs.getString("vaitro");
 
-                TTDangNhapModel tk = new TTDangNhapModel(fullName, userName, password, role, status);
+                TTDangNhapModel tk = new TTDangNhapModel(idName, userName, password, email, role);
                 ketQua.add(tk);
             }
         } catch (Exception e) {
@@ -103,37 +103,36 @@ public class TaiKhoanDAO implements DAOInterface<TTDangNhapModel> {
 
     @Override
     public TTDangNhapModel selectById(String t) {
-        TTDangNhapModel tk = null;
+        TTDangNhapModel ttdn = null;
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();
-            String sql = "SELECT * FROM TAIKHOAN WHERE MANV=?";
+            String sql = "SELECT * FROM TTDANGNHAP WHERE manv=?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, t);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                String fullName = rs.getString("MANV");
-                String userName = rs.getString("TENDN");
-                String password = rs.getString("MATKHAU");
-                String role = rs.getString("ROLE");
-                int status = rs.getInt("TRANGTHAI");
+                String idName = rs.getString("manv");
+                String userName = rs.getString("tendv");
+                String password = rs.getString("matkhau");
+                String email = rs.getString("email");
+                String role = rs.getString("vaitro");
                 
-                tk = new TTDangNhapModel(fullName, userName, password, role, status);
+                ttdn = new TTDangNhapModel(idName, userName, password, email, role);
             }
             OracleJDBCConnection.closeConnection(con);
         } catch (Exception e) {
             // TODO: handle exception           
         }
-        return tk;
+        return ttdn;
     }
     
-        public int updatePassword(String email, String password) {
+        public int updatePassword(TTDangNhapModel t, String email, String password) {
         int ketQua = 0;
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();
-            String sql = "UPDATE TAIKHOAN SET MATKHAU=? WHERE EMAIL=?";
+            String sql = "UPDATE TTDANGNHAP SET matkhau='" + t.getPassword() 
+                    + "' WHERE email='" + t.getEmail();
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, password);
-            pst.setString(2, email);
 
             ketQua = pst.executeUpdate();
             OracleJDBCConnection.closeConnection(con);

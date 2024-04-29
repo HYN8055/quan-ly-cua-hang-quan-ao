@@ -101,6 +101,7 @@ public class SuaNCC extends javax.swing.JDialog {
 
         txtMaNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtMaNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
+        txtMaNCC.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Tên nhà cung cấp");
@@ -239,10 +240,10 @@ public class SuaNCC extends javax.swing.JDialog {
             int kq = nccDao.update(ncc);
             if(kq > 0) {
             this.dispose();
-            JOptionPane.showMessageDialog(this, "Sửa thành công !");    
+            JOptionPane.showMessageDialog(this, "Cập nhật thành công !");    
             parent.loadDataToTable(NhaCungCapDAO.getInstance().selectAll());
             } else {
-                JOptionPane.showMessageDialog(this, "Sửa thất bại !");
+                JOptionPane.showMessageDialog(this, "Cập nhật thất bại !");
             }
         } catch (Exception ex) {
             ex.printStackTrace();

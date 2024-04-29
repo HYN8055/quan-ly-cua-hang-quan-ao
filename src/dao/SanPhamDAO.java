@@ -129,7 +129,7 @@ public class SanPhamDAO implements DAOInterface<SanPhamModel> {
     }
 
     @Override
-    public model.SanPhamModel selectById(String s) {
+    public SanPhamModel selectById(String s) {
         model.SanPhamModel ketQua = null;
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();

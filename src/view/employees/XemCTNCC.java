@@ -5,6 +5,7 @@
 package view.employees;
 
 import java.text.DecimalFormat;
+import javax.swing.JPanel;
 import model.NhaCungCapModel;
 
 /**
@@ -34,6 +35,10 @@ public class XemCTNCC extends javax.swing.JDialog {
         txtDiaChiNCC.setText(a.getDiaChi().trim());
         txtSdtNCC.setText(a.getSdtNCC().trim());
         txtEmailNCC.setText(a.getEmailNCC().trim());
+    }
+     
+     private XemCTNCC(JPanel jPanel, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -90,18 +95,18 @@ public class XemCTNCC extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Mã nhà cung cấp");
 
-        txtMaNCC.setEditable(false);
         txtMaNCC.setBackground(new java.awt.Color(255, 255, 255));
         txtMaNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtMaNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
+        txtMaNCC.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Tên nhà cung cấp");
 
-        txtTenNCC.setEditable(false);
         txtTenNCC.setBackground(new java.awt.Color(255, 255, 255));
         txtTenNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtTenNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
+        txtTenNCC.setEnabled(false);
         txtTenNCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTenNCCActionPerformed(evt);
@@ -111,10 +116,10 @@ public class XemCTNCC extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("Số điện thoại");
 
-        txtDiaChiNCC.setEditable(false);
         txtDiaChiNCC.setBackground(new java.awt.Color(255, 255, 255));
         txtDiaChiNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtDiaChiNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
+        txtDiaChiNCC.setEnabled(false);
         txtDiaChiNCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDiaChiNCCActionPerformed(evt);
@@ -124,18 +129,18 @@ public class XemCTNCC extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setText("Email");
 
-        txtEmailNCC.setEditable(false);
         txtEmailNCC.setBackground(new java.awt.Color(255, 255, 255));
         txtEmailNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtEmailNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
+        txtEmailNCC.setEnabled(false);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setText("Địa chỉ");
 
-        txtSdtNCC.setEditable(false);
         txtSdtNCC.setBackground(new java.awt.Color(255, 255, 255));
         txtSdtNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtSdtNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
+        txtSdtNCC.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -244,14 +249,14 @@ public class XemCTNCC extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                XemCTNCC dialog = new XemCTNCC(new javax.swing.JFrame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    @Override
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
-//                dialog.setVisible(true);
+               XemCTNCC dialog = new XemCTNCC(new javax.swing.JPanel(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

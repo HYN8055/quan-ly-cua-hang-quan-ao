@@ -25,7 +25,7 @@
           <Group type="102" alignment="1" attributes="0">
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="485" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="500" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,23 +47,23 @@
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jTextField2" min="-2" pref="163" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTextField3" min="-2" pref="163" max="-2" attributes="0"/>
+                          <Component id="jDateChooserFrom" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jDateChooserTo" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btnThem" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="96" max="-2" attributes="0"/>
+                          <Component id="btnDelete" min="-2" pref="96" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnSua" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnXemCTPN" min="-2" pref="155" max="-2" attributes="0"/>
+                          <Component id="btnDetail" min="-2" pref="155" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnThem1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnExportExcel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -81,7 +81,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jComboBox1" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" pref="186" max="-2" attributes="0"/>
+                          <Component id="jTextFieldSearch" min="-2" pref="186" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnSua1" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -95,32 +95,21 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnDelete" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="jComboBox1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="btnXemCTPN" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="jTextFieldSearch" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnDetail" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="btnThem" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="btnSua" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="btnThem1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnEdit" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnExportExcel" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="btnSua1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jTextField2" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jTextField3" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -130,16 +119,29 @@
                                   </Group>
                                   <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="jDateChooserTo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDateChooserFrom" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnSua">
+        <Component class="javax.swing.JButton" name="btnEdit">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="aa" green="b2" red="20" type="rgb"/>
@@ -155,8 +157,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnDelete">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="aa" green="b2" red="20" type="rgb"/>
@@ -173,7 +178,7 @@
             <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox1">
@@ -190,9 +195,9 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
                 <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
-                <StringItem index="1" value="M&#xe3; h&#xf3;a &#x111;&#x1a1;n"/>
-                <StringItem index="2" value="M&#xe3; kh&#xe1;ch h&#xe0;ng"/>
-                <StringItem index="3" value="M&#xe3; nh&#xe2;n vi&#xea;n"/>
+                <StringItem index="1" value="M&#xe3; ho&#xe1; &#x111;&#x1a1;n nh&#x1ead;p"/>
+                <StringItem index="2" value="Ng&#x1b0;&#x1edd;i t&#x1ea1;o"/>
+                <StringItem index="3" value="Nh&#xe0; cung c&#x1ea5;p"/>
               </StringArray>
             </Property>
           </Properties>
@@ -203,9 +208,9 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="jTextFieldSearch">
         </Component>
-        <Component class="javax.swing.JButton" name="btnXemCTPN">
+        <Component class="javax.swing.JButton" name="btnDetail">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="aa" green="b2" red="20" type="rgb"/>
@@ -222,7 +227,7 @@
             <Property name="text" type="java.lang.String" value="Xem chi ti&#x1ebf;t"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXemCTPNActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDetailActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnThem">
@@ -242,7 +247,7 @@
             <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnThem1">
+        <Component class="javax.swing.JButton" name="btnExportExcel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="aa" green="b2" red="20" type="rgb"/>
@@ -298,8 +303,6 @@
             <Property name="text" type="java.lang.String" value="T&#x1eeb;:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -310,8 +313,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#x1ebf;n:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -350,6 +351,10 @@
             <Property name="text" type="java.lang.String" value="L&#x1ecd;c theo gi&#xe1;:"/>
           </Properties>
         </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserFrom">
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserTo">
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -359,7 +364,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable_PN">
+        <Component class="javax.swing.JTable" name="tblPhieuNhap">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">

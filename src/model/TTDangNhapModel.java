@@ -11,18 +11,18 @@ public class TTDangNhapModel {
     private String MaNV;
     private String user;
     private String password;
+    private String email;
     private String role;
-    private int status;
 
     public TTDangNhapModel() {
     }
 
-    public TTDangNhapModel(String MaNV, String user, String password, String role, int status) {
+    public TTDangNhapModel(String MaNV, String user, String password, String email, String role) {
         this.MaNV = MaNV;
         this.user = user;
         this.password = password;
+        this.email = email;
         this.role = role;
-        this.status = status;
     }
 
     public String getMaNV() {
@@ -57,22 +57,22 @@ public class TTDangNhapModel {
         this.role = role;
     }
 
-    public int getStatus() {
-        return status;
+    public String getEmail() {
+        return email;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 23 * hash + Objects.hashCode(this.MaNV);
-        hash = 23 * hash + Objects.hashCode(this.user);
-        hash = 23 * hash + Objects.hashCode(this.password);
-        hash = 23 * hash + Objects.hashCode(this.role);
-        hash = 23 * hash + this.status;
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.MaNV);
+        hash = 53 * hash + Objects.hashCode(this.user);
+        hash = 53 * hash + Objects.hashCode(this.password);
+        hash = 53 * hash + Objects.hashCode(this.email);
+        hash = 53 * hash + Objects.hashCode(this.role);
         return hash;
     }
 
@@ -88,9 +88,6 @@ public class TTDangNhapModel {
             return false;
         }
         final TTDangNhapModel other = (TTDangNhapModel) obj;
-        if (this.status != other.status) {
-            return false;
-        }
         if (!Objects.equals(this.MaNV, other.MaNV)) {
             return false;
         }
@@ -100,13 +97,19 @@ public class TTDangNhapModel {
         if (!Objects.equals(this.password, other.password)) {
             return false;
         }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
         return Objects.equals(this.role, other.role);
     }
 
     @Override
     public String toString() {
-        return "TaikhoanDAO{" + "MaNV=" + MaNV + ", user=" + user + ", password=" + password + ", role=" + role + ", status=" + status + '}';
+        return "TTDangNhapModel{" + "MaNV=" + MaNV + ", user=" + user + ", password=" + password + ", email=" + email + ", role=" + role + '}';
     }
+    
+    
+
+}
 
     
-}

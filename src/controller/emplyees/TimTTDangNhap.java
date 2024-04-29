@@ -4,7 +4,7 @@
  */
 package controller.emplyees;
 
-import dao.TaiKhoanDAO;
+import dao.TTDangNhapDAO;
 import java.util.ArrayList;
 import model.TTDangNhapModel
 ;
@@ -12,15 +12,15 @@ import model.TTDangNhapModel
  *
  * @author sinh
  */
-public class TimTaiKhoan {
+public class TimTTDangNhap {
 
-    public static TimTaiKhoan getInstance() {
-        return new TimTaiKhoan();
+    public static TimTTDangNhap getInstance() {
+        return new TimTTDangNhap();
     }
 
-    public ArrayList<TTDangNhapModel> searchTatCaAcc(String text) {
+    public ArrayList<TTDangNhapModel> searchTatCa(String text) {
         ArrayList<TTDangNhapModel> result = new ArrayList<>();
-        ArrayList<TTDangNhapModel> armt = TaiKhoanDAO.getInstance().selectAll();
+        ArrayList<TTDangNhapModel> armt = TTDangNhapDAO.getInstance().selectAll();
         for (var tk : armt) {
             if (tk.getMaNV().toLowerCase().contains(text.toLowerCase())
                     || tk.getUser().toLowerCase().contains(text.toLowerCase())
@@ -33,7 +33,7 @@ public class TimTaiKhoan {
 
     public ArrayList<TTDangNhapModel> searchMaNV(String text) {
         ArrayList<TTDangNhapModel> result = new ArrayList<>();
-        ArrayList<TTDangNhapModel> armt = TaiKhoanDAO.getInstance().selectAll();
+        ArrayList<TTDangNhapModel> armt = TTDangNhapDAO.getInstance().selectAll();
         for (var tk : armt) {
             if (tk.getMaNV().toLowerCase().contains(text.toLowerCase())) {
                 result.add(tk);
@@ -44,7 +44,7 @@ public class TimTaiKhoan {
 
     public ArrayList<TTDangNhapModel> searchUserName(String text) {
         ArrayList<TTDangNhapModel> result = new ArrayList<>();
-        ArrayList<TTDangNhapModel> armt = TaiKhoanDAO.getInstance().selectAll();
+        ArrayList<TTDangNhapModel> armt = TTDangNhapDAO.getInstance().selectAll();
         for (var tk : armt) {
             if (tk.getUser().toLowerCase().contains(text.toLowerCase())) {
                 result.add(tk);
@@ -55,7 +55,7 @@ public class TimTaiKhoan {
 
     public ArrayList<TTDangNhapModel> searchRole(String text) {
         ArrayList<TTDangNhapModel> result = new ArrayList<>();
-        ArrayList<TTDangNhapModel> armt = TaiKhoanDAO.getInstance().selectAll();
+        ArrayList<TTDangNhapModel> armt = TTDangNhapDAO.getInstance().selectAll();
         for (var tk : armt) {
             if (tk.getRole().toLowerCase().contains(text.toLowerCase())) {
                 result.add(tk);

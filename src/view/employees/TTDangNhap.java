@@ -4,68 +4,77 @@
  */
 package view.employees;
 
-import controller.emplyees.TimNhanVien;
-import model.NhanVienModel;
-import dao.NhanVienDAO;
+import controller.emplyees.TimTTDangNhap;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import model.TTDangNhapModel;
+import dao.TTDangNhapDAO;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+
+
+
+/**
+ *
+ * @author hyn09
+
+
 
 /**
  *
  * @author hyn09
  */
-public class NhanVien extends javax.swing.JPanel {
+public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
     private DefaultTableModel tblModel;
-    private static ArrayList<NhanVienModel> armt;
-
+    private static ArrayList<TTDangNhapModel> armt;
     /**
-     * Creates new form ThongTin
+     * Creates new form TTDangNhap
      */
-    public NhanVien() {
+    public TTDangNhap() {
         initComponents();
-        jTable_NV.setDefaultEditor(Object.class, null);
+        jTable_TTDangNhap.setDefaultEditor(Object.class, null);
         initTable();
-        armt = NhanVienDAO.getInstance().selectAll();
+        armt = TTDangNhapDAO.getInstance().selectAll();
         loadDataToTable(armt);
     }   
-        public void loadDataToTable(ArrayList<NhanVienModel> nv) {
+        public void loadDataToTable(ArrayList<TTDangNhapModel> ttdn) {
         try {
             tblModel.setRowCount(0);
-            for (NhanVienModel i : nv) {
+            for (TTDangNhapModel i : ttdn) {
                 tblModel.addRow(new Object[]{
-                    i.getMaNV(), i.getTenNV(),i.getDiaChi(), i.getSdt(), i.getEmail()
+                    i.getMaNV(), i.getUser(),i.getPassword(), i.getEmail(), i.getRole()
                 });
             }
         } catch (Exception e) {
-        }      
+        } 
     }
         
-    public NhanVienModel getNhanVienSelect() {
-        int i_row = jTable_NV.getSelectedRow();
-        NhanVienModel nv = NhanVienDAO.getInstance().selectAll().get(i_row);
-        return nv;
+    public TTDangNhapModel getTTDangNhapSelect() {
+        int i_row = jTable_TTDangNhap.getSelectedRow();
+        TTDangNhapModel ttdn = TTDangNhapDAO.getInstance().selectAll().get(i_row);
+        return ttdn;
     }
     
+    @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
     public final void initTable() {
         tblModel = new DefaultTableModel();
-        String[] headerTbl = new String[]{"Mã nhân viên", "Tên nhân viên","Địa chỉ", "Số điện thoại", "Email"};
+        String[] headerTbl = new String[]{"Mã nhân viên", "Tên đăng nhập","Mật khẩu", "Email", "Vai trò"};
         tblModel.setColumnIdentifiers(headerTbl);
-        jTable_NV.setModel(tblModel);
-        jTable_NV.getColumnModel().getColumn(0).setPreferredWidth(1);
-        jTable_NV.getColumnModel().getColumn(1).setPreferredWidth(100);
-        jTable_NV.getColumnModel().getColumn(2).setPreferredWidth(200);
-        jTable_NV.getColumnModel().getColumn(3).setPreferredWidth(50);
-        jTable_NV.getColumnModel().getColumn(4).setPreferredWidth(200);
+        jTable_TTDangNhap.setModel(tblModel);
+        jTable_TTDangNhap.getColumnModel().getColumn(0).setPreferredWidth(1);
+        jTable_TTDangNhap.getColumnModel().getColumn(1).setPreferredWidth(100);
+        jTable_TTDangNhap.getColumnModel().getColumn(2).setPreferredWidth(200);
+        jTable_TTDangNhap.getColumnModel().getColumn(3).setPreferredWidth(50);
+        jTable_TTDangNhap.getColumnModel().getColumn(4).setPreferredWidth(200);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,45 +84,16 @@ public class NhanVien extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_NV = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         cbxlLuaChon = new javax.swing.JComboBox<>();
         txtSearchForm = new javax.swing.JTextField();
-        btnXemCTNV = new javax.swing.JButton();
+        btnXemCTTT = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
-
-        jTable_NV.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable_NV);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        txtRefresh = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable_TTDangNhap = new javax.swing.JTable();
 
         jPanel2.setBackground(new java.awt.Color(230, 255, 243));
 
@@ -142,7 +122,7 @@ public class NhanVien extends javax.swing.JPanel {
         cbxlLuaChon.setBackground(new java.awt.Color(32, 178, 170));
         cbxlLuaChon.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cbxlLuaChon.setForeground(new java.awt.Color(255, 255, 255));
-        cbxlLuaChon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã nhân viên", "Tên nhân viên", "Địa chỉ", "Số điện thoại", "Email" }));
+        cbxlLuaChon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã nhân viên", "Tên đăng nhập", "Vai trò" }));
         cbxlLuaChon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxlLuaChonActionPerformed(evt);
@@ -155,14 +135,14 @@ public class NhanVien extends javax.swing.JPanel {
             }
         });
 
-        btnXemCTNV.setBackground(new java.awt.Color(32, 178, 170));
-        btnXemCTNV.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnXemCTNV.setForeground(new java.awt.Color(255, 255, 255));
-        btnXemCTNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconxem.png"))); // NOI18N
-        btnXemCTNV.setText("Xem chi tiết");
-        btnXemCTNV.addActionListener(new java.awt.event.ActionListener() {
+        btnXemCTTT.setBackground(new java.awt.Color(32, 178, 170));
+        btnXemCTTT.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnXemCTTT.setForeground(new java.awt.Color(255, 255, 255));
+        btnXemCTTT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconxem.png"))); // NOI18N
+        btnXemCTTT.setText("Xem chi tiết");
+        btnXemCTTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXemCTNVActionPerformed(evt);
+                btnXemCTTTActionPerformed(evt);
             }
         });
 
@@ -177,14 +157,14 @@ public class NhanVien extends javax.swing.JPanel {
             }
         });
 
-        btnRefresh.setBackground(new java.awt.Color(32, 178, 170));
-        btnRefresh.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
-        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconlammoi2.png"))); // NOI18N
-        btnRefresh.setText("Làm mới");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+        txtRefresh.setBackground(new java.awt.Color(32, 178, 170));
+        txtRefresh.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        txtRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconlammoi2.png"))); // NOI18N
+        txtRefresh.setText("Làm mới");
+        txtRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
+                txtRefreshActionPerformed(evt);
             }
         });
 
@@ -200,14 +180,14 @@ public class NhanVien extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSua)
                 .addGap(4, 4, 4)
-                .addComponent(btnXemCTNV)
+                .addComponent(btnXemCTTT)
                 .addGap(77, 77, 77)
                 .addComponent(cbxlLuaChon, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSearchForm, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRefresh)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txtRefresh)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,42 +197,52 @@ public class NhanVien extends javax.swing.JPanel {
                     .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxlLuaChon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSearchForm, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnXemCTNV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnXemCTTT, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
+
+        jTable_TTDangNhap.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable_TTDangNhap);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        if (jTable_NV.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên muốn xoá");
+        if (jTable_TTDangNhap.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn tài khoản muốn xoá");
         } else {
-            int output = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xoá nhân viên", "Xác nhận xoá nhân viên", JOptionPane.YES_NO_OPTION);
+            int output = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xoá tài khoản", "Xác nhận xoá tài khoản", JOptionPane.YES_NO_OPTION);
             if (output == JOptionPane.YES_OPTION) {
-                NhanVienDAO.getInstance().delete(getNhanVienSelect());
+                TTDangNhapDAO.getInstance().delete(getTTDangNhapSelect());
                 JOptionPane.showMessageDialog(this, "Xóa thành công !");
-                loadDataToTable(NhanVienDAO.getInstance().selectAll());
+                loadDataToTable(TTDangNhapDAO.getInstance().selectAll());
             }
         }
     }//GEN-LAST:event_btnXoaActionPerformed
@@ -261,38 +251,39 @@ public class NhanVien extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxlLuaChonActionPerformed
 
-    private void btnXemCTNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemCTNVActionPerformed
+    private void btnXemCTTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemCTTTActionPerformed
         // TODO add your handling code here:
-        if (jTable_NV.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên !");
+        if (jTable_TTDangNhap.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn tài khoản !");
         } else {
-            JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(NhanVien.this);
-            XemCTNV dialog = new XemCTNV(this, parentFrame, true);
+            JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(TTDangNhap.this);
+            XemCTTT dialog = new XemCTTT(this, parentFrame, true);
             dialog.setVisible(true);
         }
-    }//GEN-LAST:event_btnXemCTNVActionPerformed
+    }//GEN-LAST:event_btnXemCTTTActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+    private void txtRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRefreshActionPerformed
         // TODO add your handling code here:
         txtSearchForm.setText("");
         cbxlLuaChon.setSelectedIndex(0);
-        loadDataToTable(NhanVienDAO.getInstance().selectAll());
-    }//GEN-LAST:event_btnRefreshActionPerformed
+        loadDataToTable(TTDangNhapDAO.getInstance().selectAll());
+    }//GEN-LAST:event_txtRefreshActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        // TODO add your handling code here:btnThem.addActionListener((ActionEvent e) -> {
-        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(NhanVien.this);
-        ThemNV dialog = new ThemNV(this, parentFrame, true);
+        // TODO add your handling code here:
+        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(TTDangNhap.this);
+        ThemTT dialog = new ThemTT(this, parentFrame, true);
         dialog.setVisible(true);
+        
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        if (jTable_NV.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhà cung cấp cần sửa");
+        if (jTable_TTDangNhap.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn tài khoản cần sửa");
         } else {
-            JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(NhanVien.this);
-            SuaNV dialog = new SuaNV(this, parentFrame, true);
+            JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(TTDangNhap.this);
+            SuaNCC dialog = new SuaNCC(this,parentFrame, true);
             dialog.setVisible(true);
         }
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -301,44 +292,36 @@ public class NhanVien extends javax.swing.JPanel {
         // TODO add your handling code here:
         String luachon = (String) cbxlLuaChon.getSelectedItem();
         String searchContent = txtSearchForm.getText();
-        ArrayList<NhanVienModel> result = new ArrayList<>();
+        ArrayList<TTDangNhapModel> result = new ArrayList<>();
         switch (luachon) {
             case "Tất cả":
-                result = TimNhanVien.getInstance().searchTatCa(searchContent);
+                result = TimTTDangNhap.getInstance().searchTatCa(searchContent);
                 break;
             case "Mã nhân viên":
-                result = TimNhanVien.getInstance().searchMaNV(searchContent);
+                result = TimTTDangNhap.getInstance().searchMaNV(searchContent);
                 break;
-            case "Tên nhân viên":
-                result = TimNhanVien.getInstance().searchTenNV(searchContent);
+            case "Tên đăng nhập":
+                result = TimTTDangNhap.getInstance().searchUserName(searchContent);
                 break;
-            case "Email":
-                result = TimNhanVien.getInstance().searchEmail(searchContent);
+            case "Vai trò":
+                result = TimTTDangNhap.getInstance().searchRole(searchContent);
                 break;
-            case "Địa chỉ":
-                result = TimNhanVien.getInstance().searchDiaChi(searchContent);
-                break;
-            case "Số điện thoại":
-                result = TimNhanVien.getInstance().searchSdt(searchContent);
-                break;
+            
         }
         loadDataToTable(result);
     }//GEN-LAST:event_txtSearchFormKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnXemCTNV;
+    private javax.swing.JButton btnXemCTTT;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cbxlLuaChon;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable_NV;
+    private javax.swing.JTable jTable_TTDangNhap;
+    private javax.swing.JButton txtRefresh;
     private javax.swing.JTextField txtSearchForm;
     // End of variables declaration//GEN-END:variables
-
-   
 }

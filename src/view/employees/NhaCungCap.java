@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
-import view.employees.SuaNCC;
+import model.NhaCungCapModel;
 
 /**
  *
@@ -22,7 +22,7 @@ import view.employees.SuaNCC;
 public class NhaCungCap extends javax.swing.JPanel implements ActionListener {
 
     private DefaultTableModel tblModel;
-    private static ArrayList<model.NhaCungCapModel> armt;
+    private static ArrayList<NhaCungCapModel> armt;
     /**
      * Creates new form NhaCungCapJPanel
      */
@@ -33,7 +33,7 @@ public class NhaCungCap extends javax.swing.JPanel implements ActionListener {
         armt = NhaCungCapDAO.getInstance().selectAll();
         loadDataToTable(armt);
 }   
-        public void loadDataToTable(ArrayList<model.NhaCungCapModel> ncc) {
+        public void loadDataToTable(ArrayList<NhaCungCapModel> ncc) {
         try {
             tblModel.setRowCount(0);
             for (model.NhaCungCapModel i : ncc) {
@@ -45,7 +45,7 @@ public class NhaCungCap extends javax.swing.JPanel implements ActionListener {
         } 
     }
         
-    public model.NhaCungCapModel getNhaCungCapSelect() {
+    public NhaCungCapModel getNhaCungCapSelect() {
         int i_row = jTable_NCC.getSelectedRow();
         model.NhaCungCapModel ncc = NhaCungCapDAO.getInstance().selectAll().get(i_row);
         return ncc;

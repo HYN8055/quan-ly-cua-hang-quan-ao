@@ -5,12 +5,10 @@
 package view.employees;
 
 import dao.NhaCungCapDAO;
-import dao.SanPhamDAO;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.NhaCungCapModel;
-import model.SanPhamModel;
 /**
  *
  * @author hyn09
@@ -95,10 +93,10 @@ public class ThemNCC extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Mã nhà cung cấp");
 
-        txtMaNhaCungCap.setEditable(false);
         txtMaNhaCungCap.setBackground(new java.awt.Color(255, 255, 255));
         txtMaNhaCungCap.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtMaNhaCungCap.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
+        txtMaNhaCungCap.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Tên nhà cung cấp");

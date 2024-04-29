@@ -113,11 +113,11 @@ public class ThemSP extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("Số lượng ");
 
-        txtMaSP.setEditable(false);
         txtMaSP.setBackground(new java.awt.Color(255, 255, 255));
         txtMaSP.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtMaSP.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
         txtMaSP.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtMaSP.setEnabled(false);
 
         txtTenSP.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtTenSP.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(102, 204, 255)));
