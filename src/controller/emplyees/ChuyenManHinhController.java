@@ -1,22 +1,22 @@
 
 package controller.emplyees;
-import view.employees.TrangChu;
-import view.employees.SanPham;
+import view.employers.TrangChu;
+import view.employers.SanPham;
 import bean.employees.DanhMucBean;
-import view.employees.HoaDonBH;
-import view.employees.NhaCungCap;
+import view.employers.HoaDonBH;
+import view.employers.NhaCungCap;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.BorderLayout;
 import java.util.*;
 import java.awt.event.*;
-import view.employees.BanHang;
-import view.employees.HoaDonNH;
-import view.employees.NhapHang;
-import view.employees.TTDangNhap;
-import view.employees.ThongKe;
-import view.employees.NhanVien;
+import view.employers.BanHang;
+import view.employers.HoaDonNH;
+import view.employers.NhapHang;
+import view.employers.TTDangNhap;
+import view.employers.ThongKe;
+import view.employers.NhanVien;
 
 
 /**
