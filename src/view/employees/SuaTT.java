@@ -101,6 +101,7 @@ public class SuaTT extends javax.swing.JDialog {
 
         txtMaNV.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtMaNV.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
+        txtMaNV.setEnabled(false);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("Tên đăng nhập");

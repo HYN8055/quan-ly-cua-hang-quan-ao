@@ -283,7 +283,7 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn tài khoản cần sửa");
         } else {
             JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(TTDangNhap.this);
-            SuaNCC dialog = new SuaNCC(this,parentFrame, true);
+            SuaTT dialog = new SuaTT(this,parentFrame, true);
             dialog.setVisible(true);
         }
     }//GEN-LAST:event_btnSuaActionPerformed
