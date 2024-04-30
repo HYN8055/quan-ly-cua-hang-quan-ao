@@ -46,7 +46,7 @@ public class ChiTietHoaDonNhapHangDAO implements DAOInterface<ChiTietHoaDonModel
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();
             String sql = "UPDATE CTNHAP SET masp='" + t.getMaSP() 
-                    + "', soluong=" + t.getSoLuong() +", dongia=" + t.getDonGia()
+                    + "', soluong=" + t.getSoLuong() +", gianhap=" + t.getDonGia()
                     + ", tongtien=" + t.getTongTien() + "WHERE mapnh='" + t.getMaHD() 
                     + "' AND masp='" + t.getMaSP();
             PreparedStatement pst = con.prepareStatement(sql);
@@ -89,7 +89,7 @@ public class ChiTietHoaDonNhapHangDAO implements DAOInterface<ChiTietHoaDonModel
                 String maPhieu = rs.getString("mapnh");
                 String masp = rs.getString("masp");
                 int soLuong = rs.getInt("soluong");
-                double donGia = rs.getDouble("dongia");
+                double donGia = rs.getDouble("gianhap");
                 double tongTien = rs.getDouble("tongtien");
                 ChiTietHoaDonModel ctp = new ChiTietHoaDonModel(maPhieu, masp, soLuong, donGia, tongTien);
                 ketQua.add(ctp);
@@ -114,7 +114,7 @@ public class ChiTietHoaDonNhapHangDAO implements DAOInterface<ChiTietHoaDonModel
                 String maPhieu = rs.getString("mapnh");
                 String masp = rs.getString("masp");
                 int soLuong = rs.getInt("soluong");
-                double donGia = rs.getDouble("dongia");
+                double donGia = rs.getDouble("gianhap");
                 double tongTien = rs.getDouble("tongtien");
                 ChiTietHoaDonModel ctp = new ChiTietHoaDonModel(maPhieu, masp, soLuong, donGia, tongTien);
                 ketQua.add(ctp);
@@ -139,7 +139,7 @@ public class ChiTietHoaDonNhapHangDAO implements DAOInterface<ChiTietHoaDonModel
                 String maPhieu = rs.getString("mapnh");
                 String masp = rs.getString("masp");
                 int soLuong = rs.getInt("soluong");
-                double donGia = rs.getDouble("dongia");
+                double donGia = rs.getDouble("gianhap");
                 double tongTien = rs.getDouble("tongtien");
                 ketQua = new ChiTietHoaDonModel(maPhieu, masp, soLuong, donGia, tongTien);
             }

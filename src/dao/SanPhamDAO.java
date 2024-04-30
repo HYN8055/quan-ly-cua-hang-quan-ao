@@ -155,5 +155,21 @@ public class SanPhamDAO implements DAOInterface<SanPhamModel> {
         }
         return ketQua;
     }
+    
+    public int updateSoLuong(String maSP, int soluong) {
+        int ketQua = 0;
+        SanPhamModel s = new SanPhamModel();
+        try {
+            Connection con = OracleJDBCConnection.getJDBCConnection();
+            String sql = "UPDATE SANPHAM SET soluong=" + s.getSoLuongSP() 
+                    + " WHERE masp='" + s.getMaSP() + "'";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ketQua = pst.executeUpdate();
+            OracleJDBCConnection.closeConnection(con);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ketQua;
+    }
 }
 
