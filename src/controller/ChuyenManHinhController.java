@@ -1,8 +1,8 @@
 
-package controller.emplyees;
+package controller;
 import view.employers.TrangChu;
 import view.employers.SanPham;
-import bean.employees.DanhMucBean;
+import bean.DanhMucBean;
 import view.employers.HoaDonBH;
 import view.employers.NhaCungCap;
 import javax.swing.JPanel;
@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.BorderLayout;
 import java.util.*;
 import java.awt.event.*;
+import model.TTDangNhapModel;
 import view.employers.BanHang;
 import view.employers.HoaDonNH;
 import view.employers.NhapHang;
@@ -31,6 +32,7 @@ public class ChuyenManHinhController {
 
     public ChuyenManHinhController(JPanel jpnRoot) {
         this.root = jpnRoot;
+        
     }
     public void setView(JPanel jpnItem, JLabel jlbItem){
         kindSelected="TrangChu";
@@ -55,7 +57,6 @@ public class ChuyenManHinhController {
         
         private JPanel node;
         private String kind;
-        
         private JPanel jpnItem;
         private JLabel jlbItem;
 

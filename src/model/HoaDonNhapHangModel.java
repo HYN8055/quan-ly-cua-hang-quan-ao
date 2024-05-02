@@ -4,7 +4,7 @@
  */
 package model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -23,13 +23,13 @@ public class HoaDonNhapHangModel extends HoaDonModel {
         this.nhaCungCap = nhaCungCap;
     }
 
-    public HoaDonNhapHangModel(String nhaCungCap, String maHD, String nguoiTao, Timestamp thoiGianTao, ArrayList<ChiTietHoaDonModel> CTHD, double tongTien, String ghiChu) {
+    public HoaDonNhapHangModel(String nhaCungCap, String maHD, String nguoiTao, Date thoiGianTao, ArrayList<ChiTietHoaDonModel> CTHD, double tongTien, String ghiChu) {
         super(maHD, nguoiTao, thoiGianTao, CTHD, tongTien, ghiChu);
         this.nhaCungCap = nhaCungCap;
     }
 
 
-    private HoaDonNhapHangModel(String maHD, String nguoiTao, Timestamp thoiGianTao, ArrayList<ChiTietHoaDonModel> CTHD, double tongTien, String ghiChu) {
+    private HoaDonNhapHangModel(String maHD, String nguoiTao, Date thoiGianTao, ArrayList<ChiTietHoaDonModel> CTHD, double tongTien, String ghiChu) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

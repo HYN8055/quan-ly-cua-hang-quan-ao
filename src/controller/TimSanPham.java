@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller.emplyees;
+package controller;
 import dao.SanPhamDAO;
 import java.util.ArrayList;
 import model.SanPhamModel;
@@ -126,6 +126,17 @@ public class TimSanPham {
             }
         }
         return result;
+    }
+    
+    public SanPhamModel searchId(String text) {
+        SanPhamModel result = new SanPhamModel();
+        ArrayList<SanPhamModel> armt = SanPhamDAO.getInstance().selectAll();
+        for (var mt : armt) {
+            if (mt.getMaSP().toLowerCase().contains(text.toLowerCase())) {
+                return mt;
+            }
+        }
+        return null;
     }
 }
 

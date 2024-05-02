@@ -4,10 +4,11 @@
  */
 package view.employees;
 
-import bean.employees.DanhMucBean;
-import controller.emplyees.ChuyenManHinhController;
+import bean.DanhMucBean;
+import controller.ChuyenManHinhController;
 import java.util.ArrayList;
 import java.util.List;
+import model.TTDangNhapModel;
 
 /**
  *
@@ -18,8 +19,25 @@ public class MainJFrameBH extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrameBH
      */
-    public MainJFrameBH() {
+    
+    private TTDangNhapModel currentAcc;
+    
+    public TTDangNhapModel getCurrentAcc() {
+        return currentAcc;
+    }
+    
+    public void setCurrentAcc(TTDangNhapModel currentAcc) {
+        this.currentAcc = currentAcc;
+    }
+    
+    private MainJFrameBH() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public MainJFrameBH(TTDangNhapModel t) {
         initComponents();
+        setLocationRelativeTo(null);
+        this.currentAcc = t;
         
         setTitle("QUẢN LÝ CỬA HÀNG BÁN QUẦN ÁO");
         ChuyenManHinhController controller=new ChuyenManHinhController(jpnView);

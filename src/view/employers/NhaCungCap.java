@@ -4,7 +4,7 @@
  */
 package view.employers;
 
-import controller.emplyees.TimNhaCungCap;
+import controller.TimNhaCungCap;
 import dao.NhaCungCapDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -277,7 +277,7 @@ public class NhaCungCap extends javax.swing.JPanel implements ActionListener {
     private void btnXemCTNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemCTNCCActionPerformed
         // TODO add your handling code here:
         if (jTable_NCC.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhà cung cấp !");
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhà cung cấp cần xem!");
         } else {
             JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(NhaCungCap.this);
             XemCTNCC dialog = new XemCTNCC(this, parentFrame, true);

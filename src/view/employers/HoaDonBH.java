@@ -4,13 +4,12 @@
  */
 package view.employers;
 
-import controller.emplyees.TimHDBH;
+import controller.TimHDBH;
 import dao.ChiTietHoaDonBanHangDAO;
 import dao.HoaDonBanHangDAO;
-import dao.TTDangNhapDAO;
+import dao.NhanVienDAO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.BorderLayout;
 import java.awt.Desktop;
 import java.awt.event.*;
 import java.io.File;
@@ -55,16 +54,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         loadDataToTable();
         jDateChooserFrom.setDateFormatString("dd/MM/yyyy");
         jDateChooserTo.setDateFormatString("dd/MM/yyyy");
-        
-        btnEdit.addActionListener((ActionEvent e) -> {
-        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(HoaDonBH.this);
-                SuaPX dialog = new SuaPX(parentFrame, true);
-                dialog.setVisible(true);});
-        btnDetail.addActionListener((ActionEvent e) -> {
-        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(HoaDonBH.this);
-        XemCTPX dialog = new XemCTPX(parentFrame, true);
-        dialog.setVisible(true);
-    });
+       
       
     }
     
@@ -74,10 +64,13 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
     }
     public final void initTable() {
         tblModel = new DefaultTableModel();
-        String[] headerTbl = new String[]{"STT", "Mã hoá đơn", "Tên khách hàng", "Số điện thoại", "Người tạo", "Thời gian tạo", "Tổng tiền", "Ghi chú"};
+        String[] headerTbl = new String[]{"STT", "Mã hoá đơn", "Người tạo", "Tên khách hàng", "Số điện thoại", "Thời gian tạo", "Tổng tiền", "Ghi chú"};
         tblModel.setColumnIdentifiers(headerTbl);
         tblPhieuXuat.setModel(tblModel);
-        tblPhieuXuat.getColumnModel().getColumn(0).setPreferredWidth(5);
+        tblPhieuXuat.getColumnModel().getColumn(0).setPreferredWidth(1);
+        tblPhieuXuat.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tblPhieuXuat.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tblPhieuXuat.getColumnModel().getColumn(3).setPreferredWidth(100);
     }
 
     public void loadDataToTable() {
@@ -86,7 +79,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
             tblModel.setRowCount(0);
             for (int i = 0; i < allPhieu.size(); i++) {
                  tblModel.addRow(new Object[]{
-                    i + 1, allPhieu.get(i).getMaHD(), TTDangNhapDAO.getInstance().selectById(allPhieu.get(i).getNguoiTao()).getMaNV(), allPhieu.get(i).getTenKH(), allPhieu.get(i).getSdt(), formatDate.format(allPhieu.get(i).getThoiGianTao()), formatter.format(allPhieu.get(i).getTongTien()) + "đ", allPhieu.get(i).getGhiChu()
+                    i + 1, allPhieu.get(i).getMaHD(), NhanVienDAO.getInstance().selectById(allPhieu.get(i).getNguoiTao()).getTenNV(), allPhieu.get(i).getTenKH(), allPhieu.get(i).getSdt(), formatDate.format(allPhieu.get(i).getThoiGianTao()), formatter.format(allPhieu.get(i).getTongTien()) + "đ", allPhieu.get(i).getGhiChu()
                 });
             }
         } catch (Exception e) {
@@ -144,10 +137,16 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         jComboBoxS.setBackground(new java.awt.Color(32, 178, 170));
         jComboBoxS.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jComboBoxS.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBoxS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã hóa đơn", "Mã khách hàng", "Mã nhân viên" }));
+        jComboBoxS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã hóa đơn", "Người tạo" }));
         jComboBoxS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxSActionPerformed(evt);
+            }
+        });
+
+        jTextFieldSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldSearchKeyReleased(evt);
             }
         });
 
@@ -167,6 +166,11 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         btnExport.setForeground(new java.awt.Color(255, 255, 255));
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconexcel1.png"))); // NOI18N
         btnExport.setText("Xuất Excel");
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
 
         btnRefresh.setBackground(new java.awt.Color(32, 178, 170));
         btnRefresh.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -199,9 +203,33 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         jLabel5.setForeground(new java.awt.Color(32, 178, 170));
         jLabel5.setText("Từ:");
 
+        giaTu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                giaTuKeyReleased(evt);
+            }
+        });
+
+        giaDen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                giaDenActionPerformed(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(32, 178, 170));
         jLabel6.setText("Đến:");
+
+        jDateChooserFrom.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDateChooserFromPropertyChange(evt);
+            }
+        });
+
+        jDateChooserTo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDateChooserToPropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -231,15 +259,15 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel5)
                             .addGap(18, 18, 18)
-                            .addComponent(giaTu, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(giaTu, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(giaDen, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(giaDen, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jComboBoxS, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -341,7 +369,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
                 ChiTietHoaDonBanHangDAO.getInstance().delete(i);
             }
             HoaDonBanHangDAO.getInstance().delete(px);
-            JOptionPane.showMessageDialog(this, "Đã xoá thành công phiếu " + px.getMaHD());
+            JOptionPane.showMessageDialog(this, "Đã xoá thành công hoá đơn " + px.getMaHD());
             loadDataToTable();
         }
     }
@@ -388,7 +416,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
             if (saveFile != null) {
                 saveFile = new File(saveFile.toString() + ".xlsx");
                 Workbook wb = new XSSFWorkbook();
-                Sheet sheet = wb.createSheet("Account");
+                Sheet sheet = wb.createSheet("NhanVienModel");
 
                 Row rowCol = sheet.createRow(0);
                 for (int i = 0; i < tblPhieuXuat.getColumnCount(); i++) {
@@ -431,6 +459,21 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         searchAllCheck();
     }//GEN-LAST:event_giaDenKeyReleased
 
+    private void jTextFieldSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchKeyReleased
+        // TODO add your handling code here:
+         searchAllCheck();
+    }//GEN-LAST:event_jTextFieldSearchKeyReleased
+
+    private void jDateChooserFromPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooserFromPropertyChange
+        // TODO add your handling code here:
+         searchAllCheck();
+    }//GEN-LAST:event_jDateChooserFromPropertyChange
+
+    private void jDateChooserToPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooserToPropertyChange
+        // TODO add your handling code here:
+         searchAllCheck();
+    }//GEN-LAST:event_jDateChooserToPropertyChange
+
     public HoaDonBanHangModel getPhieuXuatSelect() {
         int i_row = tblPhieuXuat.getSelectedRow();
         HoaDonBanHangModel px = HoaDonBanHangDAO.getInstance().selectAll().get(i_row);
@@ -451,7 +494,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
             tblModel.setRowCount(0);
             for (int i = 0; i < allPhieu.size(); i++) {
                 tblModel.addRow(new Object[]{
-                    i + 1, allPhieu.get(i).getMaHD(), allPhieu.get(i).getTenKH(), allPhieu.get(i).getSdt(), TTDangNhapDAO.getInstance().selectById(allPhieu.get(i).getNguoiTao()).getMaNV(), formatDate.format(allPhieu.get(i).getThoiGianTao()), formatter.format(allPhieu.get(i).getTongTien()) + "đ", allPhieu.get(i).getGhiChu()
+                    i + 1, allPhieu.get(i).getMaHD(), allPhieu.get(i).getTenKH(), allPhieu.get(i).getSdt(), NhanVienDAO.getInstance().selectById(allPhieu.get(i).getNguoiTao()).getTenNV(), formatDate.format(allPhieu.get(i).getThoiGianTao()), formatter.format(allPhieu.get(i).getTongTien()) + "đ", allPhieu.get(i).getGhiChu()
                 });
             }
         } catch (Exception e) {
@@ -544,7 +587,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
                         result1.add(result.get(i));
                     }
                 }
-            } else if (giaTu.getText().length() == 0 && giaDen.getText().length() > 0) {;
+            } else if (giaTu.getText().length() == 0 && giaDen.getText().length() > 0) {
                 b = Double.parseDouble(giaDen.getText());
                 for (int i = 0; i < result.size(); i++) {
                     if (result.get(i).getTongTien() <= b) {

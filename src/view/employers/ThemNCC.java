@@ -257,11 +257,11 @@ public class ThemNCC extends javax.swing.JDialog {
                     
                     int kq = NhaCungCapDAO.getInstance().insert(ncc);
                     if(kq > 0) {
-                    JOptionPane.showMessageDialog(this, "Thêm thành công !");
+                    JOptionPane.showMessageDialog(this, "Thêm nhà cung cấp thành công !");
                     parent.loadDataToTable(NhaCungCapDAO.getInstance().selectAll());
                     this.dispose(); 
                     } else {
-                    JOptionPane.showMessageDialog(this, "Thêm không thành công ! Mã nhà cung cấp đã tồn tại !", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Thêm không thành công ! Nhà cung cấp đã tồn tại !", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
             } }
         } catch (Exception ex) {

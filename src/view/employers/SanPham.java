@@ -1,6 +1,6 @@
 package view.employers;
 
-import controller.emplyees.TimSanPham;
+import controller.TimSanPham;
 import dao.NhaCungCapDAO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

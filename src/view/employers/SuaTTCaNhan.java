@@ -5,39 +5,57 @@
 package view.employers;
 
 import dao.NhanVienDAO;
-import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.NhanVienModel;
-import javax.swing.JFrame;
+import model.TTDangNhapModel;
 
 /**
  *
  * @author hyn09
  */
-public class ThemNV extends javax.swing.JDialog {
+public class SuaTTCaNhan extends javax.swing.JDialog {
 
     /**
-     * Creates new form ThemNV
+     * Creates new form SuaNV
      */
     private NhanVien parent;
-    
-    public ThemNV(javax.swing.JPanel parent, java.awt.Frame owner, boolean modal) {
-        super(owner, modal);
-        this.parent = (NhanVien) parent;
+    private TTDangNhapModel accCur;
+
+    public TTDangNhapModel getAccCur() {
+        return accCur;
+    }
+
+    public void setAccCur(TTDangNhapModel accCur) {
+        this.accCur = accCur;
+    }
+    public SuaTTCaNhan(javax.swing.JFrame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        txtMaNV.setText(createId());
+        txtMaNV.setText(this.accCur.getMaNV().trim());
+        txtTenNV.setText(NhanVienDAO.getInstance().selectById(this.accCur.getMaNV()).getTenNV().trim());
+        txtDiaChi.setText(NhanVienDAO.getInstance().selectById(this.accCur.getMaNV()).getDiaChi().trim());
+        txtSdt.setText(NhanVienDAO.getInstance().selectById(this.accCur.getMaNV()).getSdt().trim());
+        txtEmail.setText(NhanVienDAO.getInstance().selectById(this.accCur.getMaNV()).getEmail().trim());
     }
     
-     ThemNV() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public SuaTTCaNhan(javax.swing.JFrame parent, boolean modal, TTDangNhapModel t) {
+        super(parent, modal);
+        initComponents();
+        setLocationRelativeTo(null);
+        this.accCur = t;
+        txtMaNV.setText(this.accCur.getMaNV().trim());
+        txtTenNV.setText(NhanVienDAO.getInstance().selectById(this.accCur.getMaNV()).getTenNV().trim());
+        txtDiaChi.setText(NhanVienDAO.getInstance().selectById(this.accCur.getMaNV()).getDiaChi().trim());
+        txtSdt.setText(NhanVienDAO.getInstance().selectById(this.accCur.getMaNV()).getSdt().trim());
+        txtEmail.setText(NhanVienDAO.getInstance().selectById(this.accCur.getMaNV()).getEmail().trim());
     }
 
-    private ThemNV(JFrame jFrame, boolean b) {
+    SuaTTCaNhan() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,7 +76,7 @@ public class ThemNV extends javax.swing.JDialog {
         txtDiaChi = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtSdt = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         btnQuit = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
@@ -69,23 +87,23 @@ public class ThemNV extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("THÊM THÔNG TIN NHÂN VIÊN");
+        jLabel2.setText("CẬP NHẬT THÔNG TIN CÁ NHÂN");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(147, 147, 147)
                 .addComponent(jLabel2)
-                .addGap(198, 198, 198))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel2)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -93,6 +111,7 @@ public class ThemNV extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Mã nhân viên");
 
+        txtMaNV.setBackground(new java.awt.Color(255, 255, 255));
         txtMaNV.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtMaNV.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
         txtMaNV.setEnabled(false);
@@ -115,13 +134,13 @@ public class ThemNV extends javax.swing.JDialog {
         txtSdt.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         txtSdt.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
 
-        btnAdd.setBackground(new java.awt.Color(230, 255, 243));
-        btnAdd.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(0, 179, 179));
-        btnAdd.setText("Thêm");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setBackground(new java.awt.Color(230, 255, 243));
+        btnSave.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(0, 179, 179));
+        btnSave.setText("Lưu thay đổi");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
@@ -156,8 +175,8 @@ public class ThemNV extends javax.swing.JDialog {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnAdd)
-                        .addGap(133, 133, 133)
+                        .addComponent(btnSave)
+                        .addGap(90, 90, 90)
                         .addComponent(btnQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,35 +184,35 @@ public class ThemNV extends javax.swing.JDialog {
                         .addComponent(txtMaNV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                         .addComponent(txtTenNV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                         .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(txtTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
-                    .addComponent(btnQuit))
+                    .addComponent(btnQuit)
+                    .addComponent(btnSave))
                 .addGap(16, 16, 16))
         );
 
@@ -215,55 +234,29 @@ public class ThemNV extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public String createId() {
-    ArrayList<NhanVienModel> spAll = NhanVienDAO.getInstance().selectAll();
-    int maxId = 0;
-    for (NhanVienModel nv : spAll) {
-        String maNV = nv.getMaNV();
-        if (maNV.startsWith("NV")) {
-            try {
-                int id = Integer.parseInt(maNV.replaceAll("[^\\d]", ""));
-                if (id > maxId) {
-                    maxId = id;
-                }
-            } catch (NumberFormatException e) {
-            }
-        }
-    }
-    return "NV" + (maxId + 1);
-    }
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         try {
-            String maNV = txtMaNV.getText().trim();
-            String tenNV = txtTenNV.getText().trim();
-            String diachi = txtDiaChi.getText().trim();
-            String sdt = txtSdt.getText().trim();
-            String email = txtEmail.getText().trim();
-            if (maNV.equals("") || tenNV.equals("") || sdt.equals("") || diachi.equals("")|| email.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin !", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+            // TODO add your handling code here:
+            NhanVienModel nv = new NhanVienModel();
+            nv.setMaNV(txtMaNV.getText());
+            nv.setTenNV(txtTenNV.getText());
+            nv.setDiaChi(txtDiaChi.getText());
+            nv.setSdt(txtSdt.getText());
+            nv.setEmail(txtEmail.getText());
+        
+            NhanVienDAO nvDao = new NhanVienDAO();
+            int kq = nvDao.update(nv);
+            if(kq > 0) {
+            this.dispose();
+            JOptionPane.showMessageDialog(this, "Cập nhật thành công !");   
             } else {
-                if (maNV != null && !maNV.equals(NhanVienDAO.getInstance().selectById(maNV))) {
-                    NhanVienModel nv = new NhanVienModel();
-                    nv.setMaNV(maNV);
-                    nv.setTenNV(tenNV);
-                    nv.setDiaChi(diachi);
-                    nv.setSdt(sdt);
-                    nv.setEmail(email);
-                    
-                    int kq = NhanVienDAO.getInstance().insert(nv);
-                    if(kq > 0) {
-                    JOptionPane.showMessageDialog(this, "Thêm nhân viên thành công !");
-                    parent.loadDataToTable(NhanVienDAO.getInstance().selectAll());
-                    this.dispose(); 
-                    } else {
-                    JOptionPane.showMessageDialog(this, "Thêm không thành công ! Mã nhân viên đã tồn tại !", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                }
-            } }
+                JOptionPane.showMessageDialog(this, "Cập nhật thất bại !");
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_btnAddActionPerformed
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
         // TODO add your handling code here:
@@ -287,20 +280,21 @@ public class ThemNV extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ThemNV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SuaTTCaNhan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ThemNV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SuaTTCaNhan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ThemNV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SuaTTCaNhan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ThemNV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SuaTTCaNhan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ThemNV dialog = new ThemNV(new javax.swing.JFrame(), true);
+                SuaTTCaNhan dialog = new SuaTTCaNhan(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -313,8 +307,8 @@ public class ThemNV extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnQuit;
+    private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -1,4 +1,4 @@
-package controller.emplyees;
+package controller;
 
 // Copyright (c) 2006 Damien Miller <djm@mindrot.org>
 //

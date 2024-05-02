@@ -106,13 +106,13 @@ public class TTDangNhapDAO implements DAOInterface<TTDangNhapModel> {
         TTDangNhapModel ttdn = null;
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();
-            String sql = "SELECT * FROM TTDANGNHAP WHERE manv=?";
+            String sql = "SELECT * FROM TTDANGNHAP WHERE tendn=?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, t);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 String idName = rs.getString("manv");
-                String userName = rs.getString("tendv");
+                String userName = rs.getString("tendn");
                 String password = rs.getString("matkhau");
                 String email = rs.getString("email");
                 String role = rs.getString("vaitro");

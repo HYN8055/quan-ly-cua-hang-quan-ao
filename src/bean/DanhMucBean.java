@@ -1,5 +1,5 @@
 
-package bean.employees;
+package bean;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 /**
