@@ -147,6 +147,11 @@ public class NhanVien extends javax.swing.JPanel {
             }
         });
 
+        txtSearchForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchFormActionPerformed(evt);
+            }
+        });
         txtSearchForm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchFormKeyReleased(evt);
@@ -323,6 +328,10 @@ public class NhanVien extends javax.swing.JPanel {
         }
         loadDataToTable(result);
     }//GEN-LAST:event_txtSearchFormKeyReleased
+
+    private void txtSearchFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchFormActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchFormActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

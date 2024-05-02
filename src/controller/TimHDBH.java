@@ -52,7 +52,6 @@ public class TimHDBH {
             if (phieu.getNguoiTao().toLowerCase().contains(text.toLowerCase())) {
                 result.add(phieu);
             }
-
         }
         return result;
     }

@@ -24,7 +24,7 @@ public class HoaDonBanHangModel extends HoaDonModel {
         this.sdt = sdt;
     }
     
-    public HoaDonBanHangModel(String tenKH, String sdt, String maHD, String nguoiTao, Date thoiGianTao, ArrayList<ChiTietHoaDonModel> CTHD, double tongTien, String ghiChu) {
+    public HoaDonBanHangModel(String tenKH, String sdt, String maHD, String nguoiTao,  Date thoiGianTao, ArrayList<ChiTietHoaDonModel> CTHD, double tongTien, String ghiChu) {
         super(maHD, nguoiTao, thoiGianTao, CTHD, tongTien, ghiChu);
         this.tenKH = tenKH;
         this.sdt = sdt;

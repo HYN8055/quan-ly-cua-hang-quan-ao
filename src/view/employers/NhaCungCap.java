@@ -117,7 +117,7 @@ public class NhaCungCap extends javax.swing.JPanel implements ActionListener {
         cbxlLuaChon.setBackground(new java.awt.Color(32, 178, 170));
         cbxlLuaChon.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cbxlLuaChon.setForeground(new java.awt.Color(255, 255, 255));
-        cbxlLuaChon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã hóa đơn", "Mã khách hàng", "Mã nhân viên" }));
+        cbxlLuaChon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã nhà cung cấp", "Tên nhà cung cấp", "Email", "Địa chỉ", "Số điện thoại" }));
         cbxlLuaChon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxlLuaChonActionPerformed(evt);

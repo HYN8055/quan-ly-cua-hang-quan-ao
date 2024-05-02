@@ -95,7 +95,8 @@ public class HoaDonBanHangDAO implements DAOInterface<HoaDonBanHangModel> {
                 Date thoiGianTao = rs.getDate("ngayin");
                 double tongTien = rs.getDouble("tongtien");
                 String ghiChu = rs.getString("ghichu");
-                HoaDonBanHangModel p = new HoaDonBanHangModel(tenKH, sdt, maPhieu, nguoiTao, thoiGianTao, ChiTietHoaDonBanHangDAO.getInstance().selectAll(maPhieu), tongTien, ghiChu);
+                HoaDonBanHangModel p = new HoaDonBanHangModel(tenKH, sdt, maPhieu, nguoiTao, 
+                        thoiGianTao, ChiTietHoaDonBanHangDAO.getInstance().selectAll(maPhieu), tongTien, ghiChu);
                 ketQua.add(p);
             }
         } catch (Exception e) {

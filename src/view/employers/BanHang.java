@@ -88,11 +88,11 @@ public class BanHang extends javax.swing.JPanel {
         tblModel.setColumnIdentifiers(headerTbl);
         tblSanPham.setModel(tblModel);
         tblSanPham.getColumnModel().getColumn(0).setPreferredWidth(5);
-        tblSanPham.getColumnModel().getColumn(1).setPreferredWidth(200);
-        tblSanPham.getColumnModel().getColumn(2).setPreferredWidth(5);
-        tblBanHang.getColumnModel().getColumn(0).setPreferredWidth(5);
-        tblBanHang.getColumnModel().getColumn(1).setPreferredWidth(10);
-        tblBanHang.getColumnModel().getColumn(2).setPreferredWidth(250);
+        tblSanPham.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tblSanPham.getColumnModel().getColumn(2).setPreferredWidth(50);
+        tblBanHang.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblBanHang.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tblBanHang.getColumnModel().getColumn(2).setPreferredWidth(50);
     }
     
     private void loadDataToTableProduct(ArrayList<SanPhamModel> arrProd) {
@@ -141,9 +141,9 @@ public class BanHang extends javax.swing.JPanel {
 
             for (int i = 0; i < CTHD.size(); i++) {
                 tblBanHangmd.addRow(new Object[]{
-                    i + 1, CTHD.get(i).getMaSP(), findSanPham(CTHD.get(i).getMaSP()).getTenSP(), CTHD.get(i).getSoLuong(), formatter.format(CTHD.get(i).getDonGia()) + "đ"
+                    i + 1, CTHD.get(i).getMaSP(), findSanPham(CTHD.get(i).getMaSP()).getTenSP(), CTHD.get(i).getSoLuong(), formatter.format(CTHD.get(i).getDonGia()) + "đ", formatter.format(CTHD.get(i).getDonGia()*CTHD.get(i).getSoLuong()) + "đ" 
                 });
-                sum += CTHD.get(i).getDonGia();
+                sum += CTHD.get(i).getDonGia() * CTHD.get(i).getSoLuong();
             }
         } catch (Exception e) {
         }
@@ -403,13 +403,13 @@ public class BanHang extends javax.swing.JPanel {
 
         tblBanHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá"
+                "STT", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá", "Thành tiền"
             }
         ));
         jScrollPane2.setViewportView(tblBanHang);
@@ -587,14 +587,14 @@ public class BanHang extends javax.swing.JPanel {
                 // Lay thoi gian hien tai
                 long now = System.currentTimeMillis();
                 Date ngayTao = new Date(now);
-                HoaDonBanHangModel pn = new HoaDonBanHangModel(txtKH.getText(), MaPhieu, txtSdt.getText(),txtNhanVien.getText(), ngayTao, CTHD, tinhTongTien(), txtGhiChu.getText());
+                HoaDonBanHangModel px = new HoaDonBanHangModel(txtKH.getText(), txtSdt.getText(), MaPhieu, txtNhanVien.getText(), ngayTao, CTHD, tinhTongTien(), txtGhiChu.getText());
                 try {
-                    int kq = HoaDonBanHangDAO.getInstance().insert(pn);
+                    int kq = HoaDonBanHangDAO.getInstance().insert(px);
                     if(kq > 0) {
                     SanPhamDAO spdao = SanPhamDAO.getInstance();
                     for (var i : CTHD) {
                         ChiTietHoaDonBanHangDAO.getInstance().insert(i);
-                        spdao.updateSoLuong(i.getMaSP(), spdao.selectById(i.getMaSP()).getSoLuongSP()- i.getSoLuong());
+                        spdao.updateSoLuong(spdao.selectById(i.getMaSP()), i.getMaSP(), spdao.selectById(i.getMaSP()).getSoLuongSP()- i.getSoLuong());
                     }
 
                     
@@ -611,6 +611,9 @@ public class BanHang extends javax.swing.JPanel {
                     CTHD = new ArrayList<ChiTietHoaDonModel>();
                     txtSoLuong.setText("1");
                     textTongTien.setText(0 + "đ");
+                    txtGhiChu.setText("");
+                    txtSdt.setText("");
+                    txtKH.setText("");
                     this.MaPhieu = createId(HoaDonBanHangDAO.getInstance().selectAll());
                     txtMaPhieu.setText(this.MaPhieu);
                     } else {
@@ -640,16 +643,16 @@ public class BanHang extends javax.swing.JPanel {
                         if (soluongselect < soluong) {
                             JOptionPane.showMessageDialog(this, "Số lượng không đủ !");
                         } else {
-                            ChiTietHoaDonModel sp = findCTPhieu((String) tblSanPham.getValueAt(i_row, 0));
-                            if (sp != null) {
-                                if (findSanPham((String) tblSanPham.getValueAt(i_row, 0)).getSoLuongSP() < sp.getSoLuong() + soluong) {
+                            ChiTietHoaDonModel ct = findCTPhieu((String) tblSanPham.getValueAt(i_row, 0));
+                            if (ct != null) {
+                                if (findSanPham((String) tblSanPham.getValueAt(i_row, 0)).getSoLuongSP() < ct.getSoLuong() + soluong) {
                                     JOptionPane.showMessageDialog(this, "Số lượng sản phẩm không đủ !");
                                 } else {
-                                    sp.setSoLuong(sp.getSoLuong() + soluong);
+                                    ct.setSoLuong(ct.getSoLuong() + soluong);
                                 }
                             } else {
-                                SanPhamModel mt = TimSanPham.getInstance().searchId((String) tblSanPham.getValueAt(i_row, 0));
-                                ChiTietHoaDonModel ctp = new ChiTietHoaDonModel(MaPhieu, mt.getMaSP(), soluong, mt.getGiabanSP(), soluong*mt.getGiabanSP());
+                                SanPhamModel sp = TimSanPham.getInstance().searchId((String) tblSanPham.getValueAt(i_row, 0));
+                                ChiTietHoaDonModel ctp = new ChiTietHoaDonModel(MaPhieu, sp.getMaSP(), soluong, sp.getGiabanSP(), soluong*sp.getGiabanSP());
                                 CTHD.add(ctp);
                             }
                             loadDataToTableBanHang();
@@ -713,22 +716,22 @@ public class BanHang extends javax.swing.JPanel {
                 excelBIS = new BufferedInputStream(excelFIS);
                 excelJTableImport = new XSSFWorkbook(excelBIS);
                 XSSFSheet excelSheet = excelJTableImport.getSheetAt(0);
-                for (int row = 1; row < excelSheet.getLastRowNum(); row++) {
+                for (int row = 1; row <= excelSheet.getLastRowNum(); row++) {
                     XSSFRow excelRow = excelSheet.getRow(row);
                     String maPhieu = txtMaPhieu.getText();
-                    String maSanPham = excelRow.getCell(1).getStringCellValue();
-                    String tenSanPham = excelRow.getCell(2).getStringCellValue();
-                    int soLuong = (int) (excelRow.getCell(3).getNumericCellValue());
+                    String maSanPham = excelRow.getCell(0).getStringCellValue();
+                    String tenSanPham = excelRow.getCell(1).getStringCellValue();
+                    int soLuong = (int) (excelRow.getCell(2).getNumericCellValue());
                     double donGia = SanPhamDAO.getInstance().selectById(maSanPham).getGiabanSP();
-                    
-                    ChiTietHoaDonModel ctpnew = new ChiTietHoaDonModel(maPhieu, maSanPham, soLuong, donGia, donGia*soLuong);
+
+                    ChiTietHoaDonModel ctpnew = new ChiTietHoaDonModel(maPhieu, maSanPham, soLuong, donGia, donGia * soLuong);
                     CTHD.add(ctpnew);
                 }
                 loadDataToTableBanHang();
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TTDangNhap.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
-                Logger.getLogger(NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TTDangNhap.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         loadDataToTableBanHang();
