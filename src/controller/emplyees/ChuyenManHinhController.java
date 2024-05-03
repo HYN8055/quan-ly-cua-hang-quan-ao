@@ -1,6 +1,6 @@
 
 package controller.emplyees;
-import view.employers.TrangChu;
+/*import view.employers.TrangChu;
 import view.employers.SanPham;
 import bean.employees.DanhMucBean;
 import view.employers.HoaDonBH;
@@ -23,7 +23,7 @@ import view.employers.NhanVien;
  *
  * @author hyn09
  */
-public class ChuyenManHinhController {
+/*public class ChuyenManHinhController {
     private JPanel root;
     private String kindSelected = "";
     
@@ -136,3 +136,4 @@ public class ChuyenManHinhController {
     }
             
 }
+*/

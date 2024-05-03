@@ -6,8 +6,13 @@ package view.employees;
 
 import bean.employees.DanhMucBean;
 import controller.emplyees.ChuyenManHinhController;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import view.employers.BanHang;
+import view.employers.HoaDonBH;
+import view.employers.TrangChu;
 
 /**
  *
@@ -22,14 +27,81 @@ public class MainJFrameBH extends javax.swing.JFrame {
         initComponents();
         
         setTitle("QUẢN LÝ CỬA HÀNG BÁN QUẦN ÁO");
-        ChuyenManHinhController controller=new ChuyenManHinhController(jpnView);
-        controller.setView(jpnTrangChu, jlbTrangChu);
-        
-        List <DanhMucBean> listItem = new ArrayList <>() ;
-        listItem.add(new DanhMucBean("TrangChu", jpnTrangChu, jlbTrangChu));
-        listItem.add(new DanhMucBean("BanHang", jpnBanHang, jlbBanHang));    
-        listItem.add(new DanhMucBean("HoaDonBH", jpnHoaDonBH, jlbHoaDonBH));
-        controller.setEvent(listItem);
+        jpnView.removeAll();
+        jpnView.setLayout(new BorderLayout());
+        TrangChu trangChu = new TrangChu();
+        jpnView.add(trangChu);
+        jpnView.repaint();
+        jpnView.revalidate();
+   
+        jpnBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            // Gọi phương thức hiển thị màn hình trang chủ khi jpaneltrangchu được nhấn
+            super.mouseClicked(evt);
+                // Xóa tất cả các thành phần hiển thị trên jpnView
+            jpnView.removeAll();
+            jpnView.setLayout(new BorderLayout());
+            BanHang banhang = new BanHang();
+            jpnView.add(banhang);
+            jpnView.repaint();
+            jpnView.revalidate();
+             
+        }
+        @Override
+        public void mousePressed(java.awt.event.MouseEvent evt) {
+            jpnBanHang.setBackground(new Color(125,125,125));
+            jlbBanHang.setBackground(new Color(125,125,125));
+               
+        }
+
+        @Override
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jpnBanHang.setBackground(new Color(255, 255, 255));
+            jlbBanHang.setBackground(new Color(255, 255, 255));
+        }
+
+        @Override
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpnBanHang.setBackground(new Color(152,205,205));
+                jlbBanHang.setBackground(new Color(152,205,205));
+            
+        }
+    });
+        jpnHoaDonBH.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            // Gọi phương thức hiển thị màn hình trang chủ khi jpaneltrangchu được nhấn
+            super.mouseClicked(evt);
+                // Xóa tất cả các thành phần hiển thị trên jpnView
+            jpnView.removeAll();
+            jpnView.setLayout(new BorderLayout());
+            HoaDonBH hoadonbh = new HoaDonBH();
+            jpnView.add(hoadonbh);
+            jpnView.repaint();
+            jpnView.revalidate();
+             
+        }
+        @Override
+        public void mousePressed(java.awt.event.MouseEvent evt) {
+            jpnHoaDonBH.setBackground(new Color(125,125,125));
+            jlbHoaDonBH.setBackground(new Color(125,125,125));
+               
+        }
+
+        @Override
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jpnHoaDonBH.setBackground(new Color(255, 255, 255));
+            jlbHoaDonBH.setBackground(new Color(255, 255, 255));
+        }
+
+        @Override
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpnHoaDonBH.setBackground(new Color(152,205,205));
+                jlbHoaDonBH.setBackground(new Color(152,205,205));
+            
+        }
+    });
     }
 
     /**
