@@ -6,13 +6,14 @@ package model;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.Objects;
 
 public class HoaDonModel {
 
     private String maHD;
     private String nguoiTao;
-    private Timestamp thoiGianTao;
+    private Date thoiGianTao;
     private ArrayList<ChiTietHoaDonModel> CTHD;
     private double tongTien;
     private String ghiChu;
@@ -20,7 +21,7 @@ public class HoaDonModel {
     public HoaDonModel() {
     }
 
-    public HoaDonModel(String maHD, String nguoiTao, Timestamp thoiGianTao, ArrayList<ChiTietHoaDonModel> CTHD, double tongTien, String ghiChu) {
+    public HoaDonModel(String maHD, String nguoiTao, Date thoiGianTao, ArrayList<ChiTietHoaDonModel> CTHD, double tongTien, String ghiChu) {
         this.maHD = maHD;
         this.nguoiTao = nguoiTao;
         this.thoiGianTao = thoiGianTao;
@@ -45,11 +46,11 @@ public class HoaDonModel {
         this.nguoiTao = nguoiTao;
     }
 
-    public Timestamp getThoiGianTao() {
+    public Date getThoiGianTao() {
         return thoiGianTao;
     }
 
-    public void setThoiGianTao(Timestamp thoiGianTao) {
+    public void setThoiGianTao(Date thoiGianTao) {
         this.thoiGianTao = thoiGianTao;
     }
 

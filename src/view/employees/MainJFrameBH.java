@@ -4,14 +4,26 @@
  */
 package view.employees;
 
+
 import bean.employees.DanhMucBean;
 import controller.emplyees.ChuyenManHinhController;
+
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+
 import view.employers.BanHang;
 import view.employers.HoaDonBH;
+
+import javax.swing.JOptionPane;
+import model.TTDangNhapModel;
+import view.employers.BanHang;
+import view.employers.DangNhap;
+import view.employers.HoaDonBH;
+import view.employers.SuaTTCaNhan;
+
 import view.employers.TrangChu;
 
 /**
@@ -23,8 +35,25 @@ public class MainJFrameBH extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrameBH
      */
-    public MainJFrameBH() {
+    
+    private TTDangNhapModel currentAcc;
+    
+    public TTDangNhapModel getCurrentAcc() {
+        return currentAcc;
+    }
+    
+    public void setCurrentAcc(TTDangNhapModel currentAcc) {
+        this.currentAcc = currentAcc;
+    }
+    
+    private MainJFrameBH() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public MainJFrameBH(TTDangNhapModel t) {
         initComponents();
+        setLocationRelativeTo(null);
+        this.currentAcc = t;
         
         setTitle("QUẢN LÝ CỬA HÀNG BÁN QUẦN ÁO");
         jpnView.removeAll();
@@ -32,8 +61,47 @@ public class MainJFrameBH extends javax.swing.JFrame {
         TrangChu trangChu = new TrangChu();
         jpnView.add(trangChu);
         jpnView.repaint();
+
         jpnView.revalidate();
    
+
+        jpnView.revalidate();   
+        
+        jpnTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            // Gọi phương thức hiển thị màn hình trang chủ khi jpaneltrangchu được nhấn
+            super.mouseClicked(evt);
+                // Xóa tất cả các thành phần hiển thị trên jpnView
+            jpnView.removeAll();
+            jpnView.setLayout(new BorderLayout());
+            TrangChu trangChu = new TrangChu();
+            jpnView.add(trangChu);
+            jpnView.repaint();
+            jpnView.revalidate();
+             
+        }
+        @Override
+        public void mousePressed(java.awt.event.MouseEvent evt) {
+            jpnTrangChu.setBackground(new Color(125,125,125));
+            jlbTrangChu.setBackground(new Color(125,125,125));
+               
+        }
+
+        @Override
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jpnTrangChu.setBackground(new Color(255, 255, 255));
+            jlbTrangChu.setBackground(new Color(255, 255, 255));
+        }
+
+        @Override
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpnTrangChu.setBackground(new Color(152,205,205));
+                jlbTrangChu.setBackground(new Color(152,205,205));
+            
+        }
+    });
+
         jpnBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
         @Override
         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -43,6 +111,9 @@ public class MainJFrameBH extends javax.swing.JFrame {
             jpnView.removeAll();
             jpnView.setLayout(new BorderLayout());
             BanHang banhang = new BanHang();
+
+            banhang.setNguoiTao(currentAcc.getMaNV());
+
             jpnView.add(banhang);
             jpnView.repaint();
             jpnView.revalidate();
@@ -68,6 +139,7 @@ public class MainJFrameBH extends javax.swing.JFrame {
             
         }
     });
+
         jpnHoaDonBH.addMouseListener(new java.awt.event.MouseAdapter() {
         @Override
         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -102,7 +174,10 @@ public class MainJFrameBH extends javax.swing.JFrame {
             
         }
     });
+
     }
+   
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -120,12 +195,12 @@ public class MainJFrameBH extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jpnTrangChu = new javax.swing.JPanel();
         jlbTrangChu = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        LogOut = new javax.swing.JButton();
         jpnHoaDonBH = new javax.swing.JPanel();
         jlbHoaDonBH = new javax.swing.JLabel();
         jpnBanHang = new javax.swing.JPanel();
         jlbBanHang = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        Change = new javax.swing.JButton();
         jpnView = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -184,14 +259,19 @@ public class MainJFrameBH extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(152, 205, 205));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dangxuat.png"))); // NOI18N
-        jButton1.setText("ĐĂNG XUẤT");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        LogOut.setBackground(new java.awt.Color(152, 205, 205));
+        LogOut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LogOut.setForeground(new java.awt.Color(255, 255, 255));
+        LogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dangxuat.png"))); // NOI18N
+        LogOut.setText("ĐĂNG XUẤT");
+        LogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogOutMouseClicked(evt);
+            }
+        });
+        LogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                LogOutActionPerformed(evt);
             }
         });
 
@@ -239,11 +319,16 @@ public class MainJFrameBH extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton2.setBackground(new java.awt.Color(152, 205, 205));
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doithongtin.png"))); // NOI18N
-        jButton2.setText("ĐỔI THÔNG TIN");
+        Change.setBackground(new java.awt.Color(152, 205, 205));
+        Change.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Change.setForeground(new java.awt.Color(255, 255, 255));
+        Change.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doithongtin.png"))); // NOI18N
+        Change.setText("ĐỔI THÔNG TIN");
+        Change.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ChangeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpnMenuLayout = new javax.swing.GroupLayout(jpnMenu);
         jpnMenu.setLayout(jpnMenuLayout);
@@ -261,8 +346,8 @@ public class MainJFrameBH extends javax.swing.JFrame {
                     .addGroup(jpnMenuLayout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(Change, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 67, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -276,10 +361,10 @@ public class MainJFrameBH extends javax.swing.JFrame {
                 .addComponent(jpnBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpnHoaDonBH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(339, 339, 339)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(345, 345, 345)
+                .addComponent(Change, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -323,9 +408,29 @@ public class MainJFrameBH extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void LogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_LogOutActionPerformed
+
+    private void ChangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChangeMouseClicked
+        // TODO add your handling code here:
+        SuaTTCaNhan cp = new SuaTTCaNhan(this, rootPaneCheckingEnabled, getCurrentAcc());
+        cp.setVisible(true);
+    }//GEN-LAST:event_ChangeMouseClicked
+
+    private void LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseClicked
+        // TODO add your handling code here:
+        int relly = JOptionPane.showConfirmDialog(
+                null,
+                "Bạn muốn thoát khỏi chương trình ?",
+                "Xác nhận",
+                JOptionPane.YES_NO_OPTION);
+        if (relly == JOptionPane.YES_OPTION) {
+            this.dispose();
+            DangNhap dialog = new DangNhap(new javax.swing.JFrame(), true);
+            //dialog.setVisible(true);
+        }
+    }//GEN-LAST:event_LogOutMouseClicked
 
     /**
      * @param args the command line arguments
@@ -363,8 +468,8 @@ public class MainJFrameBH extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Change;
+    private javax.swing.JButton LogOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel11;

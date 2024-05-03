@@ -4,13 +4,13 @@
  */
 package view.employers;
 
-import controller.emplyees.TimHDBH;
+import controller.TimHDBH;
 import dao.ChiTietHoaDonBanHangDAO;
 import dao.HoaDonBanHangDAO;
-import dao.TTDangNhapDAO;
+import dao.NhanVienDAO;
+import dao.SanPhamDAO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.BorderLayout;
 import java.awt.Desktop;
 import java.awt.event.*;
 import java.io.File;
@@ -37,6 +37,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
     private DefaultTableModel tblModel;
+    private static ArrayList<HoaDonBanHangModel> result;
     DecimalFormat formatter = new DecimalFormat("###,###,###");
     SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/YYYY HH:mm");
     
@@ -52,20 +53,10 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         initComponents();
         tblPhieuXuat.setDefaultEditor(Object.class, null);
         initTable();
-        loadDataToTable();
+        result = HoaDonBanHangDAO.getInstance().selectAll();
+        loadDataToTableArr(result);
         jDateChooserFrom.setDateFormatString("dd/MM/yyyy");
         jDateChooserTo.setDateFormatString("dd/MM/yyyy");
-        
-        btnEdit.addActionListener((ActionEvent e) -> {
-        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(HoaDonBH.this);
-                SuaPX dialog = new SuaPX(parentFrame, true);
-                dialog.setVisible(true);});
-        btnDetail.addActionListener((ActionEvent e) -> {
-        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(HoaDonBH.this);
-        XemCTPX dialog = new XemCTPX(parentFrame, true);
-        dialog.setVisible(true);
-    });
-      
     }
     
     @Override
@@ -74,23 +65,13 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
     }
     public final void initTable() {
         tblModel = new DefaultTableModel();
-        String[] headerTbl = new String[]{"STT", "Mã hoá đơn", "Tên khách hàng", "Số điện thoại", "Người tạo", "Thời gian tạo", "Tổng tiền", "Ghi chú"};
+        String[] headerTbl = new String[]{"STT", "Mã hoá đơn", "Người tạo", "Tên khách hàng", "Số điện thoại", "Thời gian tạo", "Tổng tiền", "Ghi chú"};
         tblModel.setColumnIdentifiers(headerTbl);
         tblPhieuXuat.setModel(tblModel);
-        tblPhieuXuat.getColumnModel().getColumn(0).setPreferredWidth(5);
-    }
-
-    public void loadDataToTable() {
-        try {
-            ArrayList<HoaDonBanHangModel> allPhieu = HoaDonBanHangDAO.getInstance().selectAll();
-            tblModel.setRowCount(0);
-            for (int i = 0; i < allPhieu.size(); i++) {
-                 tblModel.addRow(new Object[]{
-                    i + 1, allPhieu.get(i).getMaHD(), TTDangNhapDAO.getInstance().selectById(allPhieu.get(i).getNguoiTao()).getMaNV(), allPhieu.get(i).getTenKH(), allPhieu.get(i).getSdt(), formatDate.format(allPhieu.get(i).getThoiGianTao()), formatter.format(allPhieu.get(i).getTongTien()) + "đ", allPhieu.get(i).getGhiChu()
-                });
-            }
-        } catch (Exception e) {
-        }
+        tblPhieuXuat.getColumnModel().getColumn(0).setPreferredWidth(1);
+        tblPhieuXuat.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tblPhieuXuat.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tblPhieuXuat.getColumnModel().getColumn(3).setPreferredWidth(100);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,6 +114,11 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         btnEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconsua1.png"))); // NOI18N
         btnEdit.setText("Sửa");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDel.setBackground(new java.awt.Color(32, 178, 170));
         btnDel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -148,10 +134,16 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         jComboBoxS.setBackground(new java.awt.Color(32, 178, 170));
         jComboBoxS.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jComboBoxS.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBoxS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã hóa đơn", "Mã khách hàng", "Mã nhân viên" }));
+        jComboBoxS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã hoá đơn", "Người tạo" }));
         jComboBoxS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxSActionPerformed(evt);
+            }
+        });
+
+        jTextFieldSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldSearchKeyReleased(evt);
             }
         });
 
@@ -171,6 +163,11 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         btnExport.setForeground(new java.awt.Color(255, 255, 255));
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconexcel1.png"))); // NOI18N
         btnExport.setText("Xuất Excel");
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
 
         btnRefresh.setBackground(new java.awt.Color(32, 178, 170));
         btnRefresh.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -243,10 +240,28 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         jLabel5.setForeground(new java.awt.Color(32, 178, 170));
         jLabel5.setText("Từ:");
 
+        giaTu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                giaTuActionPerformed(evt);
+            }
+        });
+        giaTu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                giaTuKeyReleased(evt);
+            }
+        });
+
+        giaDen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                giaDenActionPerformed(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(32, 178, 170));
         jLabel6.setText("Đến:");
 
+<<<<<<< HEAD
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(32, 178, 170));
         jLabel4.setText("Lọc theo giá:");
@@ -289,6 +304,19 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
                                 .addComponent(giaTu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(17, Short.MAX_VALUE))))
         );
+=======
+        jDateChooserFrom.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDateChooserFromPropertyChange(evt);
+            }
+        });
+
+        jDateChooserTo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDateChooserToPropertyChange(evt);
+            }
+        });
+>>>>>>> 1423ced5e807e0ac6c2cc51b4066f5bfcb54bb16
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -304,6 +332,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDetail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                         .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(95, 95, 95)
@@ -316,6 +345,28 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
                         .addComponent(btnRefresh))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
+=======
+                        .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addGap(18, 18, 18)
+                            .addComponent(giaTu, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(giaDen, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jComboBoxS, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnRefresh))))
+                .addContainerGap(64, Short.MAX_VALUE))
+>>>>>>> 1423ced5e807e0ac6c2cc51b4066f5bfcb54bb16
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,11 +438,13 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         if (result == JOptionPane.YES_OPTION) {
             ArrayList<ChiTietHoaDonModel> CTHD = ChiTietHoaDonBanHangDAO.getInstance().selectAll(px.getMaHD());
             for (ChiTietHoaDonModel i : CTHD) {
+                SanPhamDAO spdao = SanPhamDAO.getInstance();
                 ChiTietHoaDonBanHangDAO.getInstance().delete(i);
+                spdao.updateSoLuong(spdao.selectById(i.getMaSP()), i.getMaSP(), spdao.selectById(i.getMaSP()).getSoLuongSP()+ i.getSoLuong());
             }
             HoaDonBanHangDAO.getInstance().delete(px);
-            JOptionPane.showMessageDialog(this, "Đã xoá thành công phiếu " + px.getMaHD());
-            loadDataToTable();
+            JOptionPane.showMessageDialog(this, "Đã xoá thành công hoá đơn " + px.getMaHD());
+            loadDataToTableArr(HoaDonBanHangDAO.getInstance().selectAll());
         }
     }
     
@@ -408,7 +461,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
-        loadDataToTable();
+        loadDataToTableArr(HoaDonBanHangDAO.getInstance().selectAll());
         jComboBoxS.setSelectedIndex(0);
         jTextFieldSearch.setText("");
         jDateChooserFrom.setCalendar(null);
@@ -437,7 +490,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
             if (saveFile != null) {
                 saveFile = new File(saveFile.toString() + ".xlsx");
                 Workbook wb = new XSSFWorkbook();
-                Sheet sheet = wb.createSheet("Account");
+                Sheet sheet = wb.createSheet("NhanVienModel");
 
                 Row rowCol = sheet.createRow(0);
                 for (int i = 0; i < tblPhieuXuat.getColumnCount(); i++) {
@@ -452,7 +505,6 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
                         if (tblPhieuXuat.getValueAt(j, k) != null) {
                             cell.setCellValue(tblPhieuXuat.getValueAt(j, k).toString());
                         }
-
                     }
                 }
                 FileOutputStream out = new FileOutputStream(new File(saveFile.toString()));
@@ -472,13 +524,32 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
 
     private void giaTuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_giaTuKeyReleased
         // TODO add your handling code here:
-        searchAllCheck();
+        //searchAllCheck();
     }//GEN-LAST:event_giaTuKeyReleased
 
     private void giaDenKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_giaDenKeyReleased
         // TODO add your handling code here:
-        searchAllCheck();
+        //searchAllCheck();
     }//GEN-LAST:event_giaDenKeyReleased
+
+    private void jTextFieldSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchKeyReleased
+        // TODO add your handling code here:
+        //searchAllCheck();
+    }//GEN-LAST:event_jTextFieldSearchKeyReleased
+
+    private void jDateChooserFromPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooserFromPropertyChange
+        // TODO add your handling code here:
+        //searchAllCheck();
+    }//GEN-LAST:event_jDateChooserFromPropertyChange
+
+    private void jDateChooserToPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooserToPropertyChange
+        // TODO add your handling code here:
+        searchAllCheck();
+    }//GEN-LAST:event_jDateChooserToPropertyChange
+
+    private void giaTuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giaTuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_giaTuActionPerformed
 
     public HoaDonBanHangModel getPhieuXuatSelect() {
         int i_row = tblPhieuXuat.getSelectedRow();
@@ -500,7 +571,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
             tblModel.setRowCount(0);
             for (int i = 0; i < allPhieu.size(); i++) {
                 tblModel.addRow(new Object[]{
-                    i + 1, allPhieu.get(i).getMaHD(), allPhieu.get(i).getTenKH(), allPhieu.get(i).getSdt(), TTDangNhapDAO.getInstance().selectById(allPhieu.get(i).getNguoiTao()).getMaNV(), formatDate.format(allPhieu.get(i).getThoiGianTao()), formatter.format(allPhieu.get(i).getTongTien()) + "đ", allPhieu.get(i).getGhiChu()
+                    i + 1, allPhieu.get(i).getMaHD(), NhanVienDAO.getInstance().selectById(allPhieu.get(i).getNguoiTao()).getMaNV(), allPhieu.get(i).getTenKH(), allPhieu.get(i).getSdt(), formatDate.format(allPhieu.get(i).getThoiGianTao()), formatter.format(allPhieu.get(i).getTongTien()) + "đ", allPhieu.get(i).getGhiChu()
                 });
             }
         } catch (Exception e) {
@@ -510,24 +581,23 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
     public void searchAllCheck() {
         String luaChon = jComboBoxS.getSelectedItem().toString();
         String content = jTextFieldSearch.getText();
-        ArrayList<HoaDonBanHangModel> result = null;
-        TimHDBH timhd = new TimHDBH();
+        ArrayList<HoaDonBanHangModel> result = new ArrayList<>();
         if (content.length() > 0) {
-            result = new ArrayList<>();
             switch (luaChon) {
                 case "Tất cả":
-                    result = timhd.searchTatCa(content);
+                    result = TimHDBH.getInstance().searchTatCa(content);
                     break;
                 case "Mã hoá đơn":
-                    result = timhd.searchMaPhieu(content);
+                    result = TimHDBH.getInstance().searchMaPhieu(content);
                     break;
                 case "Người tạo":
-                    result = timhd.searchNguoiTao(content);
+                    result = TimHDBH.getInstance().searchNguoiTao(content);
                     break;
             }
         } else if (content.length() == 0) {
             result = HoaDonBanHangDAO.getInstance().selectAll();
         }
+        
         Iterator<HoaDonBanHangModel> itr = result.iterator();
         if (jDateChooserFrom.getDate() != null || jDateChooserTo.getDate() != null) {
             Date from;
@@ -593,8 +663,13 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
                         result1.add(result.get(i));
                     }
                 }
+
             } else if (giaTu.getText().length() == 0 && giaTu.getText().length() > 0) {;
                 b = Double.parseDouble(giaTu.getText());
+
+            } else if (giaTu.getText().length() == 0 && giaDen.getText().length() > 0) {
+                b = Double.parseDouble(giaDen.getText());
+
                 for (int i = 0; i < result.size(); i++) {
                     if (result.get(i).getTongTien() <= b) {
                         result1.add(result.get(i));
@@ -610,7 +685,12 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
                 }
             }
         }
+
         if (giaTu.getText().length() > 0 || giaTu.getText().length() > 0) {
+
+        
+        if (giaTu.getText().length() > 0 || giaDen.getText().length() > 0) {
+
             loadDataToTableArr(result1);
         } else {
             loadDataToTableArr(result);

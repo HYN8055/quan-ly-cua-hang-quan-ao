@@ -1,6 +1,6 @@
 package view.employers;
 
-import controller.emplyees.TimSanPham;
+import controller.TimSanPham;
 import dao.NhaCungCapDAO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -13,6 +13,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.TableColumn;
+import model.SanPhamModel;
 
 
 
@@ -334,7 +335,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
         loadDataToTableSearch(result);
     }//GEN-LAST:event_jComboBoxLuaChonPropertyChange
 
-    public ArrayList<model.SanPhamModel> searchFn(String luaChon, String content) {
+    public ArrayList<SanPhamModel> searchFn(String luaChon, String content) {
         ArrayList<model.SanPhamModel> result = new ArrayList<>();
         TimSanPham timSP = new TimSanPham();
         switch (luaChon) {

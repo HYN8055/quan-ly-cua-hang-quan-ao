@@ -4,7 +4,7 @@
  */
 package view.employers;
 
-import controller.emplyees.TimNhanVien;
+import controller.TimNhanVien;
 import model.NhanVienModel;
 import dao.NhanVienDAO;
 import java.awt.event.ActionEvent;
@@ -152,6 +152,11 @@ public class NhanVien extends javax.swing.JPanel {
             }
         });
 
+        txtSearchForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchFormActionPerformed(evt);
+            }
+        });
         txtSearchForm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchFormKeyReleased(evt);
@@ -267,7 +272,7 @@ public class NhanVien extends javax.swing.JPanel {
     private void btnXemCTNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemCTNVActionPerformed
         // TODO add your handling code here:
         if (jTable_NV.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên !");
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên cần xem!");
         } else {
             JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(NhanVien.this);
             XemCTNV dialog = new XemCTNV(this, parentFrame, true);
@@ -292,7 +297,7 @@ public class NhanVien extends javax.swing.JPanel {
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         if (jTable_NV.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhà cung cấp cần sửa");
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên cần sửa");
         } else {
             JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(NhanVien.this);
             SuaNV dialog = new SuaNV(this, parentFrame, true);
@@ -327,6 +332,10 @@ public class NhanVien extends javax.swing.JPanel {
         }
         loadDataToTable(result);
     }//GEN-LAST:event_txtSearchFormKeyReleased
+
+    private void txtSearchFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchFormActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchFormActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -130,7 +130,7 @@ public class SanPhamDAO implements DAOInterface<SanPhamModel> {
 
     @Override
     public SanPhamModel selectById(String s) {
-        model.SanPhamModel ketQua = null;
+        SanPhamModel ketQua = null;
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();
             String sql = "SELECT * FROM SANPHAM WHERE masp=?";
@@ -156,13 +156,40 @@ public class SanPhamDAO implements DAOInterface<SanPhamModel> {
         return ketQua;
     }
     
-    public int updateSoLuong(String maSP, int soluong) {
-        int ketQua = 0;
-        SanPhamModel s = new SanPhamModel();
+    public ArrayList<SanPhamModel> selectByNCC(String s) {
+        ArrayList<SanPhamModel> ketQua = new ArrayList<SanPhamModel>();
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();
-            String sql = "UPDATE SANPHAM SET soluong=" + s.getSoLuongSP() 
-                    + " WHERE masp='" + s.getMaSP() + "'";
+            String sql = "SELECT * FROM SANPHAM WHERE mancc=?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, s);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                String maSP = rs.getString("masp");
+                String tenSP = rs.getString("tensp");
+                double giabanSP = rs.getDouble("giaban");
+                double gianhapSP = rs.getDouble("gianhap");
+                int soLuongSP = rs.getInt("soluong");
+                String kichThuoc = rs.getString("kichthuoc");
+                String chatLieu = rs.getString("chatlieu");
+                String maNCC = rs.getString("mancc");
+                String xuatXu = rs.getString("xuatxu");
+                SanPhamModel sp = new SanPhamModel(maSP, tenSP, giabanSP, gianhapSP, soLuongSP, kichThuoc, chatLieu, maNCC, xuatXu);
+                ketQua.add(sp);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return ketQua;
+    }
+    
+    public int updateSoLuong(SanPhamModel s, String maSP, int soluong) {
+        int ketQua = 0;
+        try {
+            Connection con = OracleJDBCConnection.getJDBCConnection();
+            String sql = "UPDATE SANPHAM SET soluong=" + soluong
+                    + " WHERE masp='" + maSP + "'";
             PreparedStatement pst = con.prepareStatement(sql);
             ketQua = pst.executeUpdate();
             OracleJDBCConnection.closeConnection(con);

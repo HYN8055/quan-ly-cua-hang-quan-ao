@@ -253,7 +253,7 @@ public class ThemNV extends javax.swing.JDialog {
                     
                     int kq = NhanVienDAO.getInstance().insert(nv);
                     if(kq > 0) {
-                    JOptionPane.showMessageDialog(this, "Thêm thành công !");
+                    JOptionPane.showMessageDialog(this, "Thêm nhân viên thành công !");
                     parent.loadDataToTable(NhanVienDAO.getInstance().selectAll());
                     this.dispose(); 
                     } else {

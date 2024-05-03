@@ -1,11 +1,17 @@
 
 package view.employers;
-//import doanjava.nhom6.qlchbqa.controller.TaikhoanCtrl;
+import com.formdev.flatlaf.FlatLightLaf;
+import com.sun.jdi.connect.spi.Connection;
+import controller.BCrypt;
+import dao.NhanVienDAO;
+import dao.TTDangNhapDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import javax.swing.JOptionPane;
+import javax.swing.UnsupportedLookAndFeelException;
+import model.TTDangNhapModel;
+import view.employees.MainJFrameBH;
+import view.employees.MainJFrameNH;
 //import java.awt.event.*;
 
 /**
@@ -22,43 +28,14 @@ public class DangNhap extends javax.swing.JDialog implements ActionListener{
         setTitle("Đăng nhập hệ thống");
         setResizable(false);
         setLocationRelativeTo(null);
-        setVisible(true);
-        // Thiết lập sự kiện lắng nghe cho nút đăng nhập
-        btnDangNhap.addActionListener(e -> {
-            // Hiển thị MainJFrame khi đăng nhập thành công
-            //JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(DangNhap.this);
-            //MainJFrame mainFrame = new MainJFrame();
-            //mainFrame.setVisible(true);
-            // Đóng cửa sổ đăng nhập sau khi đăng nhập thành công
-            dispose();
-        });
-
-        
-
+        setVisible(true);   
     }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-public JButton getBtnDangNhap() {
- return btnDangNhap; // btnDangNhap là tên của nút đăng nhập trong giao diện của bạn
-}
-
-//    public void setLoginButtonEvent() {
-//     btnDangNhap.addMouseListener(new MouseAdapter(){
-//         @Override
-//         public void mouseClicked(MouseEvent e){
-//        
-//            dialog.dispose();
-//                
-//            // Mở ra MainJFrame
-//            MainJFrame mainFrame = new MainJFrame();
-//            mainFrame.setTitle("Quản lý cửa hàng bán quần áo");
-//            //mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//            mainFrame.setVisible(true);
-//        }
-//    });
-         
+      
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,116 +47,135 @@ public JButton getBtnDangNhap() {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        btnDangNhap = new javax.swing.JButton();
-        btnDangNhap1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        loginUser = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        btnDangNhap = new javax.swing.JButton();
+        btnDangNhap1 = new javax.swing.JButton();
+        passwordUser = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/anhdangnhap.png"))); // NOI18N
 
         jPanel4.setBackground(new java.awt.Color(152, 225, 225));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(7, 80, 176));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Tên đăng nhập");
 
-        jTextField3.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(7, 80, 176));
-        jLabel5.setText("Mật khẩu");
-
-        jTextField4.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        loginUser.setBackground(new java.awt.Color(152, 225, 225));
+        loginUser.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        loginUser.setForeground(new java.awt.Color(255, 255, 255));
+        loginUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 2, true));
+        loginUser.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        loginUser.setDragEnabled(true);
+        loginUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                loginUserActionPerformed(evt);
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Mật khẩu");
+
         btnDangNhap.setBackground(new java.awt.Color(0, 179, 143));
-        btnDangNhap.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnDangNhap.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setText("Đăng nhập");
+        btnDangNhap.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDangNhapMouseClicked(evt);
+            }
+        });
 
-        btnDangNhap1.setBackground(new java.awt.Color(0, 179, 143));
-        btnDangNhap1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnDangNhap1.setBackground(new java.awt.Color(162, 225, 225));
+        btnDangNhap1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnDangNhap1.setForeground(new java.awt.Color(255, 255, 255));
-        btnDangNhap1.setText("Quên mật khẩu");
+        btnDangNhap1.setText("Quên mật khẩu ?");
+        btnDangNhap1.setBorder(null);
+        btnDangNhap1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDangNhap1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhap1ActionPerformed(evt);
+            }
+        });
+
+        passwordUser.setBackground(new java.awt.Color(152, 225, 225));
+        passwordUser.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        passwordUser.setForeground(new java.awt.Color(255, 255, 255));
+        passwordUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(242, 242, 242), 2));
+        passwordUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordUserActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4)
-                    .addComponent(btnDangNhap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(43, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDangNhap1)
-                .addGap(106, 106, 106))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(loginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passwordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDangNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
+                .addGap(80, 80, 80)
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDangNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/anhdangnhap.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jLabel1)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addComponent(loginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passwordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnDangNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -187,24 +183,106 @@ public JButton getBtnDangNhap() {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, 0)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void btnDangNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+        checkLogin();
+    }//GEN-LAST:event_btnDangNhapMouseClicked
 
+    private void btnDangNhap1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhap1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDangNhap1ActionPerformed
+
+    private void passwordUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordUserActionPerformed
+
+    private void loginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginUserActionPerformed
+
+    public void checkLogin() {
+        String usercheck = loginUser.getText();
+        String passwordcheck = passwordUser.getText();
+        if (usercheck.equals("") || passwordcheck.equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ !", "Cảnh báo !", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {                
+                TTDangNhapModel acc = TTDangNhapDAO.getInstance().selectById(usercheck);                
+                if (acc == null) {
+                    JOptionPane.showMessageDialog(this, "Tài khoản không tồn tại trên hệ thống !", "Cảnh báo !", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    if (passwordcheck.equals(acc.getPassword())) {
+                        JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
+                        this.dispose();
+                        String role = acc.getRole();
+                        switch (role) {
+                            case "Nhân viên quản lý" -> {
+                                MainJFrame ad = new MainJFrame(acc);
+                                ad.setVisible(true);
+                                ad.setCurrentAcc(acc);
+                                //ad.setName(NhanVienDAO.getInstance().selectById(acc.getMaNV()).getTenNV());
+                            }
+                            case "Nhân viên bán hàng" -> {
+                                MainJFrameBH bh = new MainJFrameBH(acc);
+                                bh.setVisible(true);
+                                bh.setCurrentAcc(acc);
+                                //bh.setName(NhanVienDAO.getInstance().selectById(acc.getMaNV()).getTenNV());
+                            }
+                            case "Nhân viên nhập hàng" -> {
+                                MainJFrameNH nh = new MainJFrameNH(acc);
+                                nh.setVisible(true);
+                                nh.setCurrentAcc(acc);
+                                //nh.setName(NhanVienDAO.getInstance().selectById(acc.getMaNV()).getTenNV());
+                            }
+                        }
+                    } else 
+                        JOptionPane.showMessageDialog(this, "Sai mật khẩu !", "Cảnh báo !", JOptionPane.WARNING_MESSAGE);
+                } 
+                } catch (Exception e) {
+            }
+        }
+    }
     
+   public static void main(String args[]) throws UnsupportedLookAndFeelException {
+        DangNhap dialog = new DangNhap(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
@@ -215,7 +293,7 @@ public JButton getBtnDangNhap() {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField loginUser;
+    private javax.swing.JPasswordField passwordUser;
     // End of variables declaration//GEN-END:variables
 }

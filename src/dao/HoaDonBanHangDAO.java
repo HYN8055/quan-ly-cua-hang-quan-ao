@@ -5,7 +5,7 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class HoaDonBanHangDAO implements DAOInterface<HoaDonBanHangModel> {
             pst.setString(2, t.getNguoiTao());
             pst.setString(3, t.getTenKH());
             pst.setString(4, t.getSdt());
-            pst.setTimestamp(5, t.getThoiGianTao());
+            pst.setDate(5, t.getThoiGianTao());
             pst.setDouble(6, t.getTongTien());
             pst.setString(7, t.getGhiChu());
             ketQua = pst.executeUpdate();
@@ -92,10 +92,11 @@ public class HoaDonBanHangDAO implements DAOInterface<HoaDonBanHangModel> {
                 String nguoiTao = rs.getString("manv");
                 String tenKH = rs.getString("tenkh");
                 String sdt = rs.getString("sdt");
-                Timestamp thoiGianTao = rs.getTimestamp("ngayin");
+                Date thoiGianTao = rs.getDate("ngayin");
                 double tongTien = rs.getDouble("tongtien");
                 String ghiChu = rs.getString("ghichu");
-                HoaDonBanHangModel p = new HoaDonBanHangModel(tenKH, sdt, maPhieu, nguoiTao, thoiGianTao, ChiTietHoaDonBanHangDAO.getInstance().selectAll(maPhieu), tongTien, ghiChu);
+                HoaDonBanHangModel p = new HoaDonBanHangModel(tenKH, sdt, maPhieu, nguoiTao, 
+                        thoiGianTao, ChiTietHoaDonBanHangDAO.getInstance().selectAll(maPhieu), tongTien, ghiChu);
                 ketQua.add(p);
             }
         } catch (Exception e) {
@@ -119,7 +120,7 @@ public class HoaDonBanHangDAO implements DAOInterface<HoaDonBanHangModel> {
                 String nguoiTao = rs.getString("manv");
                 String tenKH = rs.getString("tenkh");
                 String sdt = rs.getString("sdt");
-                Timestamp thoiGianTao = rs.getTimestamp("ngayin");
+                Date thoiGianTao = rs.getDate("ngayin");
                 double tongTien = rs.getDouble("tongtien");
                 String ghiChu = rs.getString("ghichu");
                 ketQua = new HoaDonBanHangModel(tenKH, sdt, maPhieu, nguoiTao, thoiGianTao, ChiTietHoaDonBanHangDAO.getInstance().selectAll(maPhieu), tongTien, ghiChu);

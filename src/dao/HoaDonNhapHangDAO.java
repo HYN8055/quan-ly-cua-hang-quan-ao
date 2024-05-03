@@ -5,7 +5,7 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class HoaDonNhapHangDAO implements DAOInterface<HoaDonNhapHangModel> {
             pst.setString(1, t.getMaHD());
             pst.setString(2, t.getNguoiTao());
             pst.setString(3, t.getNhaCungCap());
-            pst.setTimestamp(4, t.getThoiGianTao());
+            pst.setDate(4, t.getThoiGianTao());
             pst.setDouble(5, t.getTongTien());
             pst.setString(6, t.getGhiChu());
             ketQua = pst.executeUpdate();
@@ -92,7 +92,7 @@ public class HoaDonNhapHangDAO implements DAOInterface<HoaDonNhapHangModel> {
                 String maPhieu = rs.getString("mapnh");
                 String nguoiTao = rs.getString("manv");
                 String maNhaCungCap = rs.getString("mancc");
-                Timestamp thoiGianTao = rs.getTimestamp("ngaytao");
+                Date thoiGianTao = rs.getDate("ngaytao");
                 double tongTien = rs.getDouble("tongtien");
                 String ghiChu = rs.getString("ghichu");
                 HoaDonNhapHangModel p = new HoaDonNhapHangModel(maNhaCungCap, maPhieu, nguoiTao, thoiGianTao, ChiTietHoaDonNhapHangDAO.getInstance().selectAll(maPhieu), tongTien, ghiChu);
@@ -118,7 +118,7 @@ public class HoaDonNhapHangDAO implements DAOInterface<HoaDonNhapHangModel> {
                 String maPhieu = rs.getString("mapnh");
                 String nguoiTao = rs.getString("manv");
                 String maNhaCungCap = rs.getString("mancc");
-                Timestamp thoiGianTao = rs.getTimestamp("ngaytao");
+                Date thoiGianTao = rs.getDate("ngaytao");
                 double tongTien = rs.getDouble("tongtien");
                 String ghiChu = rs.getString("ghichu");
                 ketQua = new HoaDonNhapHangModel(maNhaCungCap, maPhieu, nguoiTao, thoiGianTao, ChiTietHoaDonNhapHangDAO.getInstance().selectAll(maPhieu), tongTien, ghiChu);
