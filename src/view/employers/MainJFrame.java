@@ -853,6 +853,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void ChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangeActionPerformed
         // TODO add your handling code here:
+        SuaTTCaNhan cp = new SuaTTCaNhan(this, rootPaneCheckingEnabled, getCurrentAcc());
+        cp.setVisible(true);
         
     }//GEN-LAST:event_ChangeActionPerformed
 

@@ -9,7 +9,6 @@ import dao.ChiTietHoaDonNhapHangDAO;
 import dao.HoaDonNhapHangDAO;
 import dao.NhaCungCapDAO;
 import dao.NhanVienDAO;
-import dao.TTDangNhapDAO;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,14 +27,10 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import model.ChiTietHoaDonModel;
 import model.HoaDonNhapHangModel;
-import model.TTDangNhapModel;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -48,6 +43,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
     private DefaultTableModel tblModel;
+    private static ArrayList<HoaDonNhapHangModel> res;
     DecimalFormat formatter = new DecimalFormat("###,###,###");
     SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/YYYY HH:mm");
     
@@ -63,8 +59,8 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
         initComponents();
         tblPhieuNhap.setDefaultEditor(Object.class, null);
         initTable();
-        loadDataToTable();
-        changeTextFind();
+        res = HoaDonNhapHangDAO.getInstance().selectAll();
+        loadDataToTableSearch(res);
         jDateChooserFrom.setDateFormatString("dd/MM/yyyy");
         jDateChooserTo.setDateFormatString("dd/MM/yyyy");
         
@@ -110,28 +106,6 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
         }
     }
     
-    public void changeTextFind() {
-        jTextFieldSearch.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                /* do nothing */
-            if (jTextFieldSearch.getText().length() == 0) {
-                    loadDataToTable();
-                }
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-
-            }
-        });
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,7 +122,7 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
         jTextFieldSearch = new javax.swing.JTextField();
         btnDetail = new javax.swing.JButton();
         btnExportExcel = new javax.swing.JButton();
-        btnSua1 = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jDateChooserFrom = new com.toedter.calendar.JDateChooser();
@@ -200,6 +174,12 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
             }
         });
 
+        jTextFieldSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldSearchKeyReleased(evt);
+            }
+        });
+
         btnDetail.setBackground(new java.awt.Color(32, 178, 170));
         btnDetail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnDetail.setForeground(new java.awt.Color(255, 255, 255));
@@ -215,13 +195,19 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
         btnExportExcel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnExportExcel.setForeground(new java.awt.Color(255, 255, 255));
         btnExportExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconexcel1.png"))); // NOI18N
-        btnExportExcel.setText("Xuất file Excel");
+        btnExportExcel.setText("Xuất Excel");
+       
 
-        btnSua1.setBackground(new java.awt.Color(32, 178, 170));
-        btnSua1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnSua1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSua1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconlammoi2.png"))); // NOI18N
-        btnSua1.setText("Làm mới");
+        btnReset.setBackground(new java.awt.Color(32, 178, 170));
+        btnReset.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnReset.setForeground(new java.awt.Color(255, 255, 255));
+        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconlammoi2.png"))); // NOI18N
+        btnReset.setText("Làm mới");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
@@ -229,6 +215,28 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(32, 178, 170));
         jLabel2.setText("Từ:");
+
+        jDateChooserFrom.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDateChooserFromPropertyChange(evt);
+            }
+        });
+        jDateChooserFrom.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jDateChooserFromKeyReleased(evt);
+            }
+        });
+
+        jDateChooserTo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDateChooserToPropertyChange(evt);
+            }
+        });
+        jDateChooserTo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jDateChooserToKeyReleased(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 178, 170));
@@ -288,9 +296,21 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
         jLabel5.setForeground(new java.awt.Color(32, 178, 170));
         jLabel5.setText("Từ:");
 
+        giaTu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                giaTuKeyReleased(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(32, 178, 170));
         jLabel6.setText("Đến:");
+
+        giaDen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                giaDenKeyReleased(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(32, 178, 170));
@@ -351,9 +371,9 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSua1))
+                        .addComponent(btnReset))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,7 +384,7 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBoxLuaChon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSua1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -447,7 +467,7 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
     private void btnDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailActionPerformed
         // TODO add your handling code here:
         if (tblPhieuNhap.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn phiếu !");
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn hoá đơn cần xem !");
         } else {
             XemCTPN a = new XemCTPN(this, (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
             a.setVisible(true);
@@ -457,7 +477,7 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
 //        // TODO add your handling code here:
         if (tblPhieuNhap.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn phiếu cần sửa");
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn hoá đơn cần sửa");
         } else {
             try {
                 SuaPN a = new SuaPN(this, (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
@@ -504,7 +524,7 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
         }
     }//GEN-LAST:event_btnExportExcelActionPerformed
 
-    private void btnSua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua1ActionPerformed
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
         loadDataToTable();
         jComboBoxLuaChon.setSelectedIndex(0);
@@ -513,7 +533,7 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
         jDateChooserTo.setCalendar(null);
         giaDen.setText("");
         giaTu.setText("");
-    }//GEN-LAST:event_btnSua1ActionPerformed
+    }//GEN-LAST:event_btnResetActionPerformed
 
     private void jTextFieldSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchKeyReleased
         // TODO add your handling code here:
@@ -522,12 +542,11 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
 
     private void jDateChooserToKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateChooserToKeyReleased
         // TODO add your handling code here:
-        searchAllRepect();
     }//GEN-LAST:event_jDateChooserToKeyReleased
 
     private void jDateChooserFromKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateChooserFromKeyReleased
         // TODO add your handling code here:
-        searchAllRepect();
+        
     }//GEN-LAST:event_jDateChooserFromKeyReleased
 
     private void giaTuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_giaTuKeyReleased
@@ -539,6 +558,16 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
         // TODO add your handling code here:
         searchAllRepect();
     }//GEN-LAST:event_giaDenKeyReleased
+
+    private void jDateChooserFromPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooserFromPropertyChange
+        // TODO add your handling code here:
+        searchAllRepect();
+    }//GEN-LAST:event_jDateChooserFromPropertyChange
+
+    private void jDateChooserToPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooserToPropertyChange
+        // TODO add your handling code here:
+        searchAllRepect();
+    }//GEN-LAST:event_jDateChooserToPropertyChange
 
     private void openFile(String file) {
         try {
@@ -581,22 +610,14 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
     public void searchAllRepect() {
         String luaChon = jComboBoxLuaChon.getSelectedItem().toString();
         String content = jTextFieldSearch.getText();
-        ArrayList<HoaDonNhapHangModel> result = null;
+        ArrayList<HoaDonNhapHangModel> result = new ArrayList<>();
         if (content.length() > 0) {
             result = new ArrayList<>();
             switch (luaChon) {
-                case "Tất cả":
-                    result = TimHDNH.getInstance().searchTatCa(content);
-                    break;
-                case "Mã hoá đơn":
-                    result = TimHDNH.getInstance().searchMaPhieuNhap(content);
-                    break;
-                case "Nhà cung cấp":
-                    result = TimHDNH.getInstance().searchNhaCungCap(content);
-                    break;
-                case "Người tạo":
-                    result = TimHDNH.getInstance().searchNguoiTao(content);
-                    break;
+                case "Tất cả" -> result = TimHDNH.getInstance().searchTatCa(content);
+                case "Mã hoá đơn" -> result = TimHDNH.getInstance().searchMaPhieuNhap(content);
+                case "Nhà cung cấp" -> result = TimHDNH.getInstance().searchNhaCungCap(content);
+                case "Người tạo" -> result = TimHDNH.getInstance().searchNguoiTao(content);
             }
         } else if (content.length() == 0) {
             result = HoaDonNhapHangDAO.getInstance().selectAll();
@@ -618,9 +639,9 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
                 } catch (ParseException ex) {
                     Logger.getLogger(HoaDonNH.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else if (jDateChooserTo.getDate() != null && jDateChooserFrom.getDate() == null) {
+            } else if (jDateChooserFrom.getDate() == null && jDateChooserTo.getDate() != null) {
                 try {
-                    String sDate1 = "01/01/2002";
+                    String sDate1 = "01/01/2004";
                     from = ChangeFrom(new SimpleDateFormat("dd/MM/yyyy").parse(sDate1));
                     to = ChangeTo(jDateChooserTo.getDate());
                     while (itr.hasNext()) {
@@ -665,7 +686,7 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
                         result1.add(result.get(i));
                     }
                 }
-            } else if (giaTu.getText().length() == 0 && giaDen.getText().length() > 0) {;
+            } else if (giaTu.getText().length() == 0 && giaDen.getText().length() > 0) {
                 b = Double.parseDouble(giaDen.getText());
                 for (int i = 0; i < result.size(); i++) {
                     if (result.get(i).getTongTien() <= b) {
@@ -711,7 +732,7 @@ public class HoaDonNH extends javax.swing.JPanel implements ActionListener{
     private javax.swing.JButton btnDetail;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExportExcel;
-    private javax.swing.JButton btnSua1;
+    private javax.swing.JButton btnReset;
     private javax.swing.JTextField giaDen;
     private javax.swing.JTextField giaTu;
     private javax.swing.JComboBox<String> jComboBoxLuaChon;
