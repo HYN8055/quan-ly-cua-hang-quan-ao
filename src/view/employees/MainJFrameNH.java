@@ -5,7 +5,7 @@
 package view.employees;
 
 
-import bean.employees.DanhMucBean;
+//import bean.employees.DanhMucBean;
 import java.awt.BorderLayout;
 import java.awt.Color;
 //import controller.emplyees.ChuyenManHinhController;
