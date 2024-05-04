@@ -335,12 +335,16 @@ public class BanHang extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(32, 178, 170));
         jLabel5.setText("Người tạo");
 
+        txtNhanVien.setEditable(false);
+        txtNhanVien.setBackground(new java.awt.Color(255, 255, 255));
         txtNhanVien.setEnabled(false);
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(32, 178, 170));
         jLabel6.setText("Số điện thoại");
 
+        txtMaPhieu.setEditable(false);
+        txtMaPhieu.setBackground(new java.awt.Color(255, 255, 255));
         txtMaPhieu.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N

@@ -4,16 +4,26 @@
  */
 package view.employees;
 
+
+//import bean.employees.DanhMucBean;
+//import controller.emplyees.ChuyenManHinhController;
+
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+
+import view.employers.BanHang;
+import view.employers.HoaDonBH;
+
 import javax.swing.JOptionPane;
 import model.TTDangNhapModel;
 import view.employers.BanHang;
 import view.employers.DangNhap;
 import view.employers.HoaDonBH;
 import view.employers.SuaTTCaNhan;
+
 import view.employers.TrangChu;
 
 /**
@@ -51,6 +61,10 @@ public class MainJFrameBH extends javax.swing.JFrame {
         TrangChu trangChu = new TrangChu();
         jpnView.add(trangChu);
         jpnView.repaint();
+
+        jpnView.revalidate();
+   
+
         jpnView.revalidate();   
         
         jpnTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -87,7 +101,7 @@ public class MainJFrameBH extends javax.swing.JFrame {
             
         }
     });
-        
+
         jpnBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
         @Override
         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -97,7 +111,9 @@ public class MainJFrameBH extends javax.swing.JFrame {
             jpnView.removeAll();
             jpnView.setLayout(new BorderLayout());
             BanHang banhang = new BanHang();
+
             banhang.setNguoiTao(currentAcc.getMaNV());
+
             jpnView.add(banhang);
             jpnView.repaint();
             jpnView.revalidate();
@@ -123,7 +139,7 @@ public class MainJFrameBH extends javax.swing.JFrame {
             
         }
     });
-        
+
         jpnHoaDonBH.addMouseListener(new java.awt.event.MouseAdapter() {
         @Override
         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -158,7 +174,7 @@ public class MainJFrameBH extends javax.swing.JFrame {
             
         }
     });
-        
+
     }
    
     

@@ -63,7 +63,11 @@ public class MainJFrame extends javax.swing.JFrame {
             jlbTrangChu.setBackground(new Color(125,125,125));
                
         }
-
+        public void jpnTrangChuMousePressed(java.awt.event.MouseEvent evt) {
+            jpnTrangChu.setBackground(new Color(125,125,125));
+            jlbTrangChu.setBackground(new Color(125,125,125));
+               
+        }
         @Override
         public void mouseEntered(java.awt.event.MouseEvent evt) {
             jpnTrangChu.setBackground(new Color(255, 255, 255));
@@ -191,7 +195,7 @@ public class MainJFrame extends javax.swing.JFrame {
             jpnView.setLayout(new BorderLayout());
             NhapHang nhaphang = new NhapHang();
             jpnView.add(nhaphang);
-            nhaphang.setNguoiNhapHang(currentAcc.getMaNV());
+            //nhaphang.setNguoiNhapHang(currentAcc.getMaNV());
             jpnView.repaint();
             jpnView.revalidate();
              
@@ -490,7 +494,7 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         jpnTrangChu.setBackground(new java.awt.Color(255, 255, 255));
-
+        
 
         jlbTrangChu.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jlbTrangChu.setText("TRANG CHỦ");
@@ -689,8 +693,7 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         jpnBanHang.setBackground(new java.awt.Color(255, 255, 255));
-       
-
+        
         jlbBanHang.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jlbBanHang.setText("BÁN HÀNG");
 
@@ -808,7 +811,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 524, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -873,8 +876,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void ChangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChangeMouseClicked
         // TODO add your handling code here:
-        SuaTTCaNhan cp = new SuaTTCaNhan(this, rootPaneCheckingEnabled, getCurrentAcc());
-        cp.setVisible(true);
+        //SuaTTCaNhan cp = new SuaTTCaNhan(this, rootPaneCheckingEnabled, getCurrentAcc());
+        //cp.setVisible(true);
     }//GEN-LAST:event_ChangeMouseClicked
 
     public static void main(String args[]) {
