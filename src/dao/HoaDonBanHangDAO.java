@@ -49,8 +49,8 @@ public class HoaDonBanHangDAO implements DAOInterface<HoaDonBanHangModel> {
             Connection con = OracleJDBCConnection.getJDBCConnection();
             String sql = "UPDATE HOADON SET manv='" + t.getNguoiTao() 
                     + "',tenkh='" + t.getTenKH() + "', sdt='" + t.getSdt()
-                    + "', ngayin='" + t.getThoiGianTao() + "', tongtien=" + t.getTongTien()
-                    + ", ghichu='" + t.getGhiChu() + "' WHERE mahd=" + t.getMaHD() + "'";
+                    + "', ngayin=TO_DATE('" + t.getThoiGianTao() + "','YYYY-MM-DD'), tongtien=" + t.getTongTien()
+                    + ", ghichu='" + t.getGhiChu() + "' WHERE mahd='" + t.getMaHD() + "'";
             PreparedStatement pst = con.prepareStatement(sql);
             
             ketQua = pst.executeUpdate();

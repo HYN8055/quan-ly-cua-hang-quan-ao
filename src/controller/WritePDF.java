@@ -23,6 +23,7 @@ import dao.SanPhamDAO;
 import dao.NhaCungCapDAO;
 import dao.HoaDonBanHangDAO;
 import dao.HoaDonNhapHangDAO;
+import dao.NhanVienDAO;
 import java.awt.Desktop;
 import java.awt.FileDialog;
 import java.awt.Point;
@@ -41,6 +42,7 @@ import model.ChiTietHoaDonModel;
 import model.SanPhamModel;
 import model.HoaDonBanHangModel;
 import model.HoaDonNhapHangModel;
+import view.employers.NhanVien;
 
 
 public class WritePDF {
@@ -115,7 +117,7 @@ public class WritePDF {
     public void writePhieuNhap(String mapn) {
         String url = "";
         try {
-            fd.setTitle("In phiếu nhập");
+            fd.setTitle("In hoá đơn nhập hàng");
             fd.setLocationRelativeTo(null);
             url = getFile(mapn);
             if (url == null) {
@@ -126,25 +128,22 @@ public class WritePDF {
             PdfWriter writer = PdfWriter.getInstance(document, file);
             document.open();
 
-            setTitle("THÔNG TIN PHIẾU NHẬP");
+            setTitle("THÔNG TIN HOÁ ĐƠN NHẬP HÀNG");
 
             HoaDonNhapHangModel pn = HoaDonNhapHangDAO.getInstance().selectById(mapn);
 
-            Chunk glue = new Chunk(new VerticalPositionMark());// Khoang trong giua hang
-            Paragraph para1 = new Paragraph();
-            para1.setFont(fontData);
-            para1.add("Mã hoá đơn: " + pn.getMaHD());
-            para1.add("\nThời gian tạo: " + formatDate.format(pn.getThoiGianTao()));
+            Paragraph para1 = new Paragraph(new Phrase("Mã hoá đơn: " + mapn, fontData));
+            Paragraph para2 = new Paragraph(new Phrase("Thời gian tạo: " + formatDate.format(pn.getThoiGianTao()), fontData));
+            Paragraph para3 = new Paragraph(new Phrase("Người tạo: " + NhanVienDAO.getInstance().selectById(pn.getNguoiTao()).getMaNV(), fontData));
+            Paragraph para4 = new Paragraph (new Phrase("Ghi chú: " + pn.getGhiChu(), fontData));
             para1.setIndentationLeft(40);
-            Paragraph para2 = new Paragraph();
-            para2.setPaddingTop(30);
-            para2.setFont(fontData);
-            para2.add(String.valueOf("Người tạo: " + TTDangNhapDAO.getInstance().selectById(pn.getNguoiTao()).getMaNV()));
-            para2.add(String.valueOf("\nNhà cung cấp: " + NhaCungCapDAO.getInstance().selectById(pn.getNhaCungCap()).getTenNCC()+ "  -  " + pn.getNhaCungCap()));
-            para2.add(String.valueOf("\nGhi chú: " + pn.getGhiChu()));
             para2.setIndentationLeft(40);
+            para3.setIndentationLeft(40);
+            para4.setIndentationLeft(40);
             document.add(para1);
             document.add(para2);
+            document.add(para3);
+            document.add(para4);
             document.add(Chunk.NEWLINE);//add hang trong de tao khoang cach
 
             //Tao table cho cac chi tiet cua hoa don
@@ -157,7 +156,7 @@ public class WritePDF {
             pdfTable.addCell(new PdfPCell(new Phrase("Tên sản phẩm", fontHeader)));
             pdfTable.addCell(new PdfPCell(new Phrase("Đơn giá", fontHeader)));
             pdfTable.addCell(new PdfPCell(new Phrase("Số lượng", fontHeader)));
-            pdfTable.addCell(new PdfPCell(new Phrase("Tổng tiền", fontHeader)));
+            pdfTable.addCell(new PdfPCell(new Phrase("Thành tiền", fontHeader)));
 
             for (int i = 0; i < 5; i++) {
                 cell = new PdfPCell(new Phrase(""));
@@ -169,19 +168,17 @@ public class WritePDF {
                 SanPhamModel sp = SanPhamDAO.getInstance().selectById(ctpn.getMaSP());
                 pdfTable.addCell(new PdfPCell(new Phrase(ctpn.getMaSP(), fontData)));
                 pdfTable.addCell(new PdfPCell(new Phrase(sp.getTenSP(), fontData)));
-                pdfTable.addCell(new PdfPCell(new Phrase(formatter.format(sp.getGiabanSP()) + "đ", fontData)));
+                pdfTable.addCell(new PdfPCell(new Phrase(formatter.format(sp.getGianhapSP()) + "đ", fontData)));
                 pdfTable.addCell(new PdfPCell(new Phrase(String.valueOf(ctpn.getSoLuong()), fontData)));
-                pdfTable.addCell(new PdfPCell(new Phrase(formatter.format(ctpn.getSoLuong() * sp.getGiabanSP()) + "đ", fontData)));
+                pdfTable.addCell(new PdfPCell(new Phrase(formatter.format(ctpn.getSoLuong() * sp.getGianhapSP()) + "đ", fontData)));
             }
-
             document.add(pdfTable);
             document.add(Chunk.NEWLINE);
-
             Paragraph paraTongThanhToan = new Paragraph(new Phrase("Tổng thanh toán: " + formatter.format(pn.getTongTien()) + "đ", fontData));
             paraTongThanhToan.setIndentationLeft(300);
             document.add(paraTongThanhToan);
             document.close();
-            JOptionPane.showMessageDialog(null, "Ghi file thành công " + url);
+            JOptionPane.showMessageDialog(null, "Ghi file thành công: " + url);
             openFile(url);
 
         } catch (DocumentException | FileNotFoundException ex) {
@@ -201,7 +198,7 @@ public class WritePDF {
     public void writePhieuXuat(String mapx) {
         String url = "";
         try {
-            fd.setTitle("In phiếu Xuất");
+            fd.setTitle("In hoá đơn bán hàng");
             fd.setLocationRelativeTo(null);
             url = getFile(mapx);
             if (url == null) {
@@ -212,16 +209,16 @@ public class WritePDF {
             PdfWriter writer = PdfWriter.getInstance(document, file);
             document.open();
 
-            setTitle("THÔNG TIN PHIẾU XUẤT");
+            setTitle("THÔNG TIN HOÁ ĐƠN BÁN HÀNG");
 
             HoaDonBanHangModel px = HoaDonBanHangDAO.getInstance().selectById(mapx);
 
             Paragraph para1 = new Paragraph(new Phrase("Mã hoá đơn: " + mapx, fontData));
             Paragraph para2 = new Paragraph(new Phrase("Thời gian tạo: " + formatDate.format(px.getThoiGianTao()), fontData));
-            Paragraph para3 = new Paragraph(new Phrase("Người tạo: " + TTDangNhapDAO.getInstance().selectById(px.getNguoiTao()).getMaNV(), fontData));
-            Paragraph para4 = new Paragraph (new Phrase("Tên khách hàng: " + px.getTenKH()));
-            Paragraph para5 = new Paragraph (new Phrase("Số điện thoại: " + px.getSdt()));
-            Paragraph para6 = new Paragraph (new Phrase("Ghi chú: " + px.getGhiChu()));
+            Paragraph para3 = new Paragraph(new Phrase("Người tạo: " + NhanVienDAO.getInstance().selectById(px.getNguoiTao()).getMaNV(), fontData));
+            Paragraph para4 = new Paragraph (new Phrase("Tên khách hàng: " + px.getTenKH(), fontData));
+            Paragraph para5 = new Paragraph (new Phrase("Số điện thoại: " + px.getSdt(), fontData));
+            Paragraph para6 = new Paragraph (new Phrase("Ghi chú: " + px.getGhiChu(), fontData));
             para1.setIndentationLeft(40);
             para2.setIndentationLeft(40);
             para3.setIndentationLeft(40);
@@ -246,7 +243,7 @@ public class WritePDF {
             pdfTable.addCell(new PdfPCell(new Phrase("Tên sản phẩm", fontHeader)));
             pdfTable.addCell(new PdfPCell(new Phrase("Đơn giá", fontHeader)));
             pdfTable.addCell(new PdfPCell(new Phrase("Số lượng", fontHeader)));
-            pdfTable.addCell(new PdfPCell(new Phrase("Tổng tiền", fontHeader)));
+            pdfTable.addCell(new PdfPCell(new Phrase("Thành tiền", fontHeader)));
 
             for (int i = 0; i < 5; i++) {
                 cell = new PdfPCell(new Phrase(""));

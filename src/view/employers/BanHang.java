@@ -581,7 +581,9 @@ public class BanHang extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (CTHD.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn sản phẩm để bán hàng !","Cảnh báo", JOptionPane.WARNING_MESSAGE);
-        } else {
+        } else if(txtGhiChu.getText().equals("") || txtKH.getText().equals("")|| txtSdt.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin phiếu nhập hàng!", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+        } else  {
             int check = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn tạo đơn hàng ?", "Xác nhận tạo đơn hàng", JOptionPane.YES_NO_OPTION);
             if (check == JOptionPane.YES_OPTION) {
                 // Lay thoi gian hien tai
@@ -596,14 +598,12 @@ public class BanHang extends javax.swing.JPanel {
                         ChiTietHoaDonBanHangDAO.getInstance().insert(i);
                         spdao.updateSoLuong(spdao.selectById(i.getMaSP()), i.getMaSP(), spdao.selectById(i.getMaSP()).getSoLuongSP()- i.getSoLuong());
                     }
-
-                    
                     JOptionPane.showMessageDialog(this, "Tạo đơn hàng thành công !");
-//                    int res = JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất file pdf ?");
-//                    if (res == JOptionPane.YES_OPTION) {
-//                        WritePDF writepdf = new WritePDF();
-//                        writepdf.writePhieuXuat(MaPhieu);
-//                    }
+                    int res = JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất file pdf ?");
+                    if (res == JOptionPane.YES_OPTION) {
+                        WritePDF writepdf = new WritePDF();
+                        writepdf.writePhieuXuat(MaPhieu);
+                    }
                     allProduct = SanPhamDAO.getInstance().selectAll();
                     loadDataToTableProduct(allProduct);
                     DefaultTableModel l = (DefaultTableModel) tblBanHang.getModel();

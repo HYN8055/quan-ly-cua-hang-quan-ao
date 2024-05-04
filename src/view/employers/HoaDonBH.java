@@ -341,8 +341,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -379,8 +378,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         if (tblPhieuXuat.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn hoá đơn cần xem !");
         } else {
-            JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(HoaDonBH.this);
-            XemCTPX dialog = new XemCTPX(parentFrame, true);
+            XemCTPX dialog = new XemCTPX(this, (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
             dialog.setVisible(true);
         }
     }//GEN-LAST:event_btnDetailActionPerformed
@@ -401,9 +399,13 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         if (tblPhieuXuat.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn hoá đơn cần sửa");
         } else {
-            JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(HoaDonBH.this);
-            SuaPX dialog = new SuaPX(parentFrame, true);
-            dialog.setVisible(true);
+            SuaPX dialog;
+            try {
+                dialog = new SuaPX(this, (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+                dialog.setVisible(true);
+            } catch (UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(HoaDonBH.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
@@ -450,22 +452,22 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
 
     private void giaTuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_giaTuKeyReleased
         // TODO add your handling code here:
-        //searchAllCheck();
+        searchAllCheck();
     }//GEN-LAST:event_giaTuKeyReleased
 
     private void giaDenKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_giaDenKeyReleased
         // TODO add your handling code here:
-        //searchAllCheck();
+        searchAllCheck();
     }//GEN-LAST:event_giaDenKeyReleased
 
     private void jTextFieldSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchKeyReleased
         // TODO add your handling code here:
-        //searchAllCheck();
+        searchAllCheck();
     }//GEN-LAST:event_jTextFieldSearchKeyReleased
 
     private void jDateChooserFromPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooserFromPropertyChange
         // TODO add your handling code here:
-        //searchAllCheck();
+        searchAllCheck();
     }//GEN-LAST:event_jDateChooserFromPropertyChange
 
     private void jDateChooserToPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooserToPropertyChange
@@ -492,7 +494,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         }
     }
 
-    private void loadDataToTableArr(ArrayList<HoaDonBanHangModel> allPhieu) {
+    public void loadDataToTableArr(ArrayList<HoaDonBanHangModel> allPhieu) {
         try {
             tblModel.setRowCount(0);
             for (int i = 0; i < allPhieu.size(); i++) {

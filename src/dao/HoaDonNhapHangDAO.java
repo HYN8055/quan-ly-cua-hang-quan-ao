@@ -49,10 +49,10 @@ public class HoaDonNhapHangDAO implements DAOInterface<HoaDonNhapHangModel> {
             Connection con = OracleJDBCConnection.getJDBCConnection();
             String sql = "UPDATE PHIEUNHAPHANG SET manv='" + t.getNguoiTao()
                     + "', mancc='" + t.getNhaCungCap() 
-                    + "', ngaytao='" + t.getThoiGianTao()
-                    + "', tongtien=" + t.getTongTien()
+                    + "', ngaytao=TO_DATE('" + t.getThoiGianTao() + "','YYYY-MM-DD'), tongtien=" 
+                    + t.getTongTien()
                     + ", ghichu='" + t.getGhiChu()
-                    + "WHERE mapnh='" + t.getMaHD() + "'";
+                    + "' WHERE mapnh='" + t.getMaHD() + "'";
             PreparedStatement pst = con.prepareStatement(sql);
             ketQua = pst.executeUpdate();
             OracleJDBCConnection.closeConnection(con);

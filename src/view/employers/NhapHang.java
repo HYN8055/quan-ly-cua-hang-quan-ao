@@ -544,6 +544,8 @@ public class NhapHang extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (CTHD.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn sản phẩm để tạo phiếu nhập hàng!", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+        } else if(txtGhiChu.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin phiếu nhập hàng!", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
         } else {
             int check = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn tạo phiếu nhập hàng?", "Xác nhận tạo phiếu nhập hàng", JOptionPane.YES_NO_OPTION);
             if (check == JOptionPane.YES_OPTION) {
@@ -562,10 +564,10 @@ public class NhapHang extends javax.swing.JPanel {
                         }
 
                     JOptionPane.showMessageDialog(this, "Tạo phiếu nhập hàng thành công !");
-//                    int res = JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất file pdf ?");
-//                    if (res == JOptionPane.YES_OPTION) {
-//                        WritePDF writepdf = new WritePDF();
-//                        writepdf.writePhieuXuat(MaPhieu);
+                    int res = JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất file pdf ?");
+                    if (res == JOptionPane.YES_OPTION) {
+                        WritePDF writepdf = new WritePDF();
+                        writepdf.writePhieuNhap(MaPhieu);
                     }
                     allProduct = SanPhamDAO.getInstance().selectAll();
                     loadDataToTableProduct(allProduct);
@@ -577,6 +579,7 @@ public class NhapHang extends javax.swing.JPanel {
                     txtGhiChu.setText("");
                     this.MaPhieu = createId(HoaDonNhapHangDAO.getInstance().selectAll());
                     txtMaPhieu.setText(this.MaPhieu);
+                    }
                 } catch (Exception e) {
                     JOptionPane.showConfirmDialog(this, "Đã xảy ra lỗi !");
                 }
@@ -695,9 +698,9 @@ public class NhapHang extends javax.swing.JPanel {
                 for (int row = 1; row <= excelSheet.getLastRowNum(); row++) {
                     XSSFRow excelRow = excelSheet.getRow(row);
                     String maPhieu = txtMaPhieu.getText();
-                    String maSanPham = excelRow.getCell(1).getStringCellValue();
-                    String tenSanPham = excelRow.getCell(2).getStringCellValue();
-                    int soLuong = (int) (excelRow.getCell(3).getNumericCellValue());
+                    String maSanPham = excelRow.getCell(0).getStringCellValue();
+                    String tenSanPham = excelRow.getCell(1).getStringCellValue();
+                    int soLuong = (int) (excelRow.getCell(2).getNumericCellValue());
                     double donGia = SanPhamDAO.getInstance().selectById(maSanPham).getGianhapSP();
                     
                     ChiTietHoaDonModel ctpnew = new ChiTietHoaDonModel(maPhieu, maSanPham, soLuong, donGia, donGia*soLuong);

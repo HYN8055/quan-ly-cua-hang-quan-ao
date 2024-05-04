@@ -60,24 +60,24 @@
                           <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnDetail" min="-2" pref="155" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnExportExcel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jTextField4" min="-2" pref="163" max="-2" attributes="0"/>
+                          <Component id="giaTu" min="-2" pref="163" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jTextField5" min="-2" pref="163" max="-2" attributes="0"/>
+                          <Component id="giaDen" min="-2" pref="163" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="jComboBox1" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="jComboBoxLuaChon" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jTextFieldSearch" min="-2" pref="186" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -95,9 +95,8 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jComboBox1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="jComboBoxLuaChon" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="jTextFieldSearch" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="btnExportExcel" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="btnSua1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -107,6 +106,7 @@
                               <Component id="btnDelete" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="btnEdit" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="btnDetail" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="btnExportExcel" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -117,9 +117,9 @@
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField4" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="giaTu" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField5" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="giaDen" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="jDateChooserTo" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -183,7 +183,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="jComboBoxLuaChon">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="aa" green="b2" red="20" type="rgb"/>
@@ -197,20 +197,23 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
                 <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
-                <StringItem index="1" value="M&#xe3; ho&#xe1; &#x111;&#x1a1;n nh&#x1ead;p"/>
+                <StringItem index="1" value="M&#xe3; ho&#xe1; &#x111;&#x1a1;n"/>
                 <StringItem index="2" value="Ng&#x1b0;&#x1edd;i t&#x1ea1;o"/>
                 <StringItem index="3" value="Nh&#xe0; cung c&#x1ea5;p"/>
               </StringArray>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxLuaChonActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldSearch">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSearchKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDetail">
           <Properties>
@@ -248,6 +251,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t file Excel"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExportExcelActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnSua1">
           <Properties>
@@ -265,6 +271,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="L&#xe0;m m&#x1edb;i"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSua1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -310,7 +319,10 @@
             <Property name="text" type="java.lang.String" value="T&#x1eeb;:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField4">
+        <Component class="javax.swing.JTextField" name="giaTu">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="giaTuKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -323,7 +335,10 @@
             <Property name="text" type="java.lang.String" value="&#x110;&#x1ebf;n:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField5">
+        <Component class="javax.swing.JTextField" name="giaDen">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="giaDenKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -337,8 +352,14 @@
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserFrom">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jDateChooserFromKeyReleased"/>
+          </Events>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserTo">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jDateChooserToKeyReleased"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
