@@ -17,6 +17,22 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class MainJFrame extends javax.swing.JFrame {
 
     private TTDangNhapModel currentAcc;
+    public JPanel selectedPanel; 
+    public void setPanelBackground(JPanel panel, boolean isSelected) {
+        if (isSelected) {
+            panel.setBackground(Color.WHITE); // Thiết lập màu nền trắng khi được chọn
+        } else {
+            panel.setBackground(new Color(152, 205, 205)); // Màu nền mặc định khi không được chọn
+        }
+    }
+    
+    public void selectPanel(JPanel panel) {
+        if (selectedPanel != null) {
+            setPanelBackground(selectedPanel, false); // Đặt màu nền trở lại mặc định cho panel trước
+        }
+        selectedPanel = panel; // Đặt panel mới là panel được chọn
+        setPanelBackground(selectedPanel, true); // Thiết lập màu nền trắng cho panel mới
+    }
     
     public TTDangNhapModel getCurrentAcc() {
         return currentAcc;
@@ -55,7 +71,8 @@ public class MainJFrame extends javax.swing.JFrame {
             jpnView.add(trangChu);
             jpnView.repaint();
             jpnView.revalidate();
-             
+            
+
         }
         @Override
         public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -93,7 +110,8 @@ public class MainJFrame extends javax.swing.JFrame {
             jpnView.add(sanpham);
             jpnView.repaint();
             jpnView.revalidate();
-             
+            
+            selectPanel(jpnSanPham);
         }
         @Override
         public void mousePressed(java.awt.event.MouseEvent evt) {
