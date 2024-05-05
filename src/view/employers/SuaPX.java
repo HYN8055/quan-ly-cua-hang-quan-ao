@@ -560,11 +560,11 @@ public class SuaPX extends javax.swing.JDialog {
             // Set so luong san pham cua tung loai ve ban dau   
             SanPhamDAO spdao = SanPhamDAO.getInstance();
             for (var ct : CTHDOld) {
-                spdao.updateSoLuong(spdao.selectById(ct.getMaSP()), ct.getMaSP(), spdao.selectById(ct.getMaSP()).getSoLuongSP()+ ct.getSoLuong());
+                spdao.updateSoLuong(ct.getMaSP(), spdao.selectById(ct.getMaSP()).getSoLuongSP()+ ct.getSoLuong());
                 System.out.println(ct.getSoLuong());
             }
             for (var ct : CTHD) {
-                spdao.updateSoLuong(spdao.selectById(ct.getMaSP()), ct.getMaSP(), spdao.selectById(ct.getMaSP()).getSoLuongSP() - ct.getSoLuong());
+                spdao.updateSoLuong(ct.getMaSP(), spdao.selectById(ct.getMaSP()).getSoLuongSP() - ct.getSoLuong());
                 System.out.println(ct.getSoLuong());
             }
             // Lay thoi gian hien tai

@@ -46,7 +46,7 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
             tblModel.setRowCount(0);
             for (TTDangNhapModel i : ttdn) {
                 tblModel.addRow(new Object[]{
-                    i.getMaNV(), i.getUser(),i.getPassword(), i.getEmail(), i.getRole()
+                    i.getMaNV(), i.getUser(), i.getEmail(), i.getRole()
                 });
             }
         } catch (Exception e) {
@@ -65,7 +65,7 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
     }
     public final void initTable() {
         tblModel = new DefaultTableModel();
-        String[] headerTbl = new String[]{"Mã nhân viên", "Tên đăng nhập","Mật khẩu", "Email", "Vai trò"};
+        String[] headerTbl = new String[]{"Mã nhân viên", "Tên đăng nhập", "Email", "Vai trò"};
         tblModel.setColumnIdentifiers(headerTbl);
         jTable_TTDangNhap.setModel(tblModel);
         jTable_TTDangNhap.getColumnModel().getColumn(0).setPreferredWidth(1);

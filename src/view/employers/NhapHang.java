@@ -560,7 +560,7 @@ public class NhapHang extends javax.swing.JPanel {
                     if(kq > 0) {
                         for (var i : CTHD) {
                             ChiTietHoaDonNhapHangDAO.getInstance().insert(i);
-                            spdao.updateSoLuong(spdao.selectById(i.getMaSP()), i.getMaSP(), spdao.selectById(i.getMaSP()).getSoLuongSP() + i.getSoLuong());
+                            spdao.updateSoLuong(i.getMaSP(), spdao.selectById(i.getMaSP()).getSoLuongSP() + i.getSoLuong());
                         }
 
                     JOptionPane.showMessageDialog(this, "Tạo phiếu nhập hàng thành công !");

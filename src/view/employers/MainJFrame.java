@@ -213,7 +213,7 @@ public class MainJFrame extends javax.swing.JFrame {
             jpnView.setLayout(new BorderLayout());
             NhapHang nhaphang = new NhapHang();
             jpnView.add(nhaphang);
-            //nhaphang.setNguoiNhapHang(currentAcc.getMaNV());
+            nhaphang.setNguoiNhapHang(currentAcc.getMaNV());
             jpnView.repaint();
             jpnView.revalidate();
              

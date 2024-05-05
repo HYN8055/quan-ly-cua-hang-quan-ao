@@ -126,12 +126,12 @@ public class TTDangNhapDAO implements DAOInterface<TTDangNhapModel> {
         return ttdn;
     }
     
-        public int updatePassword(TTDangNhapModel t, String email, String password) {
+        public int updatePassword(String email, String password) {
         int ketQua = 0;
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();
-            String sql = "UPDATE TTDANGNHAP SET matkhau='" + t.getPassword() 
-                    + "' WHERE email='" + t.getEmail();
+            String sql = "UPDATE TTDANGNHAP SET matkhau='" + password
+                    + "' WHERE email='" + email + "'";
             PreparedStatement pst = con.prepareStatement(sql);
 
             ketQua = pst.executeUpdate();

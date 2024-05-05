@@ -419,7 +419,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
             for (ChiTietHoaDonModel i : CTHD) {
                 SanPhamDAO spdao = SanPhamDAO.getInstance();
                 ChiTietHoaDonBanHangDAO.getInstance().delete(i);
-                spdao.updateSoLuong(spdao.selectById(i.getMaSP()), i.getMaSP(), spdao.selectById(i.getMaSP()).getSoLuongSP()+ i.getSoLuong());
+                spdao.updateSoLuong(i.getMaSP(), spdao.selectById(i.getMaSP()).getSoLuongSP()+ i.getSoLuong());
             }
             HoaDonBanHangDAO.getInstance().delete(px);
             JOptionPane.showMessageDialog(this, "Đã xoá thành công hoá đơn " + px.getMaHD());

@@ -21,6 +21,7 @@ public class HoaDonModel {
     public HoaDonModel() {
     }
 
+    
     public HoaDonModel(String maHD, String nguoiTao, Date thoiGianTao, ArrayList<ChiTietHoaDonModel> CTHD, double tongTien, String ghiChu) {
         this.maHD = maHD;
         this.nguoiTao = nguoiTao;
@@ -30,6 +31,23 @@ public class HoaDonModel {
         this.ghiChu = ghiChu;
     }
 
+    public HoaDonModel(String maHD, String nguoiTao, Date thoiGianTao,ArrayList<ChiTietHoaDonModel> CTHD, double tongTien) {
+        this.maHD = maHD;
+        this.nguoiTao = nguoiTao;
+        this.thoiGianTao = thoiGianTao;
+        this.CTHD = CTHD;
+        this.tongTien = tongTien;
+    }
+
+    public HoaDonModel(String maHD, String nguoiTao, Date thoiGianTao, double tongTien) {
+        this.maHD = maHD;
+        this.nguoiTao = nguoiTao;
+        this.thoiGianTao = thoiGianTao;
+        this.tongTien = tongTien;
+    }
+
+    
+    
     public String getMaHD() {
         return maHD;
     }

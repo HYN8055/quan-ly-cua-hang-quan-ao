@@ -600,7 +600,7 @@ public class BanHang extends javax.swing.JPanel {
                     SanPhamDAO spdao = SanPhamDAO.getInstance();
                     for (var i : CTHD) {
                         ChiTietHoaDonBanHangDAO.getInstance().insert(i);
-                        spdao.updateSoLuong(spdao.selectById(i.getMaSP()), i.getMaSP(), spdao.selectById(i.getMaSP()).getSoLuongSP()- i.getSoLuong());
+                        spdao.updateSoLuong(i.getMaSP(), spdao.selectById(i.getMaSP()).getSoLuongSP()- i.getSoLuong());
                     }
                     JOptionPane.showMessageDialog(this, "Tạo đơn hàng thành công !");
                     int res = JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất file pdf ?");

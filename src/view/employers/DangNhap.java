@@ -8,6 +8,7 @@ import dao.TTDangNhapDAO;
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -105,6 +106,11 @@ public class DangNhap extends javax.swing.JDialog implements ActionListener{
                 loginUserActionPerformed(evt);
             }
         });
+        loginUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginUserKeyPressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,6 +147,11 @@ public class DangNhap extends javax.swing.JDialog implements ActionListener{
         passwordUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordUserActionPerformed(evt);
+            }
+        });
+        passwordUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordUserKeyPressed(evt);
             }
         });
 
@@ -233,6 +244,8 @@ public class DangNhap extends javax.swing.JDialog implements ActionListener{
 
     private void btnQuenMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuenMatKhauActionPerformed
         // TODO add your handling code here:
+        DoiMatKhau rcv = new DoiMatKhau(this, rootPaneCheckingEnabled);
+        rcv.setVisible(true);
     }//GEN-LAST:event_btnQuenMatKhauActionPerformed
 
     private void passwordUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordUserActionPerformed
@@ -242,6 +255,20 @@ public class DangNhap extends javax.swing.JDialog implements ActionListener{
     private void loginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginUserActionPerformed
+
+    private void passwordUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordUserKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            checkLogin();
+        }
+    }//GEN-LAST:event_passwordUserKeyPressed
+
+    private void loginUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginUserKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            checkLogin();
+        }
+    }//GEN-LAST:event_loginUserKeyPressed
 
     public void checkLogin() {
         String usercheck = loginUser.getText();

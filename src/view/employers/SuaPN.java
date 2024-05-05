@@ -557,11 +557,11 @@ public class SuaPN extends javax.swing.JDialog {
             // Set so luong san pham cua tung loai ve ban dau   
             SanPhamDAO spdao = SanPhamDAO.getInstance();
             for (var ct : CTPhieuOld) {
-                spdao.updateSoLuong(spdao.selectById(ct.getMaSP()), ct.getMaSP(), spdao.selectById(ct.getMaSP()).getSoLuongSP()- ct.getSoLuong());
+                spdao.updateSoLuong(ct.getMaSP(), spdao.selectById(ct.getMaSP()).getSoLuongSP()- ct.getSoLuong());
                 System.out.println(ct.getSoLuong());
             }
             for (var ct : CTPhieu) {
-                spdao.updateSoLuong(spdao.selectById(ct.getMaSP()), ct.getMaSP(), spdao.selectById(ct.getMaSP()).getSoLuongSP()+ ct.getSoLuong());
+                spdao.updateSoLuong(ct.getMaSP(), spdao.selectById(ct.getMaSP()).getSoLuongSP()+ ct.getSoLuong());
                 System.out.println(ct.getSoLuong());
             }
             // Lay thoi gian hien tai
