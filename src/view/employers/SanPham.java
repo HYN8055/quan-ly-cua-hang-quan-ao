@@ -174,7 +174,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
         btnCTSP.setBackground(new java.awt.Color(32, 178, 170));
         btnCTSP.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnCTSP.setForeground(new java.awt.Color(255, 255, 255));
-        btnCTSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconxem.png"))); // NOI18N
+        btnCTSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/xem.png"))); // NOI18N
         btnCTSP.setText("Xem chi tiết");
         btnCTSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,7 +195,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
                 .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCTSP)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jComboBoxLuaChon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,7 +229,6 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable_SP.setRowHeight(30);
         jTable_SP.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jTable_SP.setShowGrid(true);
         jScrollPane1.setViewportView(jTable_SP);

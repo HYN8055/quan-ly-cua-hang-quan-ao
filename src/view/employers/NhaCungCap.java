@@ -133,7 +133,7 @@ public class NhaCungCap extends javax.swing.JPanel implements ActionListener {
         btnXemCTNCC.setBackground(new java.awt.Color(32, 178, 170));
         btnXemCTNCC.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnXemCTNCC.setForeground(new java.awt.Color(255, 255, 255));
-        btnXemCTNCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconxem.png"))); // NOI18N
+        btnXemCTNCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/xem.png"))); // NOI18N
         btnXemCTNCC.setText("Xem chi tiết");
         btnXemCTNCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

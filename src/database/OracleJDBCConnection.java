@@ -22,7 +22,7 @@ public class OracleJDBCConnection {
                         String password01 = "Huynhyennhi8055";
                         String password02 = "Pthaonhu131104@";
 			//Tao ket noi 
-			c = DriverManager.getConnection(url02, userName, password02);
+			c = DriverManager.getConnection(url01, userName, password01);
 		} catch (Exception e) {
 			// TODO: handle exception
                     JOptionPane.showMessageDialog(null, "Không thể kết nối đến cơ sở dữ liệu !","Lỗi", JOptionPane.ERROR_MESSAGE);

@@ -166,7 +166,7 @@ public class NhanVien extends javax.swing.JPanel {
         btnXemCTNV.setBackground(new java.awt.Color(32, 178, 170));
         btnXemCTNV.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnXemCTNV.setForeground(new java.awt.Color(255, 255, 255));
-        btnXemCTNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconxem.png"))); // NOI18N
+        btnXemCTNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/xem.png"))); // NOI18N
         btnXemCTNV.setText("Xem chi tiết");
         btnXemCTNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

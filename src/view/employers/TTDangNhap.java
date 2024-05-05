@@ -138,7 +138,7 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
         btnXemCTTT.setBackground(new java.awt.Color(32, 178, 170));
         btnXemCTTT.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnXemCTTT.setForeground(new java.awt.Color(255, 255, 255));
-        btnXemCTTT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconxem.png"))); // NOI18N
+        btnXemCTTT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/xem.png"))); // NOI18N
         btnXemCTTT.setText("Xem chi tiết");
         btnXemCTTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,7 +181,7 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
                 .addComponent(btnSua)
                 .addGap(18, 18, 18)
                 .addComponent(btnXemCTTT)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(cbxlLuaChon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(txtSearchForm, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)

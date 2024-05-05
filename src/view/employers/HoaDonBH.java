@@ -153,7 +153,7 @@ public class HoaDonBH extends javax.swing.JPanel implements ActionListener{
         btnDetail.setBackground(new java.awt.Color(32, 178, 170));
         btnDetail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnDetail.setForeground(new java.awt.Color(255, 255, 255));
-        btnDetail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconxem.png"))); // NOI18N
+        btnDetail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/xem.png"))); // NOI18N
         btnDetail.setText("Xem chi tiết");
         btnDetail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
