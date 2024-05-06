@@ -69,10 +69,9 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
         tblModel.setColumnIdentifiers(headerTbl);
         jTable_TTDangNhap.setModel(tblModel);
         jTable_TTDangNhap.getColumnModel().getColumn(0).setPreferredWidth(1);
-        jTable_TTDangNhap.getColumnModel().getColumn(1).setPreferredWidth(100);
+        jTable_TTDangNhap.getColumnModel().getColumn(1).setPreferredWidth(50);
         jTable_TTDangNhap.getColumnModel().getColumn(2).setPreferredWidth(200);
         jTable_TTDangNhap.getColumnModel().getColumn(3).setPreferredWidth(50);
-        jTable_TTDangNhap.getColumnModel().getColumn(4).setPreferredWidth(200);
     }
     
     /**

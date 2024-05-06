@@ -4,18 +4,12 @@
  */
 package dao;
 
-import controller.ConvertDate;
 import database.OracleJDBCConnection;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import model.ThongKeProduct;
 import java.sql.*;
 
-/**
- *
- * @author sinh
- */
 public class ThongKeDAO {
 
     public static ThongKeDAO getInstance() {

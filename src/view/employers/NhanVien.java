@@ -60,8 +60,8 @@ public class NhanVien extends javax.swing.JPanel {
         tblModel.setColumnIdentifiers(headerTbl);
         jTable_NV.setModel(tblModel);
         jTable_NV.getColumnModel().getColumn(0).setPreferredWidth(1);
-        jTable_NV.getColumnModel().getColumn(1).setPreferredWidth(100);
-        jTable_NV.getColumnModel().getColumn(2).setPreferredWidth(200);
+        jTable_NV.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jTable_NV.getColumnModel().getColumn(2).setPreferredWidth(50);
         jTable_NV.getColumnModel().getColumn(3).setPreferredWidth(50);
         jTable_NV.getColumnModel().getColumn(4).setPreferredWidth(200);
     }
