@@ -125,7 +125,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
         jComboBoxLuaChon.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jComboBoxLuaChon.setForeground(new java.awt.Color(255, 255, 255));
         jComboBoxLuaChon.setMaximumRowCount(4);
-        jComboBoxLuaChon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã sản phẩm", "Tên sản phẩm", "Giá Bán", "Số lượng", "Chất liệu", "Kích thước", "Mã NCC", "Xuất xứ" }));
+        jComboBoxLuaChon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã sản phẩm", "Tên sản phẩm", "Giá bán", "Số lượng", "Chất liệu", "Kích thước", "Mã NCC", "Xuất xứ" }));
         jComboBoxLuaChon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxLuaChonActionPerformed(evt);
@@ -195,8 +195,8 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
                 .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCTSP)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jComboBoxLuaChon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jComboBoxLuaChon, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -218,6 +218,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
                 .addGap(30, 30, 30))
         );
 
+        jTable_SP.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTable_SP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -229,6 +230,7 @@ public class SanPham extends javax.swing.JPanel implements ActionListener{
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_SP.setRowHeight(28);
         jTable_SP.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jTable_SP.setShowGrid(true);
         jScrollPane1.setViewportView(jTable_SP);

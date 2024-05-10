@@ -18,7 +18,7 @@ DROP TABLE TTDANGNHAP
 go;
 DROP TABLE SANPHAM
 
--- Drop t? d??i l�n
+-- Drop từ dưới lên
 
 
 
@@ -173,112 +173,172 @@ alter table SANPHAM
 /*==============================================================*/
 -- NHANVIEN
 INSERT INTO NHANVIEN (manv, hoten, diachi, sdt, email) VALUES 
-('NV1', 'Ph?m Thu? Th?o Nh?','Long An','0365398625','22521055@gm.uit.edu.vn');
+('NV1', 'Phạm Thuỵ Thảo Như','Long An','0365398625','22521055@gm.uit.edu.vn');
 INSERT INTO NHANVIEN (manv, hoten, diachi, sdt, email) VALUES 
-('NV2', 'Hu?nh Y?n Nhi', 'Hu?', '0935471926', '22521034@gm.uit.edu.vn');
+('NV2', 'Huỳnh Yến Nhi', 'Huế', '0935471926', '22521034@gm.uit.edu.vn');
 INSERT INTO NHANVIEN (manv, hoten, diachi, sdt, email)  VALUES 
-('NV3', 'V� Thanh Nh�n', 'Ph� Y�n', '0702562318', '22521008@gm.uit.edu.vn');
+('NV3', 'Võ Thanh Nhàn', 'Phú Yên', '0702562318', '22521008@gm.uit.edu.vn');
 INSERT INTO NHANVIEN (manv, hoten, diachi, sdt, email)  VALUES 
-('NV4', 'Hu?nh Ng?c Di?m Ph�c', 'Ph� Y�n', '0899231556', '22521113@gm.uit.edu.vn');
+('NV4', 'Huỳnh Ngọc Diễm Phúc', 'Phú Yên', '0899231556', '22521113@gm.uit.edu.vn');
 
 -- TTDANGNHAP 
 INSERT INTO TTDANGNHAP (manv, tendn, matkhau, email, vaitro) VALUES 
-('NV1', 'tnhu', '123456','22521055@gm.uit.edu.vn','Nh�n vi�n qu?n l�');
+('NV1', 'tnhu', '123456','22521055@gm.uit.edu.vn','Nhân viên quản lý');
 INSERT INTO TTDANGNHAP (manv, tendn, matkhau, email, vaitro) VALUES 
-('NV2', 'ynhi', '654321', '22521034@gm.uit.edu.vn', 'Nh�n vi�n qu?n l�');
+('NV2', 'ynhi', '654321', '22521034@gm.uit.edu.vn', 'Nhân viên quản lý');
 INSERT INTO TTDANGNHAP (manv, tendn, matkhau, email, vaitro) VALUES 
-('NV3', 'tnhan', '78910', '22521008@gm.uit.edu.vn', 'Nh�n vi�n b�n h�ng');
+('NV3', 'tnhan', '78910', '22521008@gm.uit.edu.vn', 'Nhân viên bán hàng');
 INSERT INTO TTDANGNHAP (manv, tendn, matkhau, email, vaitro) VALUES 
-('NV4', 'dphuc', '10987', '22521113@gm.uit.edu.vn', 'Nh�n vi�n nh?p h�ng');
+('NV4', 'dphuc', '10987', '22521113@gm.uit.edu.vn', 'Nhân viên nhập hàng');
 
 
 -- NHAPCUNGCAP
+INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES 
+('NCC1', 'Coolmate', '165 Trần Trọng Cung, Tân Thuận Đông, Quận 7, Thành phố Hồ Chí Minh', '0374527184', 'coolmate@gmail.com');
+INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES 
+('NCC2', 'Fashionista', '123 Điện Biên Phủ, Quận 1, Thành phố Hồ Chí Minh', '0987654321', 'fashionista@gmail.com');
 INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
-('NCC1', 'Coolmate', '165 Tr?n Tr??ng Cung, T�n Thu?n ?�ng, Qu?n 7, Th�nh ph? H? Ch� Minh', '0374527184', 'coolmate@gmail.com');
+('NCC3', 'Style Zone', '456 Lê Lai, Quận 3, Thành phố Hồ Chí Minh', '0123456789', 'stylezone@gmail.com');
 INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
-('NCC2', 'Fashion World', '123 Hai B� Tr?ng, Qu?n 1, Th�nh ph? H? Ch� Minh', '0987654321', 'fashionworld@gmail.com');
+('NCC4', 'Trendy Wear', '789 Nguyễn Trãi, Quận 5, Thành phố Hồ Chí Minh', '0321654987', 'trendywear@gmail.com');
 INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
-('NCC3', 'Trendy Store', '789 L� L?i, Qu?n Ho�n Ki?m, Th�nh ph? H� N?i', '0369852147', 'trendystore@gmail.com');
+('NCC5', 'Chic Boutique', '321 Nam Kỳ Khởi Nghĩa, Quận 3, Thành phố Hồ Chí Minh', '0765432198', 'chicboutique@gmail.com');
 INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
-('NCC4', 'Chic Boutique', '456 Nguy?n Hu?, Qu?n 1, Th�nh ph? H? Ch� Minh', '0541237896', 'chicboutique@gmail.com');
+('NCC6', 'Moda Mania', '234 Lý Tự Trọng, Quận 1, Thành phố Hồ Chí Minh', '0543216789', 'modamania@gmail.com');
 INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
-('NCC5', 'Urban Style', '987 ?i?n Bi�n Ph?, Qu?n B�nh Th?nh, Th�nh ph? H? Ch� Minh', '0321654987', 'urbanstyle@gmail.com');
+('NCC7', 'Urban Style', '567 Cách Mạng Tháng Tám, Quận 10, Thành phố Hồ Chí Minh', '0321876543', 'urbanstyle@gmail.com');
+INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
+('NCC8', 'Couture Corner', '890 Hai Bà Trưng, Quận 1, Thành phố Hồ Chí Minh', '0976543210', 'couturecorner@gmail.com');
+INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
+('NCC9', 'Glamour Galore', '543 Nguyễn Đình Chính, Quận Phú Nhuận, Thành phố Hồ Chí Minh', '0321987654', 'glamourgalore@gmail.com');
+INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
+('NCC10', 'Style Statement', '876 Huỳnh Văn Bánh, Quận Phú Nhuận, Thành phố Hồ Chí Minh', '0987654321', 'stylestatement@gmail.com');
+INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
+('NCC11', 'Vogue Vibes', '654 Nguyễn Đình Chính, Quận Phú Nhuận, Thành phố Hồ Chí Minh', '0765432198', 'voguevibes@gmail.com');
+INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
+('NCC12', 'Trendsetter Trends', '234B Nguyễn Văn Cừ, Quận 1, Thành phố Hồ Chí Minh', '0321654987', 'trendsettrends@gmail.com');
+INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
+('NCC13', 'Style Savvy', '789C Lê Văn Sỹ, Quận 3, Thành phố Hồ Chí Minh', '0543216789', 'stylesavvy@gmail.com');
+INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
+('NCC14', 'Fashion Forward', '987 Phan Xích Long, Phường 1, Quận Phú Nhuận, Thành phố Hồ Chí Minh', '0321876543', 'fashionforward@gmail.com');
+INSERT INTO NHACUNGCAP (mancc, tenncc, diachi, sdt, email) VALUES
+('NCC15', 'Chic Chic', '456B Nguyễn Thị Minh Khai, Quận 3, Thành phố Hồ Chí Minh', '0976543210', 'chicchic@gmail.com');
 
 -- SANPHAM
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA1', '�o thun nam', 150000, 100000, 50, 'M', 'Cotton', 'NCC1', 'Vi?t Nam');
+('QA1', 'Áo thun nam', 150000, 100000, 50, 'M', 'Cotton', 'NCC1', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA2', '�o polo nam', 200000, 120000, 30, 'L', 'Polyester', 'NCC2', 'Vi?t Nam');
+('QA2', 'Áo sơ mi nữ', 200000, 150000, 50, 'S', 'Vải mềm', 'NCC2', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA3', 'Qu?n jean nam', 300000, 180000, 20, 'XXL', 'Denim', 'NCC2', 'Vi?t Nam');
+('QA3', 'Áo khoác dù', 300000, 250000, 50, 'L', 'Dù cao cấp', 'NCC3', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA4', '�o kho�c nam', 500000, 350000, 15, 'XL', 'Nylon', 'NCC4', 'Vi?t Nam');
+('QA4', 'Áo len nữ', 180000, 120000, 50, 'M', 'Len tự nhiên', 'NCC4', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA5', '�o s? mi nam', 250000, 150000, 40, 'M', 'Chiffon', 'NCC5', 'Vi?t Nam');
+('QA5', 'Áo phông nam', 120000, 80000, 50, 'L', 'Vải cotton', 'NCC5', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA6', '�o thun n?', 120000, 80000, 60, 'S', 'Cotton', 'NCC3', 'Vi?t Nam');
+('QA6', 'Áo dài cách tân', 350000, 300000, 50, 'XL', 'Vải lụa', 'NCC6', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA7', '�o blouse n?', 180000, 120000, 35, 'L', 'Silk', 'NCC3', 'Vi?t Nam');
+('QA7', 'Áo khoác da nam', 400000, 350000, 50, 'L', 'Da cao cấp', 'NCC7', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA8', 'Ch�n v�y n?', 220000, 150000, 25, 'M', 'Cotton', 'NCC4', 'Vi?t Nam');
+('QA8', 'Áo khoác kaki nữ', 250000, 200000, 50, 'M', 'Kaki', 'NCC8', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA9', '??m polo', 280000, 200000, 30, 'S', 'Polyester', 'NCC1', 'Vi?t Nam');
+('QA9', 'Áo len nam', 200000, 150000, 50, 'XL', 'Len tự nhiên', 'NCC9', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA10', 'Qu?n legging n?', 150000, 90000, 50, 'L', 'Spandex', 'NCC1', 'Vi?t Nam');
+('QA10', 'Áo sơ mi nam', 180000, 130000, 50, 'L', 'Vải mềm', 'NCC10', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA11', '�o kho�c th? thao', 400000, 250000, 20, 'XL', 'Polyester', 'NCC1', 'Vi?t Nam');
+('QA11', 'Áo thun nữ', 100000, 70000, 50, 'S', 'Cotton', 'NCC11', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA12', 'Qu?n jogger nam', 280000, 180000, 25, 'L', 'Cotton', 'NCC2', 'Vi?t Nam');
+('QA12', 'Áo khoác nỉ', 220000, 170000, 50, 'M', 'Nỉ', 'NCC12', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA13', '�o len c? tim', 220000, 150000, 30, 'M', 'Wool', 'NCC3', 'Vi?t Nam');
+('QA13', 'Áo khoác jean', 280000, 230000, 50, 'L', 'Jean', 'NCC13', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA14', '�o baybydoll', 180000, 100000, 45, 'L', 'Cotton', 'NCC1', 'Vi?t Nam');
+('QA14', 'Áo dạ nam', 450000, 400000, 50, 'XL', 'Vải dạ', 'NCC14', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA15', 'Qu?n kaki nam', 150000, 90000, 50, 'XL', 'Kaki', 'NCC5', 'Vi?t Nam');
+('QA15', 'Áo len cổ lọ', 190000, 140000, 50, 'M', 'Len tự nhiên', 'NCC15', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA16', '�o thun LK', 200000, 120000, 30, 'L', 'Polyester', 'NCC2', 'Vi?t Nam');
+('QA16', 'Áo khoác len nữ', 220000, 170000, 50, 'M', 'Len tự nhiên', 'NCC1', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA17', 'Qu?n gi? v�y', 300000, 180000, 20, '32', 'Denim', 'NCC3', 'Vi?t Nam');
+('QA17', 'Áo ba lỗ nữ', 80000, 50000, 50, 'S', 'Vải thun', 'NCC2', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA18', '�o kho�c croptop', 500000, 350000, 15, 'XL', 'Nylon', 'NCC4', 'Vi?t Nam');
+('QA18', 'Áo kiểu nữ', 120000, 90000, 50, 'M', 'Vải mềm', 'NCC3', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA19', '�o s? mi nam', 250000, 150000, 40, 'M', 'Chiffon', 'NCC5', 'Vi?t Nam');
+('QA19', 'Áo thun cổ tròn', 70000, 45000, 50, 'L', 'Cotton', 'NCC4', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA20', '�o thun babytee', 120000, 80000, 60, 'S', 'Cotton', 'NCC1', 'Vi?t Nam');
+('QA20', 'Áo sơ mi công sở', 160000, 120000, gianhap, 'XL', 'Vải mềm', 'NCC5', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA21', '�o croptop', 180000, 120000, 35, 'L', 'Cotton', 'NCC2', 'Vi?t Nam');
+('QA21', 'Áo len nữ dáng dài', 250000, 200000, 50, 'M', 'Len tự nhiên', 'NCC6', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA22', 'Qu?n short kaki', 220000, 150000, 25, 'M', 'Demin', 'NCC3', 'Vi?t Nam');
+('QA22', 'Áo khoác da nữ', 350000, 300000, 50, 'L', 'Da cao cấp', 'NCC7', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA23', '??m ng?', 280000, 200000, 30, 'S', 'Polyester', 'NCC3', 'Vi?t Nam');
+('QA23', 'Áo khoác kaki nam', 180000, 140000, 50, 'M', 'Kaki', 'NCC8', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA24', '?? b? d�i', 150000, 90000, 50, 'L', 'Spandex', 'NCC5', 'Vi?t Nam');
+('QA24', 'Áo hoodie nữ', 190000, 150000, 50, 'L', 'Vải thun', 'NCC9', 'Việt Nam');
 INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
-('QA25', '?? b? ng?n', 150000, 90000, 50, 'L', 'Spandex', 'NCC4', 'Vi?t Nam');
+('QA25', 'Áo thun cổ tim', 90000, 60000, 50, 'XL', 'Cotton', 'NCC10', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA26', 'Áo len nữ cổ lọ', 210000, 170000, 50, 'M', 'Len tự nhiên', 'NCC11', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA27', 'Áo khoác nỉ nam', 200000, 150000, 50, 'L', 'Nỉ', 'NCC12', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA28', 'Áo khoác jean nữ', 260000, 210000, 50, 'XL', 'Jean', 'NCC13', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA29', 'Áo len nữ cổ V', 180000, 140000, 50, 'M', 'Len tự nhiên', 'NCC14', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA30', 'Áo dài tay nữ', 100000, 70000, 50, 'S', 'Cotton', 'NCC15', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA31', 'Áo thun cổ dây', 85000, 60000, 50, 'M', 'Cotton', 'NCC1', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA32', 'Áo len cổ chữ V', 175000, 130000, 50, 'M', 'Len tự nhiên', 'NCC2', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA33', 'Áo khoác nỉ nữ', 185000, 140000, 50, 'M', 'Nỉ', 'NCC3', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA34', 'Áo thun cổ bẻ', 95000, 70000, 50, 'L', 'Cotton', 'NCC4', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA35', 'Áo sơ mi nữ dáng dài', 210000, 160000, 50, 'XL', 'Vải mềm', 'NCC5', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA36', 'Áo len nữ cổ cao', 220000, 180000, 50, 'M', 'Len tự nhiên', 'NCC6', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA37', 'Áo khoác da nữ dáng dài', 380000, 320000, 50, 'L', 'Da cao cấp', 'NCC7', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA38', 'Áo khoác kaki nữ dáng dài', 280000, 230000, 50, 'M', 'Kaki', 'NCC8', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA39', 'Áo hoodie nam', 200000, 160000, 50, 'XL', 'Vải thun', 'NCC9', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA40', 'Áo thun cổ trụ', 90000, 65000, 50, 'L', 'Cotton', 'NCC10', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA41', 'Áo len nữ dáng dài cổ chữ V', 240000, 200000, 50, 'M', 'Len tự nhiên', 'NCC11', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA42', 'Áo khoác nỉ nam dáng dài', 240000, 190000, 50, 'L', 'Nỉ', 'NCC12', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA43', 'Áo khoác jean nữ dáng dài', 300000, 250000, 50, 'XL', 'Jean', 'NCC13', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA44', 'Áo len nữ dáng suông', 190000, 150000, 50, 'M', 'Len tự nhiên', 'NCC14', 'Việt Nam');
+INSERT INTO SANPHAM (masp, tensp, giaban, gianhap, soluong, kichthuoc, chatlieu, mancc, xuatxu) VALUES
+('QA45', 'Áo dài tay nam', 110000, 80000, 50, 'L', 'Cotton', 'NCC15', 'Việt Nam');
 
 --HOADON
 INSERT INTO HOADON (mahd, manv, tenkh, sdt, ngayin, tongtien, ghichu) VALUES 
-('HDBH1', 'NV1', 'Tr?n V?n H�ng', '0323456789', TO_DATE('2024-04-18', 'YYYY-MM-DD'), 500000, '?� thanh to�n, chuy?n kho?n');
+('HDBH1', 'NV1', 'Trần Văn Hùng', '0323456789', TO_DATE('2024-04-18', 'YYYY-MM-DD'), 500000, 'Đã thanh toán, chuyển khoản');
 INSERT INTO HOADON (mahd, manv, tenkh, sdt, ngayin, tongtien, ghichu) VALUES 
-('HDBH2', 'NV2', 'Nguy?n Th? Mai', '0987654321', TO_DATE('2024-04-18', 'YYYY-MM-DD'), 700000, '?� thanh to�n, ti?n m?t');
+('HDBH2', 'NV2', 'Nguyễn Thị Mai', '0987654321', TO_DATE('2024-04-18', 'YYYY-MM-DD'), 700000, 'Đã thanh toán, tiền mặt');
 INSERT INTO HOADON (mahd, manv, tenkh, sdt, ngayin, tongtien, ghichu) VALUES 
-('HDBH3', 'NV3', 'L� Minh Tu?n', '0365897412', TO_DATE('2024-04-19', 'YYYY-MM-DD'), 80000, '?� thanh to�n, ti?n m?t');
+('HDBH3', 'NV3', 'Lê Minh Tuấn', '0365897412', TO_DATE('2024-04-19', 'YYYY-MM-DD'), 80000, 'Đã thanh toán, tiền mặt');
 INSERT INTO HOADON (mahd, manv, tenkh, sdt, ngayin, tongtien, ghichu) VALUES 
-('HDBH4', 'NV2', 'Ph?m Th? Ng?c', '0904123785', TO_DATE('2024-04-19', 'YYYY-MM-DD'), 110000, '?� thanh to�n, ti?n m?t');
+('HDBH4', 'NV2', 'Phạm Thị Ngọc', '0904123785', TO_DATE('2024-04-19', 'YYYY-MM-DD'), 110000, 'Đã thanh toán, tiền mặt');
 INSERT INTO HOADON (mahd, manv, tenkh, sdt, ngayin, tongtien, ghichu) VALUES 
-('HDBH5', 'NV2', 'Tr?n ??c Anh', '0978451236', TO_DATE('2024-04-20', 'YYYY-MM-DD'), 900000, '?� thanh to�n, ti?n m?t');
+('HDBH5', 'NV2', 'Trần Đức Anh', '0978451236', TO_DATE('2024-04-20', 'YYYY-MM-DD'), 900000, 'Đã thanh toán, tiền mặt');
 INSERT INTO HOADON (mahd, manv, tenkh, sdt, ngayin, tongtien, ghichu) VALUES 
-('HDBH6', 'NV1', 'Nguy?n V?n ??c', '0398745612', TO_DATE('2024-04-20', 'YYYY-MM-DD'), 650000, '?� thanh to�n, ti?n m?tn');
+('HDBH6', 'NV1', 'Nguyễn Văn Đức', '0398745612', TO_DATE('2024-04-20', 'YYYY-MM-DD'), 650000, 'Đã thanh toán, tiền mặtn');
 INSERT INTO HOADON (mahd, manv, tenkh, sdt, ngayin, tongtien, ghichu) VALUES 
-('HDBH7', 'NV3', 'L� Th? Lan', '0356987412', TO_DATE('2024-04-21', 'YYYY-MM-DD'), 750000, '?� thanh to�n, chuy?n kho?ng');
+('HDBH7', 'NV3', 'Lê Thị Lan', '0356987412', TO_DATE('2024-04-21', 'YYYY-MM-DD'), 750000, 'Đã thanh toán, chuyển khoảng');
 INSERT INTO HOADON (mahd, manv, tenkh, sdt, ngayin, tongtien, ghichu) VALUES 
-('HDBH8', 'NV2', 'Tr?n V?n T�m', '0912345678', TO_DATE('2024-04-21', 'YYYY-MM-DD'), 1900000, '?� thanh to�n, chuy?n kho?n');
+('HDBH8', 'NV2', 'Trần Văn Tâm', '0912345678', TO_DATE('2024-04-21', 'YYYY-MM-DD'), 1900000, 'Đã thanh toán, chuyển khoản');
 INSERT INTO HOADON (mahd, manv, tenkh, sdt, ngayin, tongtien, ghichu) VALUES 
-('HDBH9', 'NV3', 'Ph?m Th? H�', '0387456123', TO_DATE('2024-04-22', 'YYYY-MM-DD'), 200000, '?� thanh to�n, ti?n m?t');
+('HDBH9', 'NV3', 'Phạm Thị Hà', '0387456123', TO_DATE('2024-04-22', 'YYYY-MM-DD'), 200000, 'Đã thanh toán, tiền mặt');
 INSERT INTO HOADON (mahd, manv, tenkh, sdt, ngayin, tongtien, ghichu) VALUES 
-('HDBH10', 'NV3', 'Nguy?n V?n Nam', '0963214789', TO_DATE('2024-04-22', 'YYYY-MM-DD'), 800000, '?� thanh to�n, ti?n m?t');
+('HDBH10', 'NV3', 'Nguyễn Văn Nam', '0963214789', TO_DATE('2024-04-22', 'YYYY-MM-DD'), 800000, 'Đã thanh toán, tiền mặt');
 INSERT INTO HOADON (mahd, manv, tenkh, sdt, ngayin, tongtien, ghichu) VALUES 
-('HDBH11', 'NV3', 'Tr?n V?n H�ng', '0323456789', TO_DATE('2024-04-23', 'YYYY-MM-DD'), 520000, '?� thanh to�n, ti?n m?t');
+('HDBH11', 'NV3', 'Trần Văn Hùng', '0323456789', TO_DATE('2024-04-23', 'YYYY-MM-DD'), 520000, 'Đã thanh toán, tiền mặt');
 
 --CTHD
 INSERT INTO CTHD (mahd, masp, soluong, dongia, tongtien) VALUES 
@@ -316,27 +376,27 @@ INSERT INTO CTHD (mahd, masp, soluong, dongia, tongtien) VALUES
 
 --PHIEUNHAPHANG
 INSERT INTO PHIEUNHAPHANG (mapnh, manv, mancc, ngaytao, tongtien, ghichu) VALUES
- ('HDNH1', 'NV4', 'NCC1', TO_DATE('2024-04-15', 'YYYY-MM-DD'), 2700000, '?� thanh to�n, ti?n m?t');
+ ('HDNH1', 'NV4', 'NCC1', TO_DATE('2024-04-15', 'YYYY-MM-DD'), 2700000, 'Đã thanh toán, tiền mặt');
 INSERT INTO PHIEUNHAPHANG (mapnh, manv, mancc, ngaytao, tongtien, ghichu) VALUES 
-('HDNH2', 'NV5', 'NCC2', TO_DATE('2024-04-16', 'YYYY-MM-DD'), 20000000, '?� thanh to�n, ti?n m?t');
+('HDNH2', 'NV5', 'NCC2', TO_DATE('2024-04-16', 'YYYY-MM-DD'), 20000000, 'Đã thanh toán, tiền mặt');
 INSERT INTO PHIEUNHAPHANG (mapnh, manv, mancc, ngaytao, tongtien, ghichu) VALUES
-('HDNH3', 'NV6', 'NCC3', TO_DATE('2024-04-17', 'YYYY-MM-DD'), 25000000, '?� thanh to�n, chuy?n kho?n');
+('HDNH3', 'NV6', 'NCC3', TO_DATE('2024-04-17', 'YYYY-MM-DD'), 25000000, 'Đã thanh toán, chuyển khoản');
 INSERT INTO PHIEUNHAPHANG (mapnh, manv, mancc, ngaytao, tongtien, ghichu) VALUES
-('HDNH4', 'NV7', 'NCC4', TO_DATE('2024-04-18', 'YYYY-MM-DD'), 6900000, '?� thanh to�n, ti?n m?t');
+('HDNH4', 'NV7', 'NCC4', TO_DATE('2024-04-18', 'YYYY-MM-DD'), 6900000, 'Đã thanh toán, tiền mặt');
 INSERT INTO PHIEUNHAPHANG (mapnh, manv, mancc, ngaytao, tongtien, ghichu) VALUES
-('HDNH5', 'NV8', 'NCC5', TO_DATE('2024-04-19', 'YYYY-MM-DD'), 49000000, '?� thanh to�n, chuy?n kho?n');
+('HDNH5', 'NV8', 'NCC5', TO_DATE('2024-04-19', 'YYYY-MM-DD'), 49000000, 'Đã thanh toán, chuyển khoản');
 INSERT INTO PHIEUNHAPHANG (mapnh, manv, mancc, ngaytao, tongtien, ghichu) VALUES
-('HDNH6', 'NV9', 'NCC6', TO_DATE('2024-04-20', 'YYYY-MM-DD'), 18000000, '?� thanh to�n, chuy?n kho?n');
+('HDNH6', 'NV9', 'NCC6', TO_DATE('2024-04-20', 'YYYY-MM-DD'), 18000000, 'Đã thanh toán, chuyển khoản');
 INSERT INTO PHIEUNHAPHANG (mapnh, manv, mancc, ngaytao, tongtien, ghichu) VALUES
-('HDNH7', 'NV10', 'NCC7', TO_DATE('2024-04-21', 'YYYY-MM-DD'), 32000000, '?� thanh to�n, ti?n m?t');
+('HDNH7', 'NV10', 'NCC7', TO_DATE('2024-04-21', 'YYYY-MM-DD'), 32000000, 'Đã thanh toán, tiền mặt');
 INSERT INTO PHIEUNHAPHANG (mapnh, manv, mancc, ngaytao, tongtien, ghichu) VALUES
-('HDNH8', 'NV1', 'NCC8', TO_DATE('2024-04-22', 'YYYY-MM-DD'), 44000000, '?� thanh to�n, ti?n m?t');
+('HDNH8', 'NV1', 'NCC8', TO_DATE('2024-04-22', 'YYYY-MM-DD'), 44000000, 'Đã thanh toán, tiền mặt');
 INSERT INTO PHIEUNHAPHANG (mapnh, manv, mancc, ngaytao, tongtien, ghichu) VALUES
-('HDNH9', 'NV2', 'NCC9', TO_DATE('2024-04-23', 'YYYY-MM-DD'), 30000000, '?� thanh to�n, ti?n m?t');
+('HDNH9', 'NV2', 'NCC9', TO_DATE('2024-04-23', 'YYYY-MM-DD'), 30000000, 'Đã thanh toán, tiền mặt');
 INSERT INTO PHIEUNHAPHANG (mapnh, manv, mancc, ngaytao, tongtien, ghichu) VALUES
-('HDNH10', 'NV3', 'NCC10', TO_DATE('2024-04-24', 'YYYY-MM-DD'), 84000000, '?� thanh to�n, chuy?n kho?n');
+('HDNH10', 'NV3', 'NCC10', TO_DATE('2024-04-24', 'YYYY-MM-DD'), 84000000, 'Đã thanh toán, chuyển khoản');
 INSERT INTO PHIEUNHAPHANG (mapnh, manv, mancc, ngaytao, tongtien, ghichu) VALUES
-('HDNH11', 'NV4', 'NCC15', TO_DATE('2024-04-25', 'YYYY-MM-DD'), 22000000, '?� thanh to�n, ti?n m?t');
+('HDNH11', 'NV4', 'NCC15', TO_DATE('2024-04-25', 'YYYY-MM-DD'), 22000000, 'Đã thanh toán, tiền mặt');
 
 --CTNHAP
 INSERT INTO CTNHAP (mapnh, masp, soluong, gianhap, tongtien) VALUES 
@@ -395,7 +455,7 @@ alter table NHACUNGCAP
 /*==============================================================*/
 
 /*Kiem tra so luong con du de ban hay khong.*/
-/*tongtiensp b?ng soluong * giaban c?a SANPHAM.*/
+/*tongtiensp bằng soluong * giaban của SANPHAM.*/
 create or replace trigger INSERT_CTHD_BEFORE
 before insert 
 on CTHD
@@ -419,7 +479,7 @@ begin
     :NEW.tongtiensp := :NEW.soluong * giaban1;
 end;
 
-/*sau khi t?o CTHD th� ph?i c?p nh?t l?i soluong trong SANPHAM.*/
+/*sau khi tạo CTHD thì phải cập nhật lại soluong trong SANPHAM.*/
 
 create or replace trigger AFTER_INSERT_CTHD
 after insert

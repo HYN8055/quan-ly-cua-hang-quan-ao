@@ -136,9 +136,9 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="LogOut" min="-2" pref="161" max="-2" attributes="0"/>
-                                  <Component id="Change" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="Change" max="32767" attributes="0"/>
+                                  <Component id="LogOut" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -171,11 +171,11 @@
                       <Component id="jpnTaiKhoan" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jpnThongKe" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="Change" min="-2" pref="32" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="LogOut" min="-2" pref="32" max="-2" attributes="0"/>
-                      <EmptySpace pref="57" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -239,7 +239,7 @@
             <Container class="javax.swing.JPanel" name="jpnTrangChu">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
@@ -280,7 +280,7 @@
             <Container class="javax.swing.JPanel" name="jpnSanPham">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -318,7 +318,7 @@
             <Container class="javax.swing.JPanel" name="jpnNhaCungCap">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -356,7 +356,7 @@
             <Container class="javax.swing.JPanel" name="jpnThongKe">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -394,7 +394,7 @@
             <Container class="javax.swing.JPanel" name="jpnHoaDonNH">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -432,7 +432,7 @@
             <Container class="javax.swing.JPanel" name="jpnHoaDonBH">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -470,7 +470,7 @@
             <Container class="javax.swing.JPanel" name="jpnNhapHang">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -508,7 +508,7 @@
             <Container class="javax.swing.JPanel" name="jpnNhanVien">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -546,7 +546,7 @@
             <Container class="javax.swing.JPanel" name="jpnTaiKhoan">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -584,7 +584,7 @@
             <Container class="javax.swing.JPanel" name="jpnBanHang">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
               <Events>

@@ -1,7 +1,5 @@
 package controller;
 
-/*package controller.emplyees;
-
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -11,7 +9,7 @@ public class SendEmailSMTP {
 
     public static void sendOTP(String emailTo, String otp) {
         String username = "22521055@gm.uit.edu.vn";
-        String password = "123456";
+        String password = "thuythaonhu22521055";
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "587");
@@ -41,4 +39,4 @@ public class SendEmailSMTP {
             e.printStackTrace();
         }
     }
-}*/
+}

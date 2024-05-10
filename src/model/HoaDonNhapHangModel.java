@@ -8,10 +8,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Objects;
 
-/**
- *
- * @author Tran Nhat Sinh
- */
+
 public class HoaDonNhapHangModel extends HoaDonModel {
 
     private String nhaCungCap;

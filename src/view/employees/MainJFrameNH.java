@@ -75,28 +75,16 @@ public class MainJFrameNH extends javax.swing.JFrame {
             jpnView.setLayout(new BorderLayout());
             TrangChu trangChu = new TrangChu();
             jpnView.add(trangChu);
+            jpnTrangChu.setBackground(new Color(255,255,255));
             jpnView.repaint();
             jpnView.revalidate();
              
         }
         @Override
         public void mousePressed(java.awt.event.MouseEvent evt) {
-            jpnTrangChu.setBackground(new Color(125,125,125));
-            jlbTrangChu.setBackground(new Color(125,125,125));
-               
-        }
-
-        @Override
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            jpnTrangChu.setBackground(new Color(255, 255, 255));
-            jlbTrangChu.setBackground(new Color(255, 255, 255));
-        }
-
-        @Override
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpnTrangChu.setBackground(new Color(152,205,205));
-                jlbTrangChu.setBackground(new Color(152,205,205));
-            
+            jpnTrangChu.setBackground(new Color(255,255,255));
+            jpnNhapHang.setBackground(new Color(152,205,205));
+            jpnHoaDonNH.setBackground(new Color(152,205,205));
         }
     });
         
@@ -117,22 +105,10 @@ public class MainJFrameNH extends javax.swing.JFrame {
         }
         @Override
         public void mousePressed(java.awt.event.MouseEvent evt) {
-            jpnNhapHang.setBackground(new Color(125,125,125));
-            jlbNhapHang.setBackground(new Color(125,125,125));
+            jpnTrangChu.setBackground(new Color(152,205,205));
+            jpnNhapHang.setBackground(new Color(255,255,255));
+            jpnHoaDonNH.setBackground(new Color(152,205,205));
                
-        }
-
-        @Override
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            jpnNhapHang.setBackground(new Color(255, 255, 255));
-            jlbNhapHang.setBackground(new Color(255, 255, 255));
-        }
-
-        @Override
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpnNhapHang.setBackground(new Color(152,205,205));
-                jlbNhapHang.setBackground(new Color(152,205,205));
-            
         }
     });
 
@@ -153,60 +129,13 @@ public class MainJFrameNH extends javax.swing.JFrame {
         }
         @Override
         public void mousePressed(java.awt.event.MouseEvent evt) {
-            jpnHoaDonNH.setBackground(new Color(125,125,125));
-            jlbHoaDonNH.setBackground(new Color(125,125,125));
+            jpnTrangChu.setBackground(new Color(152,205,205));
+            jpnNhapHang.setBackground(new Color(152,205,205));
+            jpnHoaDonNH.setBackground(new Color(255,255,255));
                
         }
 
-        @Override
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            jpnHoaDonNH.setBackground(new Color(255, 255, 255));
-            jlbHoaDonNH.setBackground(new Color(255, 255, 255));
-        }
-
-        @Override
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpnHoaDonNH.setBackground(new Color(152,205,205));
-                jlbHoaDonNH.setBackground(new Color(152,205,205));
-            
-        }
     });
-
-        jpnNhapHang.addMouseListener(new java.awt.event.MouseAdapter() {
-        @Override
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            // Gọi phương thức hiển thị màn hình trang chủ khi jpaneltrangchu được nhấn
-            super.mouseClicked(evt);
-                // Xóa tất cả các thành phần hiển thị trên jpnView
-            jpnView.removeAll();
-            jpnView.setLayout(new BorderLayout());
-            NhapHang nhaphang = new NhapHang();
-            jpnView.add(nhaphang);
-            jpnView.repaint();
-            jpnView.revalidate();
-             
-        }
-        @Override
-        public void mousePressed(java.awt.event.MouseEvent evt) {
-            jpnNhapHang.setBackground(new Color(125,125,125));
-            jlbNhapHang.setBackground(new Color(125,125,125));
-               
-        }
-
-        @Override
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            jpnNhapHang.setBackground(new Color(255, 255, 255));
-            jlbNhapHang.setBackground(new Color(255, 255, 255));
-        }
-
-        @Override
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpnNhapHang.setBackground(new Color(152,205,205));
-                jlbNhapHang.setBackground(new Color(152,205,205));
-            
-        }
-    });
-        
     }
 
     /**
@@ -267,7 +196,7 @@ public class MainJFrameNH extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jpnTrangChu.setBackground(new java.awt.Color(255, 255, 255));
+        jpnTrangChu.setBackground(new java.awt.Color(152, 205, 205));
 
         jlbTrangChu.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jlbTrangChu.setText("TRANG CHỦ");
@@ -289,7 +218,7 @@ public class MainJFrameNH extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpnHoaDonNH.setBackground(new java.awt.Color(255, 255, 255));
+        jpnHoaDonNH.setBackground(new java.awt.Color(152, 205, 205));
 
         jlbHoaDonNH.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jlbHoaDonNH.setText(" HÓA ĐƠN NHẬP HÀNG");
@@ -327,7 +256,7 @@ public class MainJFrameNH extends javax.swing.JFrame {
             }
         });
 
-        jpnNhapHang.setBackground(new java.awt.Color(255, 255, 255));
+        jpnNhapHang.setBackground(new java.awt.Color(152, 205, 205));
 
         jlbNhapHang.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jlbNhapHang.setText("NHẬP HÀNG");

@@ -51,7 +51,7 @@ public class XemCTPN extends javax.swing.JDialog {
         String[] headerTbl = new String[]{"STT", "Mã sản phẩm","Tên sản phẩm", "Số lượng","Đơn giá","Thành tiền"};
         tblModel.setColumnIdentifiers(headerTbl);
         tblChiTietPhieu.setModel(tblModel);
-        tblChiTietPhieu.getColumnModel().getColumn(0).setPreferredWidth(5);
+        tblChiTietPhieu.getColumnModel().getColumn(0).setPreferredWidth(50);
         tblChiTietPhieu.getColumnModel().getColumn(1).setPreferredWidth(50);
         tblChiTietPhieu.getColumnModel().getColumn(2).setPreferredWidth(250);
     }
@@ -107,7 +107,7 @@ public class XemCTPN extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(152, 225, 225));
+        jPanel2.setBackground(new java.awt.Color(32, 178, 170));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,16 +132,20 @@ public class XemCTPN extends javax.swing.JDialog {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Mã hóa đơn");
 
-        txtMaHD.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        txtMaHD.setEditable(false);
+        txtMaHD.setBackground(new java.awt.Color(255, 255, 255));
+        txtMaHD.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtMaHD.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
-        txtMaHD.setEnabled(false);
+        txtMaHD.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtMaHD.setFocusable(false);
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Tổng tiền");
 
+        tblChiTietPhieu.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tblChiTietPhieu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -155,48 +159,62 @@ public class XemCTPN extends javax.swing.JDialog {
         ));
         jScrollPane22.setViewportView(tblChiTietPhieu);
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Nhà cung cấp");
 
-        txtNCC.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        txtNCC.setEditable(false);
+        txtNCC.setBackground(new java.awt.Color(255, 255, 255));
+        txtNCC.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtNCC.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
-        txtNCC.setEnabled(false);
+        txtNCC.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNCC.setFocusable(false);
 
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Ghi chú");
 
-        txtTongTien.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        txtTongTien.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         txtTongTien.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
+        txtTongTien.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtTongTien.setEnabled(false);
 
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("Người tạo");
 
-        txtGhiChu.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        txtGhiChu.setEditable(false);
+        txtGhiChu.setBackground(new java.awt.Color(255, 255, 255));
+        txtGhiChu.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtGhiChu.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
-        txtGhiChu.setEnabled(false);
+        txtGhiChu.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtGhiChu.setFocusable(false);
 
-        txtNV.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        txtNV.setEditable(false);
+        txtNV.setBackground(new java.awt.Color(255, 255, 255));
+        txtNV.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtNV.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
-        txtNV.setEnabled(false);
+        txtNV.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNV.setFocusable(false);
 
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setText("Thời gian tạo");
 
-        txtTG.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        txtTG.setEditable(false);
+        txtTG.setBackground(new java.awt.Color(255, 255, 255));
+        txtTG.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtTG.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
-        txtTG.setEnabled(false);
+        txtTG.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtTG.setFocusable(false);
 
         btnPdf.setBackground(new java.awt.Color(230, 255, 243));
         btnPdf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnPdf.setForeground(new java.awt.Color(0, 179, 179));
         btnPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconexcel1.png"))); // NOI18N
         btnPdf.setText("Xuất PDF");
+      
 
         btnPdf1.setBackground(new java.awt.Color(230, 255, 243));
         btnPdf1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnPdf1.setForeground(new java.awt.Color(0, 179, 179));
-        btnPdf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconexcel1.png"))); // NOI18N
+        btnPdf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon_pdf.png"))); // NOI18N
         btnPdf1.setText("Xuất PDF");
         btnPdf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,37 +227,39 @@ public class XemCTPN extends javax.swing.JDialog {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNV, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTG, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel7))
+                        .addGap(21, 21, 21))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtMaHD, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(txtNV)
+                    .addComponent(txtTG))
+                .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNCC, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(txtGhiChu))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(227, 227, 227)
+                .addGap(228, 228, 228)
                 .addComponent(btnPdf1)
-                .addGap(50, 50, 50))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane22)
-                .addContainerGap())
+                .addGap(49, 49, 49))
+            .addComponent(jScrollPane22)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(263, 263, 263)
@@ -255,24 +275,29 @@ public class XemCTPN extends javax.swing.JDialog {
                     .addComponent(txtMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(txtNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtNV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtTG, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPdf1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65))
+                .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(263, 263, 263)
@@ -292,7 +317,7 @@ public class XemCTPN extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 527, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

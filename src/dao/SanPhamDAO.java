@@ -128,6 +128,33 @@ public class SanPhamDAO implements DAOInterface<SanPhamModel> {
         return ketQua;
     }
 
+    public ArrayList<SanPhamModel> selectAllE() {
+        ArrayList<SanPhamModel> ketQua = new ArrayList<SanPhamModel>();
+        try {
+            Connection con = OracleJDBCConnection.getJDBCConnection();
+            String sql = "SELECT * FROM SANPHAM WHERE soluong > 0";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                String maSP = rs.getString("masp");
+                String tenSP = rs.getString("tensp");
+                double giabanSP = rs.getDouble("giaban");
+                double gianhapSP = rs.getDouble("gianhap");
+                int soLuongSP = rs.getInt("soluong");
+                String kichThuoc = rs.getString("kichthuoc");
+                String chatLieu = rs.getString("chatlieu");
+                String maNCC = rs.getString("mancc");
+                String xuatXu = rs.getString("xuatxu");
+                SanPhamModel sp = new SanPhamModel(maSP, tenSP, giabanSP, gianhapSP, soLuongSP, kichThuoc, chatLieu, maNCC, xuatXu);
+                ketQua.add(sp);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return ketQua;
+    }
+    
     @Override
     public SanPhamModel selectById(String s) {
         SanPhamModel ketQua = null;
@@ -184,7 +211,7 @@ public class SanPhamDAO implements DAOInterface<SanPhamModel> {
         return ketQua;
     }
     
-    public int updateSoLuong(SanPhamModel s, String maSP, int soluong) {
+    public int updateSoLuong(String maSP, int soluong) {
         int ketQua = 0;
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();

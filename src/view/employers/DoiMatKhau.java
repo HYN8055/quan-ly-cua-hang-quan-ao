@@ -4,7 +4,16 @@
  */
 package view.employers;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import controller.BCrypt;
+import controller.SendEmailSMTP;
+import dao.TTDangNhapDAO;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import model.TTDangNhapModel;
 
 /**
  *
@@ -12,14 +21,14 @@ import java.awt.CardLayout;
  */
 public class DoiMatKhau extends javax.swing.JDialog {
 
-    private DangNhap parent;
-    public DoiMatKhau(){};
-    public DoiMatKhau(java.awt.Dialog parent,java.awt.Dialog owner, boolean modal) {
-        super(owner, modal);
-        this.parent = (DangNhap) parent;
+    private String otpNumber;
+
+    public DoiMatKhau(java.awt.Dialog parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,7 +44,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -49,7 +58,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(152, 225, 225));
+        jPanel1.setBackground(new java.awt.Color(32, 178, 170));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -59,17 +68,17 @@ public class DoiMatKhau extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(158, 158, 158)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(178, 178, 178))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel1)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -77,11 +86,13 @@ public class DoiMatKhau extends javax.swing.JDialog {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Nhập địa chỉ Email tài khoản");
 
+        txtEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
         jButton1.setBackground(new java.awt.Color(230, 255, 243));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 179, 179));
         jButton1.setText("Gửi mã xác nhận");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -99,10 +110,10 @@ public class DoiMatKhau extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(jButton1)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +123,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(72, 72, 72))
         );
 
@@ -120,14 +131,16 @@ public class DoiMatKhau extends javax.swing.JDialog {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("Mã xác nhận gồm 6 chữ số đã được gửi vào địa chỉ email của bạn");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Nhập mã xác nhận:");
 
+        jTextField2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
         jButton2.setBackground(new java.awt.Color(230, 255, 243));
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 179, 179));
         jButton2.setText("Xác nhận");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -169,11 +182,13 @@ public class DoiMatKhau extends javax.swing.JDialog {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Nhập mật khẩu mới");
 
+        txtPassword.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
         jButton3.setBackground(new java.awt.Color(230, 255, 243));
-        jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 179, 179));
         jButton3.setText("Đổi mật khẩu");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +209,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addGap(100, 100, 100))))
         );
@@ -232,52 +247,90 @@ public class DoiMatKhau extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        CardLayout forgotPassword = (CardLayout) jPanel2.getLayout();
-        forgotPassword.next(jPanel2);
+        String email = txtEmail.getText();
+        if (email.equals("")) {
+            JOptionPane.showMessageDialog(this, "Email không được để trống !");
+        } else {
+            if (isValid(email)) {
+                if (checkEmail(email)) {
+                    otpNumber = getOTP();
+                    SendEmailSMTP.sendOTP(email, otpNumber);
+                    CardLayout forgotPassword = (CardLayout) jPanel2.getLayout();
+                    forgotPassword.next(jPanel2);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Email không tồn tại trên hệ thống !");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng định dạng email !");
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-       CardLayout forgotPassword = (CardLayout) jPanel2.getLayout();
-       forgotPassword.next(jPanel2);
+       String password = txtPassword.getText();
+        TTDangNhapDAO.getInstance().updatePassword(txtEmail.getText(),password);
+        JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công !");
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        CardLayout forgotPassword = (CardLayout) jPanel2.getLayout();
-        forgotPassword.next(jPanel2);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+        String otp = jTextField2.getText();
+        if (otp.equals("")) {
+            JOptionPane.showMessageDialog(this, "Không được để trống !");
+        } else {
+            if (otp.length() < 6 || otp.length() > 6) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng 6 chữ số !");
+            } else {
+                if (otp.equals(otpNumber)) {
+                    CardLayout forgotPassword = (CardLayout) jPanel2.getLayout();
+                    forgotPassword.next(jPanel2);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Mã xác nhận không chính xác !");
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DoiMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DoiMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DoiMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DoiMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-  
-        /* Create and display the dialog */
+    }//GEN-LAST:event_jButton2ActionPerformed
 
+    public static void main(String args[]) throws UnsupportedLookAndFeelException {
+        UIManager.setLookAndFeel(new FlatLightLaf());
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                DoiMatKhau dialog = new DoiMatKhau(new javax.swing.JDialog(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
     }
+
+    static boolean isValid(String email) {
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        return email.matches(regex);
+    }
+
+    private boolean checkEmail(String email) {
+        ArrayList<TTDangNhapModel> acc = TTDangNhapDAO.getInstance().selectAll();
+        for (TTDangNhapModel i : acc) {
+            if (i.getEmail().toLowerCase().equals(email.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private String getOTP() {
+        int min = 100000;
+        int max = 999999;
+        return Integer.toString((int) ((Math.random() * (max - min)) + min));
+    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -293,8 +346,8 @@ public class DoiMatKhau extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

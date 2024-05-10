@@ -163,7 +163,7 @@
             <Container class="javax.swing.JPanel" name="jpnTrangChu">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -201,7 +201,7 @@
             <Container class="javax.swing.JPanel" name="jpnHoaDonNH">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -260,7 +260,7 @@
             <Container class="javax.swing.JPanel" name="jpnNhapHang">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cd" green="cd" red="98" type="rgb"/>
                 </Property>
               </Properties>
 

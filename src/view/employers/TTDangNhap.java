@@ -46,7 +46,7 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
             tblModel.setRowCount(0);
             for (TTDangNhapModel i : ttdn) {
                 tblModel.addRow(new Object[]{
-                    i.getMaNV(), i.getUser(),i.getPassword(), i.getEmail(), i.getRole()
+                    i.getMaNV(), i.getUser(), i.getEmail(), i.getRole()
                 });
             }
         } catch (Exception e) {
@@ -65,14 +65,13 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
     }
     public final void initTable() {
         tblModel = new DefaultTableModel();
-        String[] headerTbl = new String[]{"Mã nhân viên", "Tên đăng nhập","Mật khẩu", "Email", "Vai trò"};
+        String[] headerTbl = new String[]{"Mã nhân viên", "Tên đăng nhập", "Email", "Vai trò"};
         tblModel.setColumnIdentifiers(headerTbl);
         jTable_TTDangNhap.setModel(tblModel);
         jTable_TTDangNhap.getColumnModel().getColumn(0).setPreferredWidth(1);
-        jTable_TTDangNhap.getColumnModel().getColumn(1).setPreferredWidth(100);
+        jTable_TTDangNhap.getColumnModel().getColumn(1).setPreferredWidth(50);
         jTable_TTDangNhap.getColumnModel().getColumn(2).setPreferredWidth(200);
         jTable_TTDangNhap.getColumnModel().getColumn(3).setPreferredWidth(50);
-        jTable_TTDangNhap.getColumnModel().getColumn(4).setPreferredWidth(200);
     }
     
     /**
@@ -94,6 +93,8 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
         txtRefresh = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_TTDangNhap = new javax.swing.JTable();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(230, 255, 243));
 
@@ -129,6 +130,7 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
             }
         });
 
+        txtSearchForm.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtSearchForm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchFormKeyReleased(evt);
@@ -181,7 +183,7 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
                 .addComponent(btnSua)
                 .addGap(18, 18, 18)
                 .addComponent(btnXemCTTT)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(cbxlLuaChon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(txtSearchForm, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,6 +206,7 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
+        jTable_TTDangNhap.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTable_TTDangNhap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -215,6 +218,7 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_TTDangNhap.setRowHeight(28);
         jScrollPane1.setViewportView(jTable_TTDangNhap);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -222,14 +226,18 @@ public class TTDangNhap extends javax.swing.JPanel implements ActionListener {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

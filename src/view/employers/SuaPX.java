@@ -77,12 +77,10 @@ public class SuaPX extends javax.swing.JDialog {
         String[] headerTbl = new String[]{"Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá"};
         tblModel.setColumnIdentifiers(headerTbl);
         tblSanPham.setModel(tblModel);
-        tblSanPham.getColumnModel().getColumn(0).setPreferredWidth(5);
+        tblSanPham.getColumnModel().getColumn(0).setPreferredWidth(50);
         tblSanPham.getColumnModel().getColumn(1).setPreferredWidth(50);
-        tblSanPham.getColumnModel().getColumn(2).setPreferredWidth(50);
-        tblBanHang.getColumnModel().getColumn(0).setPreferredWidth(50);
-        tblBanHang.getColumnModel().getColumn(1).setPreferredWidth(50);
-        tblBanHang.getColumnModel().getColumn(2).setPreferredWidth(50);
+        tblSanPham.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tblBanHang.getColumnModel().getColumn(3).setPreferredWidth(50);
         tblSanPham.setDefaultEditor(Object.class, null);
     }
 
@@ -192,6 +190,7 @@ public class SuaPX extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(32, 178, 170));
         jLabel3.setText("Tìm kiếm");
 
+        txtSearch.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchActionPerformed(evt);
@@ -218,30 +217,29 @@ public class SuaPX extends javax.swing.JDialog {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtReset)
-                        .addGap(64, 64, 64))))
+                        .addGap(37, 37, 37)
+                        .addComponent(txtReset)))
+                .addGap(64, 64, 64))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel3)
-                .addGap(30, 30, 30)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtReset, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(txtSearch))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
+        tblSanPham.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -253,6 +251,7 @@ public class SuaPX extends javax.swing.JDialog {
                 "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá"
             }
         ));
+        tblSanPham.setShowGrid(true);
         jScrollPane1.setViewportView(tblSanPham);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -261,6 +260,7 @@ public class SuaPX extends javax.swing.JDialog {
         jLabel9.setForeground(new java.awt.Color(32, 178, 170));
         jLabel9.setText("Số lượng");
 
+        txtSoLuong.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtSoLuong.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSoLuong.setText("1");
 
@@ -296,7 +296,7 @@ public class SuaPX extends javax.swing.JDialog {
                     .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -314,10 +314,10 @@ public class SuaPX extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        tblBanHang.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tblBanHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -329,6 +329,7 @@ public class SuaPX extends javax.swing.JDialog {
                 "STT", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá", "Thành tiền"
             }
         ));
+        tblBanHang.setShowGrid(true);
         jScrollPane2.setViewportView(tblBanHang);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -358,6 +359,8 @@ public class SuaPX extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(32, 178, 170));
         jLabel8.setText("Tổng tiền");
+
+        textTongTien.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
 
         btnSave.setBackground(new java.awt.Color(32, 178, 170));
         btnSave.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -405,7 +408,11 @@ public class SuaPX extends javax.swing.JDialog {
 
         jPanel8.setBackground(new java.awt.Color(230, 255, 243));
 
-        txtKH.setEnabled(false);
+        txtKH.setEditable(false);
+        txtKH.setBackground(new java.awt.Color(255, 255, 255));
+        txtKH.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        txtKH.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtKH.setFocusable(false);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(32, 178, 170));
@@ -415,23 +422,37 @@ public class SuaPX extends javax.swing.JDialog {
         jLabel5.setForeground(new java.awt.Color(32, 178, 170));
         jLabel5.setText("Người tạo");
 
-        txtNguoiTao.setEnabled(false);
+        txtNguoiTao.setEditable(false);
+        txtNguoiTao.setBackground(new java.awt.Color(255, 255, 255));
+        txtNguoiTao.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        txtNguoiTao.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNguoiTao.setFocusable(false);
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(32, 178, 170));
         jLabel6.setText("Số điện thoại");
 
-        txtMaPhieu.setEnabled(false);
+        txtMaPhieu.setEditable(false);
+        txtMaPhieu.setBackground(new java.awt.Color(255, 255, 255));
+        txtMaPhieu.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        txtMaPhieu.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtMaPhieu.setFocusable(false);
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(32, 178, 170));
         jLabel7.setText("Tên khách hàng");
 
-        txtSdt.setEnabled(false);
+        txtSdt.setEditable(false);
+        txtSdt.setBackground(new java.awt.Color(255, 255, 255));
+        txtSdt.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        txtSdt.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtSdt.setFocusable(false);
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(32, 178, 170));
         jLabel11.setText("Ghi chú");
+
+        txtGhiChu.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -560,11 +581,11 @@ public class SuaPX extends javax.swing.JDialog {
             // Set so luong san pham cua tung loai ve ban dau   
             SanPhamDAO spdao = SanPhamDAO.getInstance();
             for (var ct : CTHDOld) {
-                spdao.updateSoLuong(spdao.selectById(ct.getMaSP()), ct.getMaSP(), spdao.selectById(ct.getMaSP()).getSoLuongSP()+ ct.getSoLuong());
+                spdao.updateSoLuong(ct.getMaSP(), spdao.selectById(ct.getMaSP()).getSoLuongSP()+ ct.getSoLuong());
                 System.out.println(ct.getSoLuong());
             }
             for (var ct : CTHD) {
-                spdao.updateSoLuong(spdao.selectById(ct.getMaSP()), ct.getMaSP(), spdao.selectById(ct.getMaSP()).getSoLuongSP() - ct.getSoLuong());
+                spdao.updateSoLuong(ct.getMaSP(), spdao.selectById(ct.getMaSP()).getSoLuongSP() - ct.getSoLuong());
                 System.out.println(ct.getSoLuong());
             }
             // Lay thoi gian hien tai

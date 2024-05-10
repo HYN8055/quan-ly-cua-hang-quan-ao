@@ -129,4 +129,57 @@ public class HoaDonNhapHangDAO implements DAOInterface<HoaDonNhapHangModel> {
         }
         return ketQua;
     }
+    
+    public ArrayList<HoaDonModel> selectAllP() {
+        ArrayList<HoaDonModel> ketQua = new ArrayList<HoaDonModel>();
+        try {
+            Connection con = OracleJDBCConnection.getJDBCConnection();
+            String sql = "SELECT mapnh,ngaytao as ngay,manv,tongtien,ghichu FROM PHIEUNHAPHANG "
+                    + "UNION "
+                    + "SELECT mahd,ngayin as ngay,manv,tongtien,ghichu FROM HOADON"
+                    + " ORDER BY ngay DESC";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                String maPhieu = rs.getString("mapnh");
+                Date thoiGianTao = rs.getDate("ngay");
+                String nguoiTao = rs.getString("manv");
+                double tongTien = rs.getDouble("tongtien");
+                String ghiChu=rs.getString("ghichu");
+                HoaDonModel p = new HoaDonModel(maPhieu, nguoiTao, thoiGianTao,ChiTietHoaDonNhapHangDAO.getInstance().selectAll(maPhieu), tongTien, ghiChu);
+                ketQua.add(p);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return ketQua;
+    }
+
+    public ArrayList<HoaDonModel> selectAllAccount(String acc) {
+        ArrayList<HoaDonModel> ketQua = new ArrayList<HoaDonModel>();
+        try {
+            Connection con = OracleJDBCConnection.getJDBCConnection();
+            String sql = "SELECT mapnh,ngaytao as ngay,manv,tongtien FROM PHIEUNHAPHANG "
+                    + "UNION"
+                    + " SELECT mahd,ngayin as ngay,manv,tongtien FROM HOADON "
+                    + "WHERE manv = ?"
+                    + " ORDER BY ngay DESC";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, acc);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                String maPhieu = rs.getString("mapnh");
+                String nguoiTao = rs.getString("manv");
+                 Date thoiGianTao = rs.getDate("ngay");
+                double tongTien = rs.getDouble("tongtien");
+                HoaDonModel p = new HoaDonModel(maPhieu, nguoiTao, thoiGianTao, ChiTietHoaDonNhapHangDAO.getInstance().selectAll(maPhieu), tongTien);
+                ketQua.add(p);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return ketQua;
+    }
 }

@@ -95,7 +95,7 @@ public class TimSanPham {
         ArrayList<SanPhamModel> arms = SanPhamDAO.getInstance().selectAll();
         for (var sp : arms) {
             if (text.length() != 0) {
-                if (sp.getGiabanSP() > Integer.parseInt(text)) {
+                if (sp.getGiabanSP() == Integer.parseInt(text)) {
                     result.add(sp);
                 }
             }
