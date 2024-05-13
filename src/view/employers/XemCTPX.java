@@ -140,6 +140,7 @@ public class XemCTPX extends javax.swing.JDialog {
         jLabel3.setText("Mã phiếu");
 
         txtTG.setEditable(false);
+        txtTG.setBackground(new java.awt.Color(254, 254, 254));
         txtTG.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtTG.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
         txtTG.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -149,6 +150,7 @@ public class XemCTPX extends javax.swing.JDialog {
         jLabel4.setText("Thời gian tạo");
 
         txtNgtao.setEditable(false);
+        txtNgtao.setBackground(new java.awt.Color(254, 254, 254));
         txtNgtao.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtNgtao.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
         txtNgtao.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -173,6 +175,7 @@ public class XemCTPX extends javax.swing.JDialog {
         jLabel5.setText("Người tạo");
 
         txtMaHD.setEditable(false);
+        txtMaHD.setBackground(new java.awt.Color(254, 254, 254));
         txtMaHD.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtMaHD.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
         txtMaHD.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -201,6 +204,7 @@ public class XemCTPX extends javax.swing.JDialog {
         jLabel8.setText("Tên khách hàng");
 
         txtKH.setEditable(false);
+        txtKH.setBackground(new java.awt.Color(254, 254, 254));
         txtKH.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtKH.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
         txtKH.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -210,12 +214,14 @@ public class XemCTPX extends javax.swing.JDialog {
         jLabel9.setText("Ghi chú");
 
         txtGhiChu.setEditable(false);
+        txtGhiChu.setBackground(new java.awt.Color(254, 254, 254));
         txtGhiChu.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtGhiChu.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
         txtGhiChu.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtGhiChu.setFocusable(false);
 
         txtSdt.setEditable(false);
+        txtSdt.setBackground(new java.awt.Color(254, 254, 254));
         txtSdt.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtSdt.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 255, 255), new java.awt.Color(102, 204, 255)));
         txtSdt.setDisabledTextColor(new java.awt.Color(0, 0, 0));

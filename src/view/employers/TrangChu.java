@@ -31,7 +31,7 @@ public class TrangChu extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Bodoni MT Condensed", 3, 75)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("WELLCOME");
+        jLabel4.setText("WELCOME");
         jLabel4.setToolTipText("");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 2, 24)); // NOI18N

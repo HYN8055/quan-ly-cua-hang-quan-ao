@@ -347,10 +347,12 @@ public class SuaPN extends javax.swing.JDialog {
         jLabel7.setText("Ghi chú");
 
         txtMaPhieu.setEditable(false);
+        txtMaPhieu.setBackground(new java.awt.Color(254, 254, 254));
         txtMaPhieu.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtMaPhieu.setFocusable(false);
 
         txtNguoiTao.setEditable(false);
+        txtNguoiTao.setBackground(new java.awt.Color(254, 254, 254));
         txtNguoiTao.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtNguoiTao.setFocusable(false);
 

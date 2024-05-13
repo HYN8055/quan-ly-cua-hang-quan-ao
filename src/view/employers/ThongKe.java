@@ -229,6 +229,8 @@ public class ThongKe extends javax.swing.JPanel {
         jComboBoxLuaChon1 = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblAccount = new javax.swing.JTable();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jPanel15 = new javax.swing.JPanel();
         anhSanpham2 = new view.employers.anhSanpham();
         jLabel1 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -918,6 +920,23 @@ public class ThongKe extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Tài khoản", jTabbedPane2);
 
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1115, Short.MAX_VALUE)
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 697, Short.MAX_VALUE)
+        );
+
+        jTabbedPane5.addTab("", jPanel15);
+
+        jTabbedPane1.addTab("Biểu đồ", jTabbedPane5);
+
         anhSanpham2.setBackground(new java.awt.Color(18, 157, 182));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -1505,6 +1524,7 @@ public class ThongKe extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1520,6 +1540,7 @@ public class ThongKe extends javax.swing.JPanel {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTextField jTextFieldSearch;
     private javax.swing.JTextField searchAcc;
     private javax.swing.JTextField soLuong;
