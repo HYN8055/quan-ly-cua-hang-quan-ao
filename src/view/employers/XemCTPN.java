@@ -52,7 +52,7 @@ public class XemCTPN extends javax.swing.JDialog {
         tblModel.setColumnIdentifiers(headerTbl);
         tblChiTietPhieu.setModel(tblModel);
         tblChiTietPhieu.getColumnModel().getColumn(0).setPreferredWidth(50);
-        tblChiTietPhieu.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tblChiTietPhieu.getColumnModel().getColumn(1).setPreferredWidth(250);
         tblChiTietPhieu.getColumnModel().getColumn(2).setPreferredWidth(250);
     }
     
@@ -102,7 +102,6 @@ public class XemCTPN extends javax.swing.JDialog {
         txtNV = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtTG = new javax.swing.JTextField();
-        btnPdf = new javax.swing.JButton();
         btnPdf1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -148,10 +147,7 @@ public class XemCTPN extends javax.swing.JDialog {
         tblChiTietPhieu.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tblChiTietPhieu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "STT", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá", "Thành tiền"
@@ -204,13 +200,6 @@ public class XemCTPN extends javax.swing.JDialog {
         txtTG.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtTG.setFocusable(false);
 
-        btnPdf.setBackground(new java.awt.Color(230, 255, 243));
-        btnPdf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnPdf.setForeground(new java.awt.Color(0, 179, 179));
-        btnPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconexcel1.png"))); // NOI18N
-        btnPdf.setText("Xuất PDF");
-      
-
         btnPdf1.setBackground(new java.awt.Color(230, 255, 243));
         btnPdf1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnPdf1.setForeground(new java.awt.Color(0, 179, 179));
@@ -260,11 +249,6 @@ public class XemCTPN extends javax.swing.JDialog {
                 .addComponent(btnPdf1)
                 .addGap(49, 49, 49))
             .addComponent(jScrollPane22)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(263, 263, 263)
-                    .addComponent(btnPdf)
-                    .addContainerGap(263, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,12 +281,7 @@ public class XemCTPN extends javax.swing.JDialog {
                     .addComponent(jLabel4)
                     .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPdf1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(263, 263, 263)
-                    .addComponent(btnPdf)
-                    .addContainerGap(264, Short.MAX_VALUE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -373,7 +352,6 @@ public class XemCTPN extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPdf;
     private javax.swing.JButton btnPdf1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

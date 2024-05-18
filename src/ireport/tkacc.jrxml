@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e9ff8952-ef62-4ede-9586-2c855c050259">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="MANV" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT mapnh,ngaytao as ngay,manv,tongtien FROM PHIEUNHAPHANG 
+WHERE manv = $P{MANV}
+UNION
+SELECT mahd,ngayin as ngay,manv,tongtien FROM HOADON 
+WHERE manv = $P{MANV}
+ORDER BY ngay DESC]]>
+	</queryString>
+	<field name="MAPNH" class="java.lang.String"/>
+	<field name="NGAY" class="java.sql.Timestamp"/>
+	<field name="MANV" class="java.lang.String"/>
+	<field name="TONGTIEN" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="246" y="11" width="326" height="33" uuid="50dc1cc0-e87a-419d-a220-4461aa273f89"/>
+				<textElement>
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DANH SÁCH CÁC HOÁ ĐƠN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement x="48" y="11" width="75" height="20" uuid="b7e42410-c3b9-4f79-94d9-a076a12091ce"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Người tạo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="51" width="100" height="20" uuid="3bc91bf9-ac33-47fc-bafc-4b9d08523ad4"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã hoá đơn]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="51" width="100" height="20" uuid="3ecad504-120e-4a48-961d-e5ab304ac828"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ngày tạo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="624" y="51" width="100" height="20" uuid="86f63f96-3989-4f70-92cd-7d23e1b01a09"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng tiền]]></text>
+			</staticText>
+			<line>
+				<reportElement x="48" y="31" width="129" height="1" uuid="9d316e22-8322-4ec8-8229-e7a376356795"/>
+			</line>
+			<textField>
+				<reportElement x="123" y="12" width="100" height="20" uuid="dc4ecbad-658d-43c6-bb30-3daf917f1917"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MANV}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="42" splitType="Stretch">
+			<line>
+				<reportElement x="44" y="0" width="709" height="3" uuid="f799fcc6-1db1-4fd4-ba9d-c1c29db1cbf7"/>
+			</line>
+			<textField>
+				<reportElement x="48" y="22" width="100" height="20" uuid="e841fcd8-6d3b-4a94-938f-a1fba824a783"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAPNH}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="328" y="22" width="100" height="20" uuid="b563155e-bde0-43d8-9042-45f8b6ced58a"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NGAY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="624" y="22" width="100" height="20" uuid="756cf4ed-9169-4aa4-93a6-080750bc56f4"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TONGTIEN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -325,7 +325,6 @@ public class MainJFrame extends javax.swing.JFrame {
             jpnView.setLayout(new BorderLayout());
             ThongKe thongke = new ThongKe();
             jpnView.add(thongke);
-            jpnThongKe.setBackground(new Color(152,205,205));
             jpnView.repaint();
             jpnView.revalidate();
              

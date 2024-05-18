@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cc5dc91d-142d-480e-b565-3f652c3118ea">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT t1.masp, tensp ,slNhap,slXuat FROM (
+SELECT masp, SUM(soluong) AS slNhap FROM CTNHAP 
+JOIN PHIEUNHAPHANG ON PHIEUNHAPHANG.mapnh = CTNHAP.mapnh
+GROUP BY masp) t1 
+JOIN (
+SELECT masp, SUM(soluong) AS slXuat FROM CTHD 
+JOIN HOADON ON HOADON.mahd = CTHD.mahd 
+GROUP BY masp ) t2
+ON t1.masp = t2.masp
+JOIN SANPHAM ON t1.masp = SANPHAM.masp]]>
+	</queryString>
+	<field name="MASP" class="java.lang.String"/>
+	<field name="TENSP" class="java.lang.String"/>
+	<field name="SLNHAP" class="java.math.BigDecimal"/>
+	<field name="SLXUAT" class="java.math.BigDecimal"/>
+	<variable name="STT_COUNT" class="java.lang.String"/>
+	<group name="MASP">
+		<groupExpression><![CDATA[$F{MASP}]]></groupExpression>
+	</group>
+	<group name="TENSP">
+		<groupExpression><![CDATA[$F{TENSP}]]></groupExpression>
+	</group>
+	<group name="SLNHAP">
+		<groupExpression><![CDATA[$F{SLNHAP}]]></groupExpression>
+	</group>
+	<group name="SLXUAT">
+		<groupExpression><![CDATA[$F{SLXUAT}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="237" y="16" width="346" height="37" uuid="00a86d85-f78e-4ade-9236-4834da271a52"/>
+				<textElement>
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THỐNG KÊ SỐ LƯỢNG SẢN PHẨM]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="67" y="10" width="100" height="20" uuid="d4ca2277-de21-4b80-b2a3-5c0e64631c25"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã sản phẩm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="10" width="100" height="20" uuid="63c8c3c8-30a4-47be-a6ea-ffff7faa6c68"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên sản phẩm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="10" width="112" height="20" uuid="5a4f1635-d88f-4975-9cea-c1235e028fae"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng nhập]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="620" y="10" width="100" height="20" uuid="933b95f2-9562-4480-b257-c892a3c76510"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng xuất]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="67" y="14" width="100" height="20" uuid="5fb82195-fc44-40f1-a21a-2a58c720b9f3"/>
+				<textFieldExpression><![CDATA[$F{MASP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="249" y="14" width="100" height="20" uuid="eab82b0a-a3d1-471d-8b04-c227ec3b37e9"/>
+				<textFieldExpression><![CDATA[$F{TENSP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="14" width="100" height="20" uuid="2e049eea-ae09-426b-a0d2-f5a632d9f36f"/>
+				<textFieldExpression><![CDATA[$F{SLNHAP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="620" y="14" width="100" height="20" uuid="6a2afcf5-f301-44d8-858d-1701842598c4"/>
+				<textFieldExpression><![CDATA[$F{SLXUAT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="5" width="802" height="1" uuid="c2baf82b-3b25-49e3-ae8b-58826f9c6c30"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
