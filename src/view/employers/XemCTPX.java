@@ -54,9 +54,12 @@ public class XemCTPX extends javax.swing.JDialog {
         String[] headerTbl = new String[]{"STT","Mã sản phẩm", "Tên sản phẩm", "Số lượng","Đơn giá", "Thành tiền"};
         tblModel.setColumnIdentifiers(headerTbl);
         tblChiTietPhieu.setModel(tblModel);
-        tblChiTietPhieu.getColumnModel().getColumn(0).setPreferredWidth(5);
-        tblChiTietPhieu.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tblChiTietPhieu.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblChiTietPhieu.getColumnModel().getColumn(1).setPreferredWidth(150);
         tblChiTietPhieu.getColumnModel().getColumn(2).setPreferredWidth(250);
+        tblChiTietPhieu.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tblChiTietPhieu.getColumnModel().getColumn(4).setPreferredWidth(200);
+        tblChiTietPhieu.getColumnModel().getColumn(5).setPreferredWidth(200);
         
     }
     

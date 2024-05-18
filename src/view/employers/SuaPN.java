@@ -578,7 +578,7 @@ public class SuaPN extends javax.swing.JDialog {
             long now = System.currentTimeMillis();
             Date ngayTao = new Date(now);
             // Tao doi tuong phieu nhap
-           HoaDonNhapHangModel pn = new HoaDonNhapHangModel(phieunhap.getNhaCungCap(), phieunhap.getMaHD(), txtNguoiTao.getText(), ngayTao, CTPhieu, tinhTongTien(), phieunhap.getGhiChu());
+            HoaDonNhapHangModel pn = new HoaDonNhapHangModel(phieunhap.getNhaCungCap(), phieunhap.getMaHD(), txtNguoiTao.getText(), ngayTao, CTPhieu, tinhTongTien(), phieunhap.getGhiChu());
             try {
                 int kq = HoaDonNhapHangDAO.getInstance().update(pn);
                 if(kq > 0) {

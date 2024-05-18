@@ -9,6 +9,7 @@ import dao.ChiTietHoaDonNhapHangDAO;
 import dao.NhanVienDAO;
 import dao.SanPhamDAO;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import model.ChiTietHoaDonModel;
 import model.HoaDonNhapHangModel;
@@ -24,16 +25,17 @@ public class XemCTPN extends javax.swing.JDialog {
     /**
      * Creates new form XemCTPN
      */
-    public XemCTPN(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    private XemCTPN(JFrame jFrame, boolean b) {
+        super(jFrame, b);
         initComponents();
-        initTable();
-}
+        setLocationRelativeTo(null);
+    }
     
     public XemCTPN(javax.swing.JPanel parent, javax.swing.JFrame owner, boolean modal) {
         super(owner, modal);
         this.parent = (HoaDonNH) parent;
         initComponents();
+        initTable();
         setLocationRelativeTo(null);
         HoaDonNhapHangModel pn = this.parent.getPhieuNhapSelect();
         txtMaHD.setText(pn.getMaHD());
@@ -43,7 +45,6 @@ public class XemCTPN extends javax.swing.JDialog {
         txtGhiChu.setText(pn.getGhiChu());
         txtTG.setText(this.parent.getFormatDate().format(pn.getThoiGianTao()));
         loadDataToTableProduct();
-        initTable();
     }
 
     public final void initTable() {
@@ -52,8 +53,11 @@ public class XemCTPN extends javax.swing.JDialog {
         tblModel.setColumnIdentifiers(headerTbl);
         tblChiTietPhieu.setModel(tblModel);
         tblChiTietPhieu.getColumnModel().getColumn(0).setPreferredWidth(50);
-        tblChiTietPhieu.getColumnModel().getColumn(1).setPreferredWidth(250);
+        tblChiTietPhieu.getColumnModel().getColumn(1).setPreferredWidth(150);
         tblChiTietPhieu.getColumnModel().getColumn(2).setPreferredWidth(250);
+        tblChiTietPhieu.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tblChiTietPhieu.getColumnModel().getColumn(4).setPreferredWidth(200);
+        tblChiTietPhieu.getColumnModel().getColumn(5).setPreferredWidth(200);
     }
     
      public void loadDataToTableProduct() {
