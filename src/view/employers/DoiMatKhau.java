@@ -5,7 +5,6 @@
 package view.employers;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import controller.BCrypt;
 import controller.SendEmailSMTP;
 import dao.TTDangNhapDAO;
 import java.awt.CardLayout;
@@ -238,7 +237,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

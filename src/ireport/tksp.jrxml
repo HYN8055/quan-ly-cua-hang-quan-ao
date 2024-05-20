@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cc5dc91d-142d-480e-b565-3f652c3118ea">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cc5dc91d-142d-480e-b565-3f652c3118ea">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="51"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT t1.masp, tensp ,slNhap,slXuat FROM (
@@ -36,7 +36,7 @@ JOIN SANPHAM ON t1.masp = SANPHAM.masp]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="53" splitType="Stretch">
 			<staticText>
 				<reportElement x="237" y="16" width="346" height="37" uuid="00a86d85-f78e-4ade-9236-4834da271a52"/>
 				<textElement>
@@ -105,26 +105,30 @@ JOIN SANPHAM ON t1.masp = SANPHAM.masp]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="217" splitType="Stretch">
+		<band height="291" splitType="Stretch">
 			<bar3DChart>
 				<chart>
-					<reportElement x="95" y="20" width="200" height="100" uuid="b81c88b7-5ebf-40c7-8a93-af1da9a454d3"/>
+					<reportElement x="0" y="31" width="802" height="260" uuid="e99b6f25-657d-4c1b-9c9a-b4b468a6965e"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
 				</chart>
 				<categoryDataset>
 					<categorySeries>
-						<seriesExpression><![CDATA[$F{SLNHAP}
-$F{SLXUAT}]]></seriesExpression>
+						<seriesExpression><![CDATA["Nhập"]]></seriesExpression>
 						<categoryExpression><![CDATA[$F{MASP}]]></categoryExpression>
 						<valueExpression><![CDATA[$F{SLNHAP}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Xuất"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{MASP}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{SLXUAT}]]></valueExpression>
 					</categorySeries>
 				</categoryDataset>
 				<bar3DPlot>
