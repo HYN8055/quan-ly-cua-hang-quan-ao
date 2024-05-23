@@ -237,8 +237,7 @@ public class SuaTT extends javax.swing.JDialog {
             ttdn.setEmail(txtEmail.getText());
             ttdn.setRole(txtVaiTro.getText());
             
-            TTDangNhapDAO ttdnDao = new TTDangNhapDAO();
-            int kq = ttdnDao.update(ttdn);
+            int kq = TTDangNhapDAO.getInstance().update(ttdn);
             if(kq > 0) {
             this.dispose();
             JOptionPane.showMessageDialog(this, "Cập nhật thành công !");    

@@ -45,10 +45,10 @@ public class TTDangNhapDAO implements DAOInterface<TTDangNhapModel> {
         int ketQua = 0;
         try {
             Connection con = OracleJDBCConnection.getJDBCConnection();
-            String sql = "UPDATE TTDANGNHAP SET tendn='" + t.getUser() + 
-                    ",matkhau='" + t.getPassword() + ", email='" + t.getEmail() 
-                    + ", vaitro'" + t.getRole();
+            String sql = "UPDATE TTDANGNHAP SET matkhau='" + t.getPassword() + "', email='" + t.getEmail() 
+                    + "', vaitro='" + t.getRole() + "' WHERE tendn='" + t.getUser() + "'" ;
             PreparedStatement pst = con.prepareStatement(sql);
+            ketQua = pst.executeUpdate();
             OracleJDBCConnection.closeConnection(con);
 
         } catch (Exception e) {
