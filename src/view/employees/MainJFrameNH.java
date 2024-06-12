@@ -61,6 +61,7 @@ public class MainJFrameNH extends javax.swing.JFrame {
         jpnView.setLayout(new BorderLayout());
         TrangChu trangChu = new TrangChu();
         jpnView.add(trangChu);
+        jpnTrangChu.setBackground(new Color(255,255,255));
         jpnView.repaint();
         jpnView.revalidate();
         
